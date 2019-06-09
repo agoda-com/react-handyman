@@ -1,5 +1,4 @@
 import React from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import I18n from "./I18n";
 import withI18nProvider from "./withI18nProvider";
@@ -20,21 +19,15 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          <I18n k="learnReact">Learn React</I18n>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <I18n k="learnReact">Learn React</I18n>{" "}
+        <p>
           <I18n k="withFormattingButDefaultValueUsed" args={[123]}>
             This is string with a placeholder {0}
           </I18n>
-        </a>
+        </p>
+
         <SomeComponent
           propText={i18n(
             "withFunctionTemplate",
