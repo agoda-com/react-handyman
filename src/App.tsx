@@ -4,12 +4,13 @@ import "./App.css";
 import I18n from "./I18n";
 import withI18nProvider from "./withI18nProvider";
 import useI18n from "./useI18n";
-import SampleText from "./SampleText";
-import SampleTextWithHOC from "./SampleTextWithHOC";
+import SomeComponent from "./SomeComponent";
+import SomeComponentHOC from "./SomeComponentHOC";
 
 const translations = {
   learnReact: "Learn React",
-  withFunction: "This is text injected with function and {0}",
+  withFunction: "This is text injected with function",
+  withFunctionTemplate: "This is text injected with function and {0}",
   withHOC: "This is done with HOC",
   withFormatting: "This is string with a {0}"
 };
@@ -29,23 +30,23 @@ const App: React.FC = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <I18n k="learnReact">Learn React</I18n>
+          <I18n k="learnReact">Learn React</I18n>{" "}
           <I18n k="withFormattingButDefaultValueUsed" args={[123]}>
             This is string with a placeholder {0}
           </I18n>
         </a>
-        <SampleText
+        <SomeComponent
           propText={i18n(
-            "withFunction",
+            "withFunctionTemplate",
             "This is text injected with function and {0}",
-            "formatted"
+            "a template formatting"
           )}
           translationText={i18n(
             "withFunction",
             "This is text injected with function"
           )}
         />
-        <SampleTextWithHOC
+        <SomeComponentHOC
           propText={i18n("withFunction", "This is text injected with function")}
         />
       </header>

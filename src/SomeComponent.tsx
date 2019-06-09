@@ -10,7 +10,7 @@ export interface TranslationProps {
 
 type Props = BaseProps & TranslationProps;
 
-const SampleText: React.FC<Props> = props => {
+const SomeComponent: React.FC<Props> = props => {
   const { propText, translationText } = props;
   return (
     <>
@@ -20,4 +20,4 @@ const SampleText: React.FC<Props> = props => {
   );
 };
 
-export default SampleText;
+export default SomeComponent;
