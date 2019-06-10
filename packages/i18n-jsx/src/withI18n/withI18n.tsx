@@ -1,5 +1,6 @@
 import * as React from 'react'
-import useI18n, { I18nSelector } from './useI18n'
+import useI18n from '../useI18n/useI18n'
+import { I18nSelector } from '../useI18n/types'
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 

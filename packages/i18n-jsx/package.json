@@ -2,10 +2,32 @@
   "name": "i18n-jsx",
   "version": "0.1.0",
   "private": true,
+  "main": "lib/i18n-jsx.cjs.js",
+  "module": "lib/i18n-jsx.esm.js",
+  "browser": "lib/i18n-jsx.umd.js",
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
     "@types/react": "16.8.19",
     "react": "^16.8.6",
+    "rollup": "^1.14.6",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-node-resolve": "^5.0.1",
+    "rollup-plugin-terser": "^5.0.0",
     "typescript": "3.5.1"
   },
-  "scripts": {}
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "type-check": "tsc"
+  }
 }

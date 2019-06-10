@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Translations } from './TranslationsContext'
-import I18nProvider from './I18nProvider'
+import { Translations } from '../TranslationsContext'
+import I18nProvider from '../I18nProvider'
 
 const withI18nProvider = <TProps extends {}>(Component: React.ComponentType<TProps>, translations: Translations) => {
   const Wrapped: React.FC<TProps> = props => {

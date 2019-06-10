@@ -1,5 +1,5 @@
 import * as React from 'react'
-import useI18n from './useI18n'
+import useI18n from '../useI18n'
 
 interface Props {
   k: string

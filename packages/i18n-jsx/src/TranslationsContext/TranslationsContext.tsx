@@ -1,8 +1,5 @@
 import * as React from 'react'
-
-export interface Translations {
-  [key: string]: string
-}
+import { Translations } from './types'
 
 const TranslationsContext = React.createContext<Translations>({})
 

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import TranslationsContext, { Translations } from './TranslationsContext'
+import TranslationsContext, { Translations } from '../TranslationsContext'
 
 interface Props {
   translations: Translations

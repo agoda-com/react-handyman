@@ -1,7 +1,6 @@
 import * as React from 'react'
-import TranslationsContext from './TranslationsContext'
-
-export type I18nSelector = (k: string, def: string, ...args: (string | number)[]) => string
+import TranslationsContext from '../TranslationsContext'
+import { I18nSelector } from './types'
 
 const format = (template: string, ...args: (string | number)[]): string => {
   return String(template).replace(/\{([^{}]+)\}/g, (match, key: any) => (args[key] != null ? args[key] : key))
