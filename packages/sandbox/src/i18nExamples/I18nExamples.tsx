@@ -6,7 +6,10 @@ const I18nExamples: React.FC = () => {
   return (
     <>
       <p>
-        <I18n k="example.key.1">Default fallback text that should not render</I18n>
+        <I18n k="example.key.1">Default fallback text</I18n>
+      </p>
+      <p>
+        <I18n k="example.invalid.or.missing.key">This default text is rendered because key doesn't exists</I18n>
       </p>
     </>
   )
