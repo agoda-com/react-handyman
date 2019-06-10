@@ -5,6 +5,7 @@
   "main": "lib/i18n-jsx.cjs.js",
   "module": "lib/i18n-jsx.esm.js",
   "browser": "lib/i18n-jsx.umd.js",
+  "types": "lib/index.d.ts",
   "peerDependencies": {
     "react": "^16.8.6"
   },
@@ -28,6 +29,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "emit-declarations": "tsc -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
   }
 }
