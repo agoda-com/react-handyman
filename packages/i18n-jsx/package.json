@@ -1,0 +1,11 @@
+{
+  "name": "i18n-jsx",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "@types/react": "16.8.19",
+    "react": "^16.8.6",
+    "typescript": "3.5.1"
+  },
+  "scripts": {}
+}
