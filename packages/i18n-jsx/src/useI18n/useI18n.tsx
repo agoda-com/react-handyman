@@ -10,7 +10,7 @@ const format = (template: string, ...args: (string | number)[]): string => {
 const useI18n = () => {
   const translations = React.useContext(TranslationsContext)
 
-  const i18n: I18nSelector = (k: string, notFound: string, ...args: (string | number)[]) => {
+  const i18n: I18nSelector = (k: string | number, notFound: string, ...args: (string | number)[]) => {
     return format(translations[k] ? translations[k] : handleNotFound(k, notFound), ...args)
   }
 

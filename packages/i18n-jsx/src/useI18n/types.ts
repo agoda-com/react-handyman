@@ -1,1 +1,1 @@
-export type I18nSelector = (k: string, notFound: string, ...args: (string | number)[]) => string
+export type I18nSelector = (k: string | number, notFound: string, ...args: (string | number)[]) => string

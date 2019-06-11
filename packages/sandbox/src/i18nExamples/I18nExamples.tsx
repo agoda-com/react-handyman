@@ -12,6 +12,9 @@ const I18nExamples: React.FC = () => {
         <I18n k="example.key.1">Default fallback text</I18n>
       </p>
       <p>
+        <I18n k={123}>Default fallback text</I18n>
+      </p>
+      <p>
         <I18n k="example.key.2" args={[123]}>This is with formatted number {0}</I18n>
       </p>
       <p>

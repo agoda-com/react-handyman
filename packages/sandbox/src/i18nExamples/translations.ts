@@ -3,6 +3,7 @@ const translations = {
   'example.key.2': 'This is with formatted number {0}',
   "example.prop.strong": 'This is strong text',
   "example.hoc.strong": "This is strong text via HOC",
-  "example.prop.link": "Some link text passed via prop"
+  "example.prop.link": "Some link text passed via prop",
+  123: 'this is number based key value'
 }
 export default translations

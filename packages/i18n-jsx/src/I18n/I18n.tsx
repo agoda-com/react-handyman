@@ -2,7 +2,7 @@ import * as React from 'react'
 import useI18n from '../useI18n'
 
 interface Props {
-  k: string
+  k: string | number
   args?: (string | number)[]
 }
 
