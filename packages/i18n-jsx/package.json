@@ -41,6 +41,6 @@
     "typecheck": "tsc",
     "emit-declarations": "tsc -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\"",
     "test": "jest",
-    "coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls"
+    "coveralls": "jest --coverage && nodecat ./tests/coverage/lcov.info | coveralls"
   }
 }
