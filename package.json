@@ -15,7 +15,7 @@
     "bs": "lerna bootstrap",
     "typecheck": "lerna run typecheck",
     "build": "lerna run build",
-    "test": "lerna run test",
+    "test": "lerna run test --stream",
     "coveralls": "lerna run coveralls"
   }
 }
