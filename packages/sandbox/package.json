@@ -1,7 +1,6 @@
 {
-  "name": "sandbox",
+  "name": "react-handyman-sandbox",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@types/jest": "24.0.13",
     "@types/node": "12.0.7",
