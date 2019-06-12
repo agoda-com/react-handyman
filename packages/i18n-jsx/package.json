@@ -1,7 +1,10 @@
 {
   "name": "i18n-jsx",
+  "description": "React (JS) text internationalization",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
+  "author": "Maciej Malkowski <monkey3310@gmail.com>",
+  "repository": "matmalkowski/react-handyman",
   "main": "lib/i18n-jsx.cjs.js",
   "module": "lib/i18n-jsx.esm.js",
   "browser": "lib/i18n-jsx.umd.js",
@@ -17,6 +20,7 @@
     "@babel/preset-typescript": "^7.3.3",
     "@types/react": "16.8.19",
     "react": "^16.8.6",
+    "rimraf": "^2.6.3",
     "rollup": "^1.14.6",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-node-resolve": "^5.0.1",
@@ -27,7 +31,8 @@
     "lib"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "prebuild": "rimraf lib",
+    "build": "rollup -c && yarn emit-declarations",
     "dev": "rollup -c -w",
     "type-check": "tsc",
     "emit-declarations": "tsc -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
