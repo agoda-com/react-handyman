@@ -3,8 +3,7 @@
   "private": true,
   "license": "MIT",
   "workspaces": [
-    "packages/*",
-    "packages/create-react-resume/template-typescript"
+    "packages/*"
   ],
   "description": "Utils and packages to extend your react.js based app",
   "author": "matmalkowski <monkey3310@gmail.com>",
