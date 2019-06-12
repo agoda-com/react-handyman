@@ -72,11 +72,11 @@ The `<I18n />` component should be used, when the text in your component is stat
 
 ##### API
 
-| prop       | type                  | required | defaultValue | Description                                                                                                                    |
-| ---------- | --------------------- | -------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `k`        | `string | number`     | true     | -            | key value used to look up the translation in the `Translations` object.                                                        |
-| `children` | `string`              | true     | -            | The default fallback value to render in case when value under the `k` key has not been found                                   |
-| `args`     | `(string | number)[]` | false    | null         | Set of arguments to be used for string formatting with the template. Please see [**Formatting**](#Formatting) for more details |
+| prop       | type                   | required | defaultValue | Description                                                                                                                    |
+| ---------- | ---------------------- | -------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `k`        | `string \| number`     | true     | -            | key value used to look up the translation in the `Translations` object.                                                        |
+| `children` | `string`               | true     | -            | The default fallback value to render in case when value under the `k` key has not been found                                   |
+| `args`     | `(string \| number)[]` | false    | null         | Set of arguments to be used for string formatting with the template. Please see [**Formatting**](#Formatting) for more details |
 
 ---
 
@@ -94,11 +94,11 @@ const i18n = useI18n();
 
 ##### API
 
-| param      | type                  | required | defaultValue | Description                                                                                                                    |
-| ---------- | --------------------- | -------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `k`        | `string | number`     | true     | -            | key value used to look up the translation in the `Translations` object.                                                        |
-| `notFound` | `string`              | true     | -            | The default fallback value to render in case when value under the `k` key has not been found                                   |
-| `...args`  | `(string | number)[]` | false    | null         | Set of arguments to be used for string formatting with the template. Please see [**Formatting**](#Formatting) for more details |
+| param      | type                   | required | defaultValue | Description                                                                                                                    |
+| ---------- | ---------------------- | -------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `k`        | `string \| number`     | true     | -            | key value used to look up the translation in the `Translations` object.                                                        |
+| `notFound` | `string`               | true     | -            | The default fallback value to render in case when value under the `k` key has not been found                                   |
+| `...args`  | `(string \| number)[]` | false    | null         | Set of arguments to be used for string formatting with the template. Please see [**Formatting**](#Formatting) for more details |
 
 ---
 
@@ -127,10 +127,10 @@ const TranslatedComponent = withI18n(Component, mapI18nToProps)
 
 `i18n` selector:
 
-| param      | type                  | required | defaultValue | Description                                                                                                                    |
-| ---------- | --------------------- | -------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `k`        | `string | number`     | true     | -            | key value used to look up the translation in the `Translations` object.                                                        |
-| `notFound` | `string`              | true     | -            | The default fallback value to render in case when value under the `k` key has not been found                                   |
-| `...args`  | `(string | number)[]` | false    | null         | Set of arguments to be used for string formatting with the template. Please see [**Formatting**](#Formatting) for more details |
+| param      | type                   | required | defaultValue | Description                                                                                                                    |
+| ---------- | ---------------------- | -------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `k`        | `string \| number`     | true     | -            | key value used to look up the translation in the `Translations` object.                                                        |
+| `notFound` | `string`               | true     | -            | The default fallback value to render in case when value under the `k` key has not been found                                   |
+| `...args`  | `(string \| number)[]` | false    | null         | Set of arguments to be used for string formatting with the template. Please see [**Formatting**](#Formatting) for more details |
 
 ---
