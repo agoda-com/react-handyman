@@ -1,14 +1,13 @@
 {
   "name": "react-handyman",
-  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
   "workspaces": [
     "packages/*",
     "packages/create-react-resume/template-typescript"
   ],
   "description": "Utils and packages to extend your react.js based app",
   "author": "matmalkowski <monkey3310@gmail.com>",
-  "license": "MIT",
-  "private": true,
   "devDependencies": {
     "lerna": "^3.13.1"
   },
