@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - '10'
+before_script:
+  - yarn install
+script:
+  - yarn build
+deploy:
+  provider: npm
+  script: yarn publish
+  email: mac.malkowski@gmail.com
+  api_key:
+    secure: KECGASi+Ro+uqw8CCwfO7cki+CIf/4juRX/yCACzzkVuBj37J2YTfWmVr/eWKkf3G4aItl8L9pEP0ki6D87s2esDOnZuqGHyKqGX4aL99piJWEu4kWANJLF8R9ftE2CkvKww5KWtpk3fA1jKMtgJDhpZJL+SbIT8qkoYeqGd5f8LoI9FcpZRQu8wuNvyMDw/dGO1vRQ54z/u7USciUPO72AvdsbZ++vPrugeB9avHVNMaQ+lcriqkpzlVC14fvDfWe9wBLbMe+A8Z9M+oZ+PYacoC7erlsoRmbe5og9eqPl7d4Zy15fmcIqfmnl8edAHr3ZixRHKUsCTLu1JeViIHBl417Eit3e/bGY3N4CzBY7IHZ2AY3lyV7anhRwRwgiV2Nn92eg/WYK99KKHnSEVRL8S6Ezo85+WMLrQUwRPjah7duRQ4De+LXRctyom0pSPUNysVifd2eba66dk8HzlMRFqoQVXKAxGDBZWhDnX4sMQSKx6fNK6DsUmBsUhEVR3Mfy5RDO9lj5WYrIVwxvF/N2rFX6LHELKmdaRnyNckFHqhlyB1urWZygRwNV5N1W8TpO9bEeuhOh8LcNDphFKMxsjXNKqvQZ5jw4QLodDvjA4lqhVpVSlAW5krcZG3PDKdc7GzCvft83CNo1zuGmPqoNoN0QWvhQaTINRpRSas3M=
+  on:
+    branch: master
+  skip_cleanup: true

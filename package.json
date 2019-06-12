@@ -14,6 +14,8 @@
   },
   "scripts": {
     "install": "lerna link",
-    "bs": "lerna bootstrap"
+    "bs": "lerna bootstrap",
+    "publish": "lerna publish -y from-git",
+    "build": "lerna run build"
   }
 }
