@@ -1,3 +1,6 @@
+![npm](https://img.shields.io/npm/v/i18n-jsx.svg)
+[![Build Status](https://travis-ci.org/matmalkowski/react-handyman.svg?branch=master)](https://travis-ci.org/matmalkowski/react-handyman)
+
 # i18n-jsx
 
 > 👉 Take note that this package is in still early stage of developement, and there might be breaking changes introduced while we are on the roadmap to stable 1.0.0 version. To check the progress and what will be supported see our [**Roadmap**](/ROADMAP.md)
