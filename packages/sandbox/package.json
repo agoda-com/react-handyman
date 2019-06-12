@@ -1,17 +1,17 @@
 {
   "name": "sandbox",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "dependencies": {
     "@types/jest": "24.0.13",
     "@types/node": "12.0.7",
     "@types/react": "16.8.19",
     "@types/react-dom": "16.8.4",
+    "i18n-jsx": "^0.1.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
-    "typescript": "3.5.1",
-    "i18n-jsx": "0.1.0"
+    "typescript": "3.5.1"
   },
   "scripts": {
     "start": "react-scripts start",
