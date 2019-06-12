@@ -13,6 +13,9 @@
   "scripts": {
     "install": "lerna link",
     "bs": "lerna bootstrap",
-    "build": "lerna run build"
+    "typecheck": "lerna run typecheck",
+    "build": "lerna run build",
+    "test": "lerna run test",
+    "coveralls": "lerna run coveralls"
   }
 }
