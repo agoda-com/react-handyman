@@ -15,7 +15,10 @@ const translationsMock = {
 }
 
 describe('<I18n />', () => {
-  afterEach(cleanup)
+  afterEach(() => {
+    cleanup();
+    jest.clearAllMocks();
+  })
   it('should render text based on a numeric k prop', () => {
     const { container } = render(
       <I18nProvider translations={translationsMock}>
