@@ -1,6 +1,5 @@
 import * as React from 'react'
 import TranslationsContext from '../TranslationsContext'
-import { I18nSelector } from './types'
 import handleNotFound from '../utils/handleNotFound'
 import format from '../utils/format'
 
