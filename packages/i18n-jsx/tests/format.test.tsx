@@ -86,4 +86,25 @@ describe('format()', () => {
   it('should replace values in the correct order', () => {
     expect(format('{3}{1}{2}{0}', 1, 2, 3, 4)).toBe('4231')
   })
+
+  it('should return string for number based params', () => {
+    expect(typeof format('{0} {1}', 1, 2)).toBe('string')
+  })
+
+  it('should return string for string based params', () => {
+    expect(typeof format('{0} {1}', '1', '2')).toBe('string')
+  })
+
+  it('should return string for string & number based params', () => {
+    expect(typeof format('{0} {1}', '1', 2)).toBe('string')
+  })
+
+  it('should format with element params', () => {
+    expect(format('{0} {1}', '1', <span>text inside</span>)).toBe(
+      <React.Fragment>
+        <>1 </>
+        <span>text inside</span>
+      </React.Fragment>
+    )
+  })
 })
