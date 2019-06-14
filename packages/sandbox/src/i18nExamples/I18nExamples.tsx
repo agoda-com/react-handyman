@@ -5,11 +5,11 @@ import Component, { WrappedComponent } from './Component'
 
 const I18nExamples: React.FC = () => {
   const i18n = useI18n()
-  const linkText = i18n(1, 'Default link text', 11, 22, <span>33</span>) as React.ReactNode
+  const linkText = i18n(1, 'Default link text', 11, 22, <span>333</span>)
   console.log(linkText)
   return (
-    <>
-      {{ linkText }}
+    <><div>{ linkText }</div>
+      
       {/* <p>
         <I18n k="example.key.1">Default fallback text</I18n>
       </p>

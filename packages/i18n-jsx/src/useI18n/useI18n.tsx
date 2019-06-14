@@ -7,7 +7,11 @@ import format from '../utils/format'
 const useI18n = () => {
   const translations = React.useContext(TranslationsContext)
 
-  const i18n = (k: string | number, notFound: string, ...args: (number | React.ReactNode)[]) => {
+  const i18n = <TArgs extends (string | number | React.ReactNode)[]>(
+    k: string | number,
+    notFound: string,
+    ...args: TArgs
+  ): TArgs extends (string | number)[] ? string : React.ReactNode => {
     return format(translations[k] ? translations[k] : handleNotFound(k, notFound), ...args)
   }
 
