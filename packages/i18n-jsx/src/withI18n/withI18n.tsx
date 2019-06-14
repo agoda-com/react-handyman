@@ -1,21 +1,12 @@
 import * as React from 'react'
 import useI18n from '../useI18n/useI18n'
+import { I18nSelector } from '../useI18n/selector'
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
-const withI18n = <
-  TProps extends TI18nProps,
-  TI18nProps extends {},
-  TArgs extends (string | number | React.ReactNode)[]
->(
+const withI18n = <TProps extends TI18nProps, TI18nProps extends {}>(
   Component: React.ComponentType<TProps & TI18nProps>,
-  mapI18nToProps: (
-    i18n: (
-      k: string | number,
-      notFound: string,
-      ...args: TArgs
-    ) => TArgs extends (string | number)[] ? string : React.ReactNode
-  ) => TI18nProps
+  mapI18nToProps: (i18n: I18nSelector) => TI18nProps
 ) => {
   type OwnProps = Omit<TProps, keyof TI18nProps>
 

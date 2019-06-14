@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { withI18n } from 'i18n-jsx'
-import { I18nSelector } from 'i18n-jsx/lib/useI18n'
+import { withI18n, I18nSelector } from 'i18n-jsx'
 
 interface TranslationProps {
   strongText: string
