@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`format() should format with element params 1`] = `
+<React.Fragment>
+  
+  1
+   
+  <span>
+    text inside
+  </span>
+  
+</React.Fragment>
+`;
+
+exports[`format() should format with multiple element params 1`] = `
+<React.Fragment>
+  
+  <div>
+    some other text
+  </div>
+   
+  <span>
+    text inside
+  </span>
+  
+</React.Fragment>
+`;
