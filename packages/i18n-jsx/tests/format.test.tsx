@@ -2,6 +2,7 @@ import 'jest'
 import * as React from 'react'
 
 const consoleWarn = jest.spyOn(global.console, 'warn').mockImplementation(() => {})
+const consoleError = jest.spyOn(global.console, 'error').mockImplementation(() => {})
 
 import format from '../src/utils/format'
 
@@ -100,11 +101,28 @@ describe('format()', () => {
   })
 
   it('should format with element params', () => {
-    expect(format('{0} {1}', '1', <span>text inside</span>)).toBe(
-      <React.Fragment>
-        <>1 </>
-        <span>text inside</span>
-      </React.Fragment>
+    expect(format('{0} {1}', '1', <span key="key">text inside</span>)).toMatchSnapshot()
+  })
+
+  it('should format with multiple element params', () => {
+    expect(
+      format('{0} {1}', <div key="a key">some other text</div>, <span key="key">text inside</span>)
+    ).toMatchSnapshot()
+  })
+
+  it('should not throw console errors when formatting with jsx', () => {
+    format('{0} {1}', '1', <span key="key">text inside</span>)
+    expect(consoleError).toHaveBeenCalledTimes(0)
+  })
+
+  it('should throw console errors when formatting with jsx and no key appended to JSX element', () => {
+    format('{0} {1}', '1', <span>text inside</span>)
+    expect(consoleError).toHaveBeenCalledTimes(1)
+    expect(consoleError).toHaveBeenCalledWith(
+      `Warning: Each child in a list should have a unique \"key\" prop.%s%s See https://fb.me/react-warning-keys for more information.%s`,
+      '',
+      '',
+      '\n    in span'
     )
   })
 })
