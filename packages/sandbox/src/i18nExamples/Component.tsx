@@ -25,7 +25,7 @@ const Component: React.FC<Props> = ({ strongText, linkText }) => {
 }
 
 const mapI18nToProps = (i18n: I18nSelector): TranslationProps => ({
-  strongText: i18n('example.hoc.strong', 'Default value for HOC') as string,
+  strongText: i18n('example.hoc.strong', 'Default value for HOC'),
 })
 
 const WrappedComponent = withI18n(Component, mapI18nToProps)
