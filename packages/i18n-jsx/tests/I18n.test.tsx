@@ -3,6 +3,7 @@ import * as React from 'react'
 import { render, cleanup, getNodeText } from '@testing-library/react'
 
 const consoleWarn = jest.spyOn(global.console, 'warn').mockImplementation(() => {})
+const consoleError = jest.spyOn(global.console, 'error').mockImplementation(() => {})
 
 import I18n from '../src/I18n'
 import I18nProvider from '../src/I18nProvider'
@@ -156,6 +157,42 @@ describe('<I18n />', () => {
       const innerText = getNodeText(container.querySelector('span'))
 
       expect(innerText).toEqual('string with some replaced string placeholder and ending with another 123')
+    })
+
+    it('should throw error when child element is missing', () => {
+      const { container } = render(
+        <I18nProvider translations={translationsMock}>
+          <span>
+            <I18n k="error" />
+          </span>
+        </I18nProvider>
+      )
+      const innerText = getNodeText(container.querySelector('span'))
+
+      expect(innerText).toEqual('')
+      expect(consoleError).toHaveBeenCalledTimes(1)
+      expect(consoleError).toHaveBeenCalledWith(
+        `[i18n-jsx]: I18n component for key 'error' doesn't contain a valid default value. A default value must be provided as a single only child of the <I18n> component, and it must be a string value.`
+      )
+    })
+
+    it('should throw error when child element is not a string / number', () => {
+      const { container } = render(
+        <I18nProvider translations={translationsMock}>
+          <span>
+            <I18n k="error">
+              <div>lol wat</div>
+            </I18n>
+          </span>
+        </I18nProvider>
+      )
+      const innerText = getNodeText(container.querySelector('span'))
+
+      expect(innerText).toEqual('')
+      expect(consoleError).toHaveBeenCalledTimes(1)
+      expect(consoleError).toHaveBeenCalledWith(
+        `[i18n-jsx]: I18n component for key 'error' doesn't contain a valid default value. A default value must be provided as a single only child of the <I18n> component, and it must be a string value.`
+      )
     })
   })
 })
