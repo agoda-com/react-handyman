@@ -5,10 +5,12 @@ import Component, { WrappedComponent } from './Component'
 
 const I18nExamples: React.FC = () => {
   const i18n = useI18n()
-  const linkText = i18n('example.prop.link', 'Default link text')
+  const params = { one: '123', two: 456 }
+  const linkText = i18n('example.object.args', 'default value', { one: '123', two: 456 })
   return (
     <>
-      <p>
+      {linkText}
+      {/* <p>
         <I18n k="example.key.1">Default fallback text</I18n>
       </p>
       <p>
@@ -18,12 +20,17 @@ const I18nExamples: React.FC = () => {
         <I18n k="example.key.2" args={[123]}>
           This is with formatted number {0}
         </I18n>
-      </p>
-      <p>
+      </p> */}
+      {/* <p>
+        <I18n k="example.object.args" args={}>
+          This is with formatted number {0}
+        </I18n>
+      </p> */}
+      {/* <p>
         <I18n k="example.invalid.or.missing.key">This default text is rendered because key doesn't exists</I18n>
       </p>
       <Component linkText={linkText} strongText={i18n('example.prop.strong', 'Default prop.strong text')} />
-      <WrappedComponent linkText={linkText} />
+      <WrappedComponent linkText={linkText} /> */}
     </>
   )
 }

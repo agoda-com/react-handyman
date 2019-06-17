@@ -5,5 +5,6 @@ const translations = {
   'example.hoc.strong': 'This is strong text via HOC',
   'example.prop.link': 'Some link text passed via prop',
   123: 'this is number based key value',
+  'example.object.args': 'Object based args {one} {two}',
 }
 export default translations

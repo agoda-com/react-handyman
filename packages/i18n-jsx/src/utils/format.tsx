@@ -1,9 +1,10 @@
 import * as React from 'react'
+import { FArgs, FArgsPrimitives } from './types'
 
-const format = <TArgs extends (string | number | React.ReactNode)[]>(
+const format = <TArgs extends FArgs>(
   template: string,
   ...args: TArgs
-): TArgs extends (string | number)[] ? string : React.ReactNode => {
+): TArgs extends FArgsPrimitives ? string : React.ReactNode => {
   if (!template || template.length === 0) {
     throw new Error(`[i18n-jsx]: format() method has been called without a template string!`)
   }
@@ -26,8 +27,10 @@ const format = <TArgs extends (string | number | React.ReactNode)[]>(
       // this is template so just return
       return value
     } else {
-      const key = parseInt(value)
-      const replaceValue = args[key]
+      const isStringKey = typeof value === 'string'
+      const key = isStringKey ? value : parseInt(value)
+      const replaceValue = isStringKey ? (args[0] as any)[key] : args[key as any]
+
       if (replaceValue) {
         if (typeof replaceValue !== 'string' && typeof replaceValue !== 'number') {
           containsJSX = true
