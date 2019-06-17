@@ -57,7 +57,7 @@ describe('format()', () => {
     )
     expect(consoleWarn).toHaveBeenNthCalledWith(
       2,
-      `[i18n-jsx]: Template 'a template {0}, {1}, {2}' doesn't contain matching index '2'`
+      `[i18n-jsx]: Failed replacing the template 'a template {0}, {1}, {2}' - '2' index wasn't provided!`
     )
   })
 
@@ -101,28 +101,15 @@ describe('format()', () => {
   })
 
   it('should format with element params', () => {
-    expect(format('{0} {1}', '1', <span key="key">text inside</span>)).toMatchSnapshot()
+    expect(format('{0} {1}', '1', <span>text inside</span>)).toMatchSnapshot()
   })
 
   it('should format with multiple element params', () => {
-    expect(
-      format('{0} {1}', <div key="a key">some other text</div>, <span key="key">text inside</span>)
-    ).toMatchSnapshot()
+    expect(format('part of template {0} {1}', <div>some other text</div>, <span>text inside</span>)).toMatchSnapshot()
   })
 
   it('should not throw console errors when formatting with jsx', () => {
-    format('{0} {1}', '1', <span key="key">text inside</span>)
+    format('part of template {0} {1}', '1', <span key="key">text inside</span>)
     expect(consoleError).toHaveBeenCalledTimes(0)
-  })
-
-  it('should throw console errors when formatting with jsx and no key appended to JSX element', () => {
-    format('{0} {1}', '1', <span>text inside</span>)
-    expect(consoleError).toHaveBeenCalledTimes(1)
-    expect(consoleError).toHaveBeenCalledWith(
-      `Warning: Each child in a list should have a unique \"key\" prop.%s%s See https://fb.me/react-warning-keys for more information.%s`,
-      '',
-      '',
-      '\n    in span'
-    )
   })
 })

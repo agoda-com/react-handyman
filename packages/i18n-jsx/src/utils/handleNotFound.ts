@@ -5,7 +5,7 @@ const handleNotFound = (k: string | number, notFound: any) => {
 
   if (Array.isArray(notFound)) {
     return notFound.reduce((acc, e) => {
-      if (Number.isInteger(e)) return acc + `{${e}}`
+      if (Number.isInteger(e) || typeof e === 'string') return acc + `{${e}}`
       return acc + e
     }, '')
   }

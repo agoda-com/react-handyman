@@ -16,8 +16,8 @@ const translationsMock = {
 
 describe('<I18n />', () => {
   afterEach(() => {
-    cleanup();
-    jest.clearAllMocks();
+    cleanup()
+    jest.clearAllMocks()
   })
   it('should render text based on a numeric k prop', () => {
     const { container } = render(
@@ -93,7 +93,7 @@ describe('<I18n />', () => {
       expect(innerText).toEqual('string with some replaced string placeholder')
     })
 
-    it('should render with multiple values', () => {
+    it.only('should render with multiple values', () => {
       const { container } = render(
         <I18nProvider translations={translationsMock}>
           <span>
@@ -114,7 +114,7 @@ describe('<I18n />', () => {
         <I18nProvider translations={translationsMock}>
           <span>
             <I18n k="invalid.key.string" args={['some replaced string']}>
-              string with {0} placeholder
+              {'string with {0} placeholder'}
             </I18n>
           </span>
         </I18nProvider>
@@ -130,7 +130,7 @@ describe('<I18n />', () => {
         <I18nProvider translations={translationsMock}>
           <span>
             <I18n k="invalid.key.string" args={['some replaced string', 123]}>
-              string with {0} placeholder and ending with another {1}
+              {'string with {0} placeholder and ending with another {1}'}
             </I18n>
           </span>
         </I18nProvider>

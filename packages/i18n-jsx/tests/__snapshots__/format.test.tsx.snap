@@ -14,7 +14,7 @@ exports[`format() should format with element params 1`] = `
 
 exports[`format() should format with multiple element params 1`] = `
 <React.Fragment>
-  
+  part of template 
   <div>
     some other text
   </div>
