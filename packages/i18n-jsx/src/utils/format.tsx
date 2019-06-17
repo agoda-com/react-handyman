@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { FArgs, FArgsPrimitives, ArgsObj } from './types'
+import { FArgs, FArgsPrimitives } from './types'
 
 const format = <TArgs extends FArgs>(
   template: string,
@@ -18,6 +18,7 @@ const format = <TArgs extends FArgs>(
           return acc
         }, {})
   const parts = template.split(reg)
+
   if (process.env.NODE_ENV !== 'production') {
     const noOfPlaceholders = Math.floor(parts.length / 2)
     const noOfArgs = Object.keys(argsDictionary).length
