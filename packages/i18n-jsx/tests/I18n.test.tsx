@@ -12,6 +12,7 @@ const translationsMock = {
   'example.key': 'string based key',
   'example.template': 'string with {0} placeholder',
   'example.template.many': 'string with {0} placeholder and ending with another {1}',
+  'example.template.obj': 'string with {one} or {two} object based values',
 }
 
 describe('<I18n />', () => {
@@ -93,7 +94,7 @@ describe('<I18n />', () => {
       expect(innerText).toEqual('string with some replaced string placeholder')
     })
 
-    it.only('should render with multiple values', () => {
+    it('should render with multiple values', () => {
       const { container } = render(
         <I18nProvider translations={translationsMock}>
           <span>
@@ -107,6 +108,22 @@ describe('<I18n />', () => {
       const innerText = getNodeText(container.querySelector('span'))
 
       expect(innerText).toEqual('string with some replaced string placeholder and ending with another 123')
+    })
+
+    it('should render with string based template and object args', () => {
+      const { container } = render(
+        <I18nProvider translations={translationsMock}>
+          <span>
+            <I18n k="example.template.obj" args={{ one: 1, two: 2 }}>
+              {`string with {one} or {two} object based values`}
+            </I18n>
+          </span>
+        </I18nProvider>
+      )
+
+      const innerText = getNodeText(container.querySelector('span'))
+
+      expect(innerText).toEqual('string with 1 or 2 object based values')
     })
 
     it('should render default fallback value when k key is not present in context', () => {

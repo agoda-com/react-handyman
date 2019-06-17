@@ -44,7 +44,7 @@ describe('format()', () => {
     format('a template {0}, {1}', 1, 2, 3)
     expect(consoleWarn).toHaveBeenCalledTimes(1)
     expect(consoleWarn).toHaveBeenCalledWith(
-      `[i18n-jsx]: Template 'a template {0}, {1}' contains different number of indexes than passed arguments ([1,2,3]): found 2 placeholders while 3 arguments have been provided.`
+      `[i18n-jsx]: Template 'a template {0}, {1}' contains different number of placeholders than passed arguments ([0,1,2]): found 2 placeholders while 3 arguments have been provided.`
     )
   })
 
@@ -53,7 +53,7 @@ describe('format()', () => {
     expect(consoleWarn).toHaveBeenCalledTimes(2)
     expect(consoleWarn).toHaveBeenNthCalledWith(
       1,
-      `[i18n-jsx]: Template 'a template {0}, {1}, {2}' contains different number of indexes than passed arguments ([1,2]): found 3 placeholders while 2 arguments have been provided.`
+      `[i18n-jsx]: Template 'a template {0}, {1}, {2}' contains different number of placeholders than passed arguments ([0,1]): found 3 placeholders while 2 arguments have been provided.`
     )
     expect(consoleWarn).toHaveBeenNthCalledWith(
       2,
@@ -111,5 +111,17 @@ describe('format()', () => {
   it('should not throw console errors when formatting with jsx', () => {
     format('part of template {0} {1}', '1', <span key="key">text inside</span>)
     expect(consoleError).toHaveBeenCalledTimes(0)
+  })
+
+  it('should format correctly with with string based indexes and an object param', () => {
+    expect(format('{two} {one}', { one: 1, two: 2 })).toBe('2 1')
+  })
+
+  it('should format correctly with with number based indexes and an object param', () => {
+    expect(format('{1} {0}', { 0: 1, 1: 2 })).toBe('2 1')
+  })
+
+  it('should format correctly with with string based indexes and an object param with JSX', () => {
+    expect(format('{one} {two}', { one: 1, two: <span>text inside 2</span> })).toMatchSnapshot()
   })
 })

@@ -10,16 +10,22 @@ const format = <TArgs extends FArgs>(
   }
   const reg = /\{([^{}]+)\}/g
   let containsJSX = false
+  const argsDictionary =
+    args && typeof args[0] === 'object' && !React.isValidElement(args[0])
+      ? args[0]
+      : args.reduce((acc: any, a, index) => {
+          acc[index] = a
+          return acc
+        }, {})
   const parts = template.split(reg)
   if (process.env.NODE_ENV !== 'production') {
     const noOfPlaceholders = Math.floor(parts.length / 2)
-    const argsArray = args && typeof args[0] === 'object' ? Object.keys(args[0] as ArgsObj) : args
-    const noOfArgs = argsArray.length
+    const noOfArgs = Object.keys(argsDictionary).length
     if (noOfPlaceholders !== noOfArgs) {
       console.warn(
-        `[i18n-jsx]: Template '${template}' contains different number of indexes than passed arguments ([${args.join(
-          ','
-        )}]): found ${noOfPlaceholders} placeholders while ${noOfArgs} arguments have been provided.`
+        `[i18n-jsx]: Template '${template}' contains different number of placeholders than passed arguments ([${Object.keys(
+          argsDictionary
+        ).join(',')}]): found ${noOfPlaceholders} placeholders while ${noOfArgs} arguments have been provided.`
       )
     }
   }
@@ -29,9 +35,8 @@ const format = <TArgs extends FArgs>(
       // this is template so just return
       return value
     } else {
-      const isNumberKey = Number.isInteger(parseInt(value))
-      const key = isNumberKey ? parseInt(value) : value
-      const replaceValue = isNumberKey ? args[key as any] : args[0] && (args[0] as any)[key]
+      const key = value
+      const replaceValue = argsDictionary[key]
 
       if (replaceValue) {
         if (typeof replaceValue !== 'string' && typeof replaceValue !== 'number') {
