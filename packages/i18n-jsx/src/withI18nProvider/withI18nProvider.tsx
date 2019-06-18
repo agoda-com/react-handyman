@@ -2,9 +2,11 @@ import * as React from 'react'
 import { Translations } from '../TranslationsContext'
 import I18nProvider from '../I18nProvider'
 
+type TranslationsSetter<TProps extends {}> = (componentProps: TProps) => Translations
+
 const withI18nProvider = <TProps extends {}>(
   Component: React.ComponentType<TProps>,
-  translations: (componentProps: TProps) => Translations | Translations
+  translations: TranslationsSetter<TProps> | Translations
 ) => {
   const Wrapped: React.FC<TProps> = props => {
     const values = typeof translations === 'function' ? translations(props) : translations
