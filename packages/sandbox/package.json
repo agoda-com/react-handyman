@@ -1,7 +1,7 @@
 {
   "name": "sandbox",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "24.0.13",
@@ -12,7 +12,7 @@
     "typescript": "3.5.1"
   },
   "dependencies": {
-    "i18n-jsx": "*",
+    "i18n-jsx": "^0.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
   },
