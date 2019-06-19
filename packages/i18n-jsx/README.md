@@ -65,7 +65,7 @@ export default withI18nProvider(I18nExamples, translations)
 
 There are 3 main use cases / scenarios that this library supports - accessing them directly in JSX, using a function to obtain the value and a Higher Order Component to bind translations to props of a component. We will explain each usage with an example:
 
-### `<I18m />` directly in JSX
+### `<I18n />` directly in JSX
 
 The `<I18n />` component should be used, when the text in your component is static and bound to the component itself.
 
