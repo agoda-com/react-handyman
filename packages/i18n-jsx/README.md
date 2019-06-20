@@ -1,11 +1,11 @@
 [![npm](https://img.shields.io/npm/v/i18n-jsx.svg)](https://www.npmjs.com/package/i18n-jsx)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/i18n-jsx.svg)](https://bundlephobia.com/result?p=i18n-jsx)
 [![Build Status](https://travis-ci.org/matmalkowski/react-handyman.svg?branch=master)](https://travis-ci.org/matmalkowski/react-handyman)
-[![Coverage Status](https://coveralls.io/repos/github/matmalkowski/react-handyman/badge.svg?branch=master)](https://coveralls.io/github/matmalkowski/react-handyman?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/matmalkowski/react-handyman/badge.svg?branch=master&service=github)](https://coveralls.io/github/matmalkowski/react-handyman?branch=master)
 
 # i18n-jsx
 
-> 👉 Take note that this package is in still early stage of developement, and there might be breaking changes introduced while we are on the roadmap to stable 1.0.0 version. To check the progress and what will be supported see our [**Roadmap**](/packages/i18n-jsx/ROADMAP.md)
+> 👉 Take note that this package is in still early stage of developement, and there might be breaking changes introduced while we are on the roadmap to stable 1.0.0 version. To check the progress and what will be supported see our [**Roadmap**](/ROADMAP.md)
 
 Simple React (JS) text internationalization with formatting support.
 
@@ -139,3 +139,29 @@ const TranslatedComponent = withI18n(Component, mapI18nToProps)
 | `...args`  | `(string \| number)[]` | false    | null         | Set of arguments to be used for string formatting with the template. Please see [**Formatting**](#Formatting) for more details |
 
 ---
+
+## Formatting
+
+All translations accessing functions / components support formatting via [`format-to-jsx`](https://www.npmjs.com/package/format-to-jsx). The formatting params for the template can be passed either by args when using selector from react hook / Higher Order Component, or with a args prop:
+
+```jsx
+/// example.key.1 = "Some string with {0}"
+<p>
+  <I18n k="example.key.1" args={['template']}>{`Default fallback text {0}`}</I18n>
+</p>
+
+// Will render
+// <p>Some string with template</p>
+```
+
+```jsx
+const i18n = useI18n();
+
+<Component
+  strongText={i18n('example.prop.strong', 'Default prop.strong text {0}', 'replaced value')} />
+</Component>
+
+// strongText = "prop.strong text replaced value"
+```
+
+For more details on usage of formatting please check the [`format-to-jsx`](https://www.npmjs.com/package/format-to-jsx) documentation page!

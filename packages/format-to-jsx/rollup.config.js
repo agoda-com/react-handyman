@@ -4,7 +4,7 @@ import { terser } from 'rollup-plugin-terser'
 
 import pkg from './package.json'
 
-const extensions = ['.ts', '.tsx', '.js', '.jsx']
+const extensions = ['.ts', '.tsx']
 
 export default {
   input: './src/index.ts',
@@ -18,7 +18,7 @@ export default {
     resolve({ extensions, mainFields: ['module', 'main'] }),
 
     // Compile TypeScript/JavaScript files
-    babel({ configFile: '../../babel.config.js', extensions, include: ['src/**/*'] }),
+    babel({ configFile: '../../babel.config.js', extensions, include: ['src/**/*'], exclude: 'node_modules/**' }),
     terser(),
   ],
 
@@ -34,7 +34,7 @@ export default {
     {
       file: pkg.browser,
       format: 'umd',
-      name: 'i18nJsx',
+      name: 'formatToJsx',
     },
   ],
 }

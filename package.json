@@ -8,14 +8,29 @@
   "description": "Utils and packages to extend your react.js based app",
   "author": "matmalkowski <monkey3310@gmail.com>",
   "devDependencies": {
-    "lerna": "^3.13.1"
+    "lerna": "^3.13.1",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "coveralls": "^3.0.4",
+    "jest": "^24.8.0",
+    "typescript": "3.5.1"
   },
   "scripts": {
     "install": "lerna link",
     "bs": "lerna bootstrap",
     "typecheck": "lerna run typecheck",
     "build": "lerna run build",
-    "test": "lerna run test --stream",
-    "coveralls": "lerna run coveralls"
+    "test": "jest",
+    "coveralls": "jest --coverage && nodecat ./coverage/lcov.info | coveralls"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!<rootDir>/packages/sandbox/**/*",
+      "!**/node_modules/"
+    ]
   }
 }

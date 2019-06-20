@@ -6,7 +6,7 @@ const format = <TArgs extends FArgs>(
   ...args: TArgs
 ): TArgs extends FArgsPrimitives ? string : React.ReactNode => {
   if (!template || template.length === 0) {
-    throw new Error(`[i18n-jsx]: format() method has been called without a template string!`)
+    throw new Error(`[format-to-jsx]: format() method has been called without a template string!`)
   }
   const reg = /\{([^{}]+)\}/g
   let containsJSX = false
@@ -24,7 +24,7 @@ const format = <TArgs extends FArgs>(
     const noOfArgs = Object.keys(argsDictionary).length
     if (noOfPlaceholders !== noOfArgs) {
       console.warn(
-        `[i18n-jsx]: Template '${template}' contains different number of placeholders than passed arguments ([${Object.keys(
+        `[format-to-jsx]: Template '${template}' contains different number of placeholders than passed arguments ([${Object.keys(
           argsDictionary
         ).join(',')}]): found ${noOfPlaceholders} placeholders while ${noOfArgs} arguments have been provided.`
       )
@@ -46,7 +46,7 @@ const format = <TArgs extends FArgs>(
         return replaceValue
       } else {
         if (process.env.NODE_ENV !== 'production') {
-          console.warn(`[i18n-jsx]: Failed replacing the template '${template}' - '${key}' index wasn't provided!`)
+          console.warn(`[format-to-jsx]: Failed replacing the template '${template}' - '${key}' index wasn't provided!`)
         }
         return ''
       }
