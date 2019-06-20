@@ -79,17 +79,17 @@ Template string with placeholders provided with `{}` braces. Index based placeho
 
 ##### `...args[]`
 
-| Type                                                                                              | Required |
-| ------------------------------------------------------------------------------------------------- | -------- |
-| `(string | number | React.ReactNode)[]` OR `{ [key: string]: string | number | React.ReactNode }` | `true`   |
+| Type                                                                                                  | Required |
+| ----------------------------------------------------------------------------------------------------- | -------- |
+| `(string \| number \| React.ReactNode)[]` OR `{ [key: string]: string \| number \| React.ReactNode }` | `true`   |
 
 When working with index based params / placeholders, each parameter will replace corresponding index placeholder. Values can be passed as primitives or `React.ReactNode`.
 When working with string based params / placeholders, object with matching keys should be used.
 
-##### returns
+##### `return`
 
-`string` - if only primitive params were used, returned value is a string.
-`React.Fragment` - if any of parameters provided was a `React.ReactNode`, returned value will be a React Fragment.
+- `string` - if only primitive params were used, returned value is a string.
+- `React.Fragment` - if any of parameters provided was a `React.ReactNode`, returned value will be a React Fragment.
 
 ---
 
