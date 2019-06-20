@@ -1,0 +1,46 @@
+{
+  "name": "string-format-jsx",
+  "description": "React (JS) string formatting",
+  "version": "0.2.2",
+  "license": "MIT",
+  "author": "Maciej Malkowski <monkey3310@gmail.com>",
+  "repository": "matmalkowski/react-handyman",
+  "main": "lib/string-format-jsx.cjs.js",
+  "module": "lib/string-format-jsx.esm.js",
+  "browser": "lib/string-format-jsx.umd.js",
+  "types": "lib/index.d.ts",
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "@testing-library/react": "^8.0.1",
+    "@types/react": "16.8.19",
+    "coveralls": "^3.0.4",
+    "jest": "^24.8.0",
+    "nodecat": "^2.0.0",
+    "react": "^16.8.6",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.14.6",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-node-resolve": "^5.0.1",
+    "rollup-plugin-terser": "^5.0.0",
+    "typescript": "3.5.1"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prebuild": "rimraf lib",
+    "build": "rollup -c && yarn emit-declarations",
+    "dev": "rollup -c -w",
+    "typecheck": "tsc",
+    "emit-declarations": "tsc -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\"",
+    "test": "jest",
+    "coveralls": "jest --coverage && nodecat ./coverage/lcov.info | coveralls"
+  }
+}
