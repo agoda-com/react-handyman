@@ -18,7 +18,7 @@ export default {
     resolve({ extensions, mainFields: ['module', 'main'] }),
 
     // Compile TypeScript/JavaScript files
-    babel({ extensions, include: ['src/**/*'] }),
+    babel({ configFile: '../../babel.config.js', extensions, include: ['src/**/*'] }),
     terser(),
   ],
 
