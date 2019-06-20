@@ -9,8 +9,8 @@ before_install:
 before_script:
   - yarn install
 script:
-  - yarn typecheck
   - yarn build
+  - yarn typecheck
   - yarn test
   - yarn coveralls
 
