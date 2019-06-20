@@ -5,7 +5,7 @@
 
 # i18n-jsx
 
-> 👉 Take note that this package is in still early stage of developement, and there might be breaking changes introduced while we are on the roadmap to stable 1.0.0 version. To check the progress and what will be supported see our [**Roadmap**](/packages/i18n-jsx/ROADMAP.md)
+> 👉 Take note that this package is in still early stage of developement, and there might be breaking changes introduced while we are on the roadmap to stable 1.0.0 version. To check the progress and what will be supported see our [**Roadmap**](/ROADMAP.md)
 
 Simple React (JS) text internationalization with formatting support.
 
