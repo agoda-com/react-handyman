@@ -139,3 +139,29 @@ const TranslatedComponent = withI18n(Component, mapI18nToProps)
 | `...args`  | `(string \| number)[]` | false    | null         | Set of arguments to be used for string formatting with the template. Please see [**Formatting**](#Formatting) for more details |
 
 ---
+
+## Formatting
+
+All translations accessing functions / components support formatting via [`format-to-jsx`](https://www.npmjs.com/package/format-to-jsx). The formatting params for the template can be passed either by args when using selector from react hook / Higher Order Component, or with a args prop:
+
+```jsx
+/// example.key.1 = "Some string with {0}"
+<p>
+  <I18n k="example.key.1" args={['template']}>{`Default fallback text {0}`}</I18n>
+</p>
+
+// Will render
+// <p>Some string with template</p>
+```
+
+```jsx
+const i18n = useI18n();
+
+<Component
+  strongText={i18n('example.prop.strong', 'Default prop.strong text {0}', 'replaced value')} />
+</Component>
+
+// strongText = "prop.strong text replaced value"
+```
+
+For more details on usage of formatting please check the [`format-to-jsx`](https://www.npmjs.com/package/format-to-jsx) documentation page!
