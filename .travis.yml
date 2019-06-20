@@ -22,5 +22,4 @@ deploy:
   script: npx lerna publish -y from-git
   skip_cleanup: true
   on:
-    tags: true
     branch: master
