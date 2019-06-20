@@ -4,7 +4,7 @@ import * as React from 'react'
 const consoleWarn = jest.spyOn(global.console, 'warn').mockImplementation(() => {})
 const consoleError = jest.spyOn(global.console, 'error').mockImplementation(() => {})
 
-import format from '../src/utils/format'
+import format from '../src/format'
 
 describe('format()', () => {
   const OLD_ENV = process.env
@@ -21,15 +21,19 @@ describe('format()', () => {
   })
 
   it('should throw error when undefined template is passed', () => {
-    expect(() => format(undefined)).toThrow('[i18n-jsx]: format() method has been called without a template string!')
+    expect(() => format(undefined)).toThrow(
+      '[string-format-jsx]: format() method has been called without a template string!'
+    )
   })
 
   it('should throw error when undefined template is passed', () => {
-    expect(() => format(null)).toThrow('[i18n-jsx]: format() method has been called without a template string!')
+    expect(() => format(null)).toThrow(
+      '[string-format-jsx]: format() method has been called without a template string!'
+    )
   })
 
   it('should throw error when undefined template is passed', () => {
-    expect(() => format('')).toThrow('[i18n-jsx]: format() method has been called without a template string!')
+    expect(() => format('')).toThrow('[string-format-jsx]: format() method has been called without a template string!')
   })
 
   it('should not format non-template strings', () => {
@@ -44,7 +48,7 @@ describe('format()', () => {
     format('a template {0}, {1}', 1, 2, 3)
     expect(consoleWarn).toHaveBeenCalledTimes(1)
     expect(consoleWarn).toHaveBeenCalledWith(
-      `[i18n-jsx]: Template 'a template {0}, {1}' contains different number of placeholders than passed arguments ([0,1,2]): found 2 placeholders while 3 arguments have been provided.`
+      `[string-format-jsx]: Template 'a template {0}, {1}' contains different number of placeholders than passed arguments ([0,1,2]): found 2 placeholders while 3 arguments have been provided.`
     )
   })
 
@@ -53,11 +57,11 @@ describe('format()', () => {
     expect(consoleWarn).toHaveBeenCalledTimes(2)
     expect(consoleWarn).toHaveBeenNthCalledWith(
       1,
-      `[i18n-jsx]: Template 'a template {0}, {1}, {2}' contains different number of placeholders than passed arguments ([0,1]): found 3 placeholders while 2 arguments have been provided.`
+      `[string-format-jsx]: Template 'a template {0}, {1}, {2}' contains different number of placeholders than passed arguments ([0,1]): found 3 placeholders while 2 arguments have been provided.`
     )
     expect(consoleWarn).toHaveBeenNthCalledWith(
       2,
-      `[i18n-jsx]: Failed replacing the template 'a template {0}, {1}, {2}' - '2' index wasn't provided!`
+      `[string-format-jsx]: Failed replacing the template 'a template {0}, {1}, {2}' - '2' index wasn't provided!`
     )
   })
 

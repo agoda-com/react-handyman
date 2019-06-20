@@ -12,6 +12,9 @@
   "peerDependencies": {
     "react": "^16.8.6"
   },
+  "dependencies": {
+    "string-format-jsx": "0.1.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
@@ -37,7 +40,7 @@
   "scripts": {
     "prebuild": "rimraf lib",
     "build": "rollup -c && yarn emit-declarations",
-    "dev": "rollup -c -w",
+    "watch": "rollup -c -w",
     "typecheck": "tsc",
     "emit-declarations": "tsc -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\"",
     "test": "jest",

@@ -1,7 +1,7 @@
 {
   "name": "string-format-jsx",
   "description": "React (JS) string formatting",
-  "version": "0.2.2",
+  "version": "0.1.0",
   "license": "MIT",
   "author": "Maciej Malkowski <monkey3310@gmail.com>",
   "repository": "matmalkowski/react-handyman",
@@ -37,7 +37,7 @@
   "scripts": {
     "prebuild": "rimraf lib",
     "build": "rollup -c && yarn emit-declarations",
-    "dev": "rollup -c -w",
+    "watch": "rollup -c -w",
     "typecheck": "tsc",
     "emit-declarations": "tsc -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\"",
     "test": "jest",
