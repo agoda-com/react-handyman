@@ -19,7 +19,7 @@ before_deploy:
   - cp .npmrc-publish ~/.npmrc
 deploy:
   provider: script
-  script: npx lerna publish -y from-git
+  script: npx lerna publish -y from-package
   skip_cleanup: true
   on:
     branch: master
