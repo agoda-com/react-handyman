@@ -25,5 +25,12 @@
     "build": "lerna run build",
     "test": "jest",
     "coveralls": "jest --coverage && nodecat ./coverage/lcov.info | coveralls"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{ts,tsx}",
+      "!<rootDir>/packages/sandbox/**/*",
+      "!**/node_modules/"
+    ]
   }
 }
