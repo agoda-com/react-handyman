@@ -23,3 +23,7 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
+
+branches:
+  only:
+    - master
