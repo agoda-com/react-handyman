@@ -1,7 +1,7 @@
 import * as React from 'react'
 import TranslationsContext from '../TranslationsContext'
 import handleNotFound from '../utils/handleNotFound'
-import { format } from 'string-format-jsx'
+import { format } from 'format-to-jsx'
 import { I18nSelector } from './selector'
 
 const useI18n = () => {

@@ -15,7 +15,7 @@ export default {
 
   plugins: [
     // Allows node_modules resolution
-    resolve({ extensions }),
+    resolve({ extensions, mainFields: ['module', 'main'] }),
 
     // Compile TypeScript/JavaScript files
     babel({ extensions, include: ['src/**/*'], exclude: 'node_modules/**' }),
@@ -34,7 +34,7 @@ export default {
     {
       file: pkg.browser,
       format: 'umd',
-      name: 'stringFormatJSX',
+      name: 'formatToJsx',
     },
   ],
 }

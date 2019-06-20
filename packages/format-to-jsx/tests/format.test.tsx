@@ -22,18 +22,16 @@ describe('format()', () => {
 
   it('should throw error when undefined template is passed', () => {
     expect(() => format(undefined)).toThrow(
-      '[string-format-jsx]: format() method has been called without a template string!'
+      '[format-to-jsx]: format() method has been called without a template string!'
     )
   })
 
   it('should throw error when undefined template is passed', () => {
-    expect(() => format(null)).toThrow(
-      '[string-format-jsx]: format() method has been called without a template string!'
-    )
+    expect(() => format(null)).toThrow('[format-to-jsx]: format() method has been called without a template string!')
   })
 
   it('should throw error when undefined template is passed', () => {
-    expect(() => format('')).toThrow('[string-format-jsx]: format() method has been called without a template string!')
+    expect(() => format('')).toThrow('[format-to-jsx]: format() method has been called without a template string!')
   })
 
   it('should not format non-template strings', () => {
@@ -48,7 +46,7 @@ describe('format()', () => {
     format('a template {0}, {1}', 1, 2, 3)
     expect(consoleWarn).toHaveBeenCalledTimes(1)
     expect(consoleWarn).toHaveBeenCalledWith(
-      `[string-format-jsx]: Template 'a template {0}, {1}' contains different number of placeholders than passed arguments ([0,1,2]): found 2 placeholders while 3 arguments have been provided.`
+      `[format-to-jsx]: Template 'a template {0}, {1}' contains different number of placeholders than passed arguments ([0,1,2]): found 2 placeholders while 3 arguments have been provided.`
     )
   })
 
@@ -57,11 +55,11 @@ describe('format()', () => {
     expect(consoleWarn).toHaveBeenCalledTimes(2)
     expect(consoleWarn).toHaveBeenNthCalledWith(
       1,
-      `[string-format-jsx]: Template 'a template {0}, {1}, {2}' contains different number of placeholders than passed arguments ([0,1]): found 3 placeholders while 2 arguments have been provided.`
+      `[format-to-jsx]: Template 'a template {0}, {1}, {2}' contains different number of placeholders than passed arguments ([0,1]): found 3 placeholders while 2 arguments have been provided.`
     )
     expect(consoleWarn).toHaveBeenNthCalledWith(
       2,
-      `[string-format-jsx]: Failed replacing the template 'a template {0}, {1}, {2}' - '2' index wasn't provided!`
+      `[format-to-jsx]: Failed replacing the template 'a template {0}, {1}, {2}' - '2' index wasn't provided!`
     )
   })
 

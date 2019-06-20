@@ -13,7 +13,7 @@
     "react": "^16.8.6"
   },
   "dependencies": {
-    "string-format-jsx": "0.1.0"
+    "format-to-jsx": "0.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

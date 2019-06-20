@@ -1,13 +1,13 @@
 {
-  "name": "string-format-jsx",
+  "name": "format-to-jsx",
   "description": "React (JS) string formatting",
   "version": "0.1.0",
   "license": "MIT",
   "author": "Maciej Malkowski <monkey3310@gmail.com>",
   "repository": "matmalkowski/react-handyman",
-  "main": "lib/string-format-jsx.cjs.js",
-  "module": "lib/string-format-jsx.esm.js",
-  "browser": "lib/string-format-jsx.umd.js",
+  "main": "lib/format-to-jsx.cjs.js",
+  "module": "lib/format-to-jsx.esm.js",
+  "browser": "lib/format-to-jsx.umd.js",
   "types": "lib/index.d.ts",
   "peerDependencies": {
     "react": "^16.8.6"
