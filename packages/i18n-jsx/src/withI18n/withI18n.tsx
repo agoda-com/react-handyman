@@ -10,11 +10,11 @@ const withI18n = <TProps extends TI18nProps, TI18nProps extends {}>(
 ) => {
   type OwnProps = Omit<TProps, keyof TI18nProps>
 
-  const Wrapped: React.FC<OwnProps> = props => {
+  const Wrapped: React.FC<OwnProps> = React.memo(props => {
     const i18n = useI18n()
 
     return <Component {...props as TProps} {...mapI18nToProps(i18n)} />
-  }
+  })
 
   Wrapped.displayName = `withI18n(${Component.displayName})`
   return Wrapped

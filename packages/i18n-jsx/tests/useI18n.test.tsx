@@ -1,6 +1,6 @@
 import 'jest'
 import * as React from 'react'
-import { render, cleanup, getNodeText } from '@testing-library/react'
+import { render, getNodeText } from '@testing-library/react'
 
 const consoleWarn = jest.spyOn(global.console, 'warn').mockImplementation(() => {})
 

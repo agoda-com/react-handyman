@@ -24,7 +24,8 @@
     "typecheck": "lerna run typecheck",
     "build": "lerna run build",
     "test": "jest",
-    "coveralls": "jest --coverage && nodecat ./coverage/lcov.info | coveralls"
+    "coveralls": "jest --coverage && nodecat ./coverage/lcov.info | coveralls",
+    "version:patch": "lerna version patch --no-push"
   },
   "jest": {
     "collectCoverageFrom": [
