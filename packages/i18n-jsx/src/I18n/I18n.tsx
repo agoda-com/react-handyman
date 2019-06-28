@@ -7,7 +7,7 @@ interface Props {
   args?: FArgs | ArgsObj | ArgsObjJsx
 }
 
-const I18n: React.FC<Props> = props => {
+const I18n: React.FC<Props> = React.memo(props => {
   const { children, k, args } = props
   const childrenArray = React.Children.toArray(children)
   const i18n = useI18n()
@@ -21,6 +21,8 @@ const I18n: React.FC<Props> = props => {
     `[i18n-jsx]: I18n component for key '${k}' doesn't contain a valid default value. A default value must be provided as a single only child of the <I18n> component, and it must be a string value.`
   )
   return null
-}
+})
+
+I18n.displayName = 'I18n'
 
 export default I18n
