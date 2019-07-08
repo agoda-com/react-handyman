@@ -24,6 +24,15 @@
       "contributions": [
         "review"
       ]
+    },
+    {
+      "login": "PoomSmart",
+      "name": "Thatchapon Unprasert",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3608783?v=4",
+      "profile": "https://github.com/PoomSmart",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
