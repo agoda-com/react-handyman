@@ -20,7 +20,14 @@ const format = <TArgs extends FArgs>(
   const parts = template.split(reg)
 
   if (process.env.NODE_ENV !== 'production') {
-    const noOfPlaceholders = Math.floor(parts.length / 2)
+    const noOfPlaceholders = Array.from(
+      new Set(
+        parts.reduce((acc: string[], element, index) => {
+          if ((index & 1) == 0) return acc
+          return [...acc, element]
+        }, [])
+      )
+    ).length
     const noOfArgs = Object.keys(argsDictionary).length
     if (noOfPlaceholders !== noOfArgs) {
       console.warn(
@@ -30,9 +37,8 @@ const format = <TArgs extends FArgs>(
       )
     }
   }
-
   const results = parts.map((value, index) => {
-    if (index % 2 === 0) {
+    if ((index & 1) == 0) {
       // this is template so just return
       return value
     } else {

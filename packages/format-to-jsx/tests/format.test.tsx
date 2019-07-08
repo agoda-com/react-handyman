@@ -70,6 +70,11 @@ describe('format()', () => {
     expect(consoleWarn).toHaveBeenCalledTimes(0)
   })
 
+  it('should not show any warnings when same placeholder is used more than 1 time', () => {
+    format('a template {0}, {0}, {1}', 1, 2)
+    expect(consoleWarn).toHaveBeenCalledTimes(0)
+  })
+
   it('should format correctly regular string', () => {
     expect(format('simple non template {0}', 'inserted')).toBe('simple non template inserted')
   })
@@ -88,6 +93,10 @@ describe('format()', () => {
 
   it('should replace values in the correct order', () => {
     expect(format('{3}{1}{2}{0}', 1, 2, 3, 4)).toBe('4231')
+  })
+
+  it('should replace values for repeating placeholders', () => {
+    expect(format('{0}{1}{0}{1}', 1, 2)).toBe('1212')
   })
 
   it('should return string for number based params', () => {
