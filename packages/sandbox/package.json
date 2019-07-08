@@ -14,7 +14,8 @@
   "dependencies": {
     "i18n-jsx": "^0.3.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "zz-feature-toggle": "1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

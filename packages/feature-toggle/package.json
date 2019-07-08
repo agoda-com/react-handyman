@@ -1,0 +1,37 @@
+{
+  "name": "zz-feature-toggle",
+  "description": "Toggle component on/off based on feature configuration",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Nut Sornchumni <snut515@gmail.com>",
+  "repository": "matmalkowski/react-handyman",
+  "main": "lib/feature-toggle.cjs.js",
+  "module": "lib/feature-toggle.esm.js",
+  "browser": "lib/feature-toggle.umd.js",
+  "types": "lib/index.d.ts",
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^8.0.1",
+    "@types/react": "16.8.19",
+    "nodecat": "^2.0.0",
+    "react": "^16.8.6",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.14.6",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-node-resolve": "^5.0.1",
+    "rollup-plugin-terser": "^5.0.0",
+    "typescript": "3.5.1"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "prebuild": "rimraf lib",
+    "build": "rollup -c && yarn emit-declarations",
+    "watch": "rollup -c -w",
+    "typecheck": "tsc",
+    "emit-declarations": "tsc -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
+  }
+}
