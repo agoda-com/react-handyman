@@ -1,7 +1,7 @@
 {
   "name": "format-to-jsx",
   "description": "React (JS) string formatting",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "MIT",
   "author": "Maciej Malkowski <monkey3310@gmail.com>",
   "repository": "matmalkowski/react-handyman",

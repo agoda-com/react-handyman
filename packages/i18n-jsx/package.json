@@ -1,7 +1,7 @@
 {
   "name": "i18n-jsx",
   "description": "React (JS) text internationalization",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "license": "MIT",
   "author": "Maciej Malkowski <monkey3310@gmail.com>",
   "repository": "matmalkowski/react-handyman",
@@ -13,7 +13,7 @@
     "react": "^16.8.6"
   },
   "dependencies": {
-    "format-to-jsx": "^0.2.0"
+    "format-to-jsx": "^0.2.1"
   },
   "devDependencies": {
     "@testing-library/react": "^8.0.1",
