@@ -1,4 +1,5 @@
 # 👨‍🔧 React handyman
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 This is a monorepo containing all packages that can help you extend functionalities of your react.js based application. For detailed documentation about each package, checkout each README file for each package.
 
@@ -60,3 +61,15 @@ format('Example {1} with different placeholders order {0}', 1, <strong>2</strong
 ```
 
 Check out details and more examples in [package README file](/packages/format-to-jsx).
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table><tr><td align="center"><a href="https://medium.com/@mat.malkowski"><img src="https://avatars3.githubusercontent.com/u/1546903?v=4" width="100px;" alt="Maciej Małkowski"/><br /><sub><b>Maciej Małkowski</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=matmalkowski" title="Code">💻</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=matmalkowski" title="Documentation">📖</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=matmalkowski" title="Tests">⚠️</a></td></tr></table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
