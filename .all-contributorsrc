@@ -1,0 +1,25 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "matmalkowski",
+      "name": "Maciej Małkowski",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1546903?v=4",
+      "profile": "https://medium.com/@mat.malkowski",
+      "contributions": [
+        "code",
+        "doc",
+        "test"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "react-handyman",
+  "projectOwner": "matmalkowski",
+  "repoType": "github",
+  "repoHost": "https://github.com"
+}
