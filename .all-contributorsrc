@@ -15,6 +15,15 @@
         "doc",
         "test"
       ]
+    },
+    {
+      "login": "znut",
+      "name": "Nut Sornchumni",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1188327?v=4",
+      "profile": "https://github.com/znut",
+      "contributions": [
+        "review"
+      ]
     }
   ],
   "contributorsPerLine": 7,
