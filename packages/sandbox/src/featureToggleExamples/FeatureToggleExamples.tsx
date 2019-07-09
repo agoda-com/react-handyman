@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { withFeaturesProvider } from 'zz-feature-toggle'
+import { withFeaturesProvider } from 'feature-toggle-jsx'
 
 import { WrappedComponent } from './Component'
 import { WrappedComponentWithConfig } from './ComponentWithConfiguration'
@@ -21,5 +21,4 @@ const FeatureToggleExamples: React.FC = () => {
   )
 }
 
-FeatureToggleExamples.displayName = 'FeatureToggleExamples'
 export default withFeaturesProvider(FeatureToggleExamples, features)

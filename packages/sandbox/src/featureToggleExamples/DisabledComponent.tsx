@@ -1,8 +1,8 @@
 import * as React from 'react'
-import { withFeature } from 'zz-feature-toggle'
+import { withFeature } from 'feature-toggle-jsx'
 import { Features } from './types'
 
-const Component: React.FC<{}> = () => (
+const MyOtherFeatureComponent: React.FC<{}> = () => (
   <>
     <p>
       <strong>My Hidden Component</strong>
@@ -12,8 +12,8 @@ const Component: React.FC<{}> = () => (
   </>
 )
 
-const WrappedComponent = withFeature<{}, Features, 'myOtherFeature'>(Component, 'myOtherFeature')
+const WrappedComponent = withFeature<{}, Features, 'myOtherFeature'>(MyOtherFeatureComponent, 'myOtherFeature')
 
 export { WrappedComponent }
 
-export default Component
+export default MyOtherFeatureComponent

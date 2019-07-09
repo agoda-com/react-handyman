@@ -12,10 +12,10 @@
     "typescript": "3.5.1"
   },
   "dependencies": {
+    "feature-toggle-jsx": "1.0.0",
     "i18n-jsx": "^0.3.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "zz-feature-toggle": "1.0.0"
+    "react-dom": "^16.8.6"
   },
   "scripts": {
     "start": "react-scripts start",

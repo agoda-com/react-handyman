@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { withFeature } from 'zz-feature-toggle'
+import { withFeature } from 'feature-toggle-jsx'
 import { Features } from './types'
 
 interface Props {
   items: string[]
 }
 
-const Component: React.FC<Props> = ({ items }) => (
+const MyFeatureComponentWithConfig: React.FC<Props> = ({ items }) => (
   <>
     <p>
       <strong>My Component</strong>
@@ -18,8 +18,11 @@ const Component: React.FC<Props> = ({ items }) => (
   </>
 )
 
-const WrappedComponentWithConfig = withFeature<Props, Features, 'myFeatureWithConfig'>(Component, 'myFeatureWithConfig')
+const WrappedComponentWithConfig = withFeature<Props, Features, 'myFeatureWithConfig'>(
+  MyFeatureComponentWithConfig,
+  'myFeatureWithConfig'
+)
 
 export { WrappedComponentWithConfig }
 
-export default Component
+export default MyFeatureComponentWithConfig

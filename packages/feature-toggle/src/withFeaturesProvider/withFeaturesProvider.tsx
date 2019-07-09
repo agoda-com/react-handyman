@@ -1,6 +1,6 @@
 import * as React from 'react'
-import { Features } from '../FeaturesContext'
 import FeaturesProvider from '../FeaturesProvider'
+import { nameOf } from '../react-utils'
 
 const withFeaturesProvider = <TComponentProps, TFeatures>(
   Component: React.ComponentType<TComponentProps>,
@@ -14,7 +14,7 @@ const withFeaturesProvider = <TComponentProps, TFeatures>(
     )
   })
 
-  Wrapped.displayName = `withFeaturesProvider(${Component.displayName})`
+  Wrapped.displayName = `withFeaturesProvider(${nameOf(Component)})`
   return Wrapped
 }
 

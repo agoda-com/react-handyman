@@ -1,5 +1,5 @@
 {
-  "name": "zz-feature-toggle",
+  "name": "feature-toggle-jsx",
   "description": "Toggle component on/off based on feature configuration",
   "version": "1.0.0",
   "license": "MIT",
