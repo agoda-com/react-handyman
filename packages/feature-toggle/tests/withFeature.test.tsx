@@ -10,7 +10,11 @@ const componentText = 'I am component.'
 const configText = (items: string[]) => `Config: [${items.join(', ')}].`
 
 const NoConfigComponent: React.FC = _ => <div>{componentText}</div>
-const NeedConfigComponent: React.FC<{ items: string[] }> = ({ items }) => (
+
+interface Props {
+  items: string[]
+}
+const NeedConfigComponent: React.FC<Props> = ({ items }) => (
   <div>
     {componentText} {configText(items)}
   </div>
@@ -22,7 +26,21 @@ describe('withFeature()', () => {
     jest.clearAllMocks()
   })
   it('should render component when feature flag is enabled', () => {
-    const Wrapped = withFeature<{}, Features, 'simpleFeature'>(NoConfigComponent, 'simpleFeature')
+    const Wrapped = withFeature<Features>(NoConfigComponent, 'simpleFeature')
+
+    const { container } = render(
+      <FeatureProvider features={features}>
+        <Wrapped />
+      </FeatureProvider>
+    )
+
+    const innerText = getNodeText(container.querySelector('div'))
+
+    expect(innerText).toEqual(componentText)
+  })
+
+  it('should render component when feature flag is enabled but config object is undefined', () => {
+    const Wrapped = withFeature<Features>(NoConfigComponent, 'undefinedFeature')
 
     const { container } = render(
       <FeatureProvider features={features}>
@@ -36,7 +54,7 @@ describe('withFeature()', () => {
   })
 
   it('should render component with config when feature flag is enabled', () => {
-    const Wrapped = withFeature<{}, Features, 'featureWithConfig'>(NeedConfigComponent, 'featureWithConfig')
+    const Wrapped = withFeature<Features, Props>(NeedConfigComponent, 'featureWithConfig')
 
     const { container } = render(
       <FeatureProvider features={features}>
@@ -51,7 +69,7 @@ describe('withFeature()', () => {
   })
 
   it('should not render component when feature flag is disabled', () => {
-    const Wrapped = withFeature<{}, Features, 'disabledFeature'>(NoConfigComponent, 'disabledFeature')
+    const Wrapped = withFeature<Features>(NoConfigComponent, 'disabledFeature')
 
     const { container } = render(
       <FeatureProvider features={features}>
@@ -65,10 +83,7 @@ describe('withFeature()', () => {
   })
 
   it('should not render component with config when feature flag is disabled', () => {
-    const Wrapped = withFeature<{}, Features, 'disabledFeatureWithConfig'>(
-      NeedConfigComponent,
-      'disabledFeatureWithConfig'
-    )
+    const Wrapped = withFeature<Features, Props>(NeedConfigComponent, 'disabledFeatureWithConfig')
 
     expect(() => {
       const { container } = render(

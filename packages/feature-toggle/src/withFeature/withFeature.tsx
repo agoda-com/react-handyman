@@ -8,11 +8,11 @@ const withFeature = <TFeatures, TComponentProps = {}>(
   Component: React.ComponentType<TComponentProps>,
   name: keyof TFeatures
 ) => {
-  type TName = typeof name
+  type TName = keyof TFeatures
   type OwnProps = Omit<TComponentProps, keyof TFeatures[TName]>
 
   const Wrapped: React.FC<OwnProps> = React.memo(props => {
-    const feature = useFeature<TFeatures, TName>(name)
+    const feature = useFeature<TFeatures, keyof TFeatures>(name)
 
     return feature ? <Component {...props as TComponentProps} {...feature} /> : null
   })
