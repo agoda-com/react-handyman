@@ -31,6 +31,7 @@
   "jest": {
     "collectCoverageFrom": [
       "**/*.{ts,tsx}",
+      "!**/*.d.ts",
       "!<rootDir>/packages/sandbox/**/*",
       "!**/node_modules/"
     ]
