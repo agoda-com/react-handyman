@@ -7,7 +7,10 @@ const withFeature = <TProps extends {}>(Component: React.ComponentType<TProps>, 
     return feature ? <Component {...props as TProps} /> : null
   })
 
-  Wrapped.displayName = `with${featureName}(${Component.displayName})`
+  // displayName will be undefined when `Component` is a functional component
+  const componentName = Component.displayName || Component.name
+
+  Wrapped.displayName = `withFeature[${featureName}](${componentName})`
   return Wrapped
 }
 
