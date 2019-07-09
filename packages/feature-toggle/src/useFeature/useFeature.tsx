@@ -1,10 +1,7 @@
 import * as React from 'react'
-import FeaturesContext, { Features } from '../FeaturesContext'
+import FeaturesContext from '../FeaturesContext'
 
-const useFeatures = <TFeatures, K extends keyof TFeatures>(feature: K) => {
-  const featuresCtx = React.useContext<TFeatures>(FeaturesContext)
-
-  return featuresCtx[feature]
-}
+const useFeatures = <TFeatures, K extends keyof TFeatures>(feature: K) =>
+  React.useContext<TFeatures>(FeaturesContext)[feature]
 
 export default useFeatures
