@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { withFeature } from 'zz-feature-toggle'
+import { Features } from './types'
 
 const Component: React.FC<{}> = () => (
   <>
@@ -11,7 +12,7 @@ const Component: React.FC<{}> = () => (
   </>
 )
 
-const WrappedComponent = withFeature(Component, 'notMyFeature')
+const WrappedComponent = withFeature<{}, Features, 'myOtherFeature'>(Component, 'myOtherFeature')
 
 export { WrappedComponent }
 
