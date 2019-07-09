@@ -1,5 +1,5 @@
 import * as React from 'react'
-import FeaturesContext, { Features } from '../FeaturesContext'
+import FeaturesContext from '../FeaturesContext'
 
 interface Props {
   features: any

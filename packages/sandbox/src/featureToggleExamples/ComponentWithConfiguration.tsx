@@ -18,10 +18,7 @@ const MyFeatureComponentWithConfig: React.FC<Props> = ({ items }) => (
   </>
 )
 
-const WrappedComponentWithConfig = withFeature<Props, Features, 'myFeatureWithConfig'>(
-  MyFeatureComponentWithConfig,
-  'myFeatureWithConfig'
-)
+const WrappedComponentWithConfig = withFeature<Features, Props>(MyFeatureComponentWithConfig, 'myFeatureWithConfig')
 
 export { WrappedComponentWithConfig }
 
