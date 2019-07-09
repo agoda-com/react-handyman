@@ -1,10 +1,16 @@
 import * as React from 'react'
 import useFeature from '../useFeature/useFeature'
 
-const withFeature = <TProps extends {}>(Component: React.ComponentType<TProps>, featureName: string) => {
-  const Wrapped: React.FC<TProps> = React.memo(props => {
-    const feature = useFeature(featureName)
-    return feature ? <Component {...props as TProps} /> : null
+const withFeature = <TComponentProps, TFeatures, TName extends keyof TFeatures>(
+  Component: React.ComponentType<TComponentProps>,
+  featureName: TName
+) => {
+  type OwnProps = Omit<TComponentProps, keyof TFeatures[TName]>
+
+  const Wrapped: React.FC<OwnProps> = React.memo(props => {
+    const feature = useFeature<TFeatures, TName>(featureName)
+
+    return feature ? <Component {...props as TComponentProps} {...feature} /> : null
   })
 
   // displayName will be undefined when `Component` is a functional component

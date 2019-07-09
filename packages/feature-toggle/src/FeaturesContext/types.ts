@@ -1,6 +1,1 @@
-export interface Features {
-  [key: string]: {
-    // isEnabled: boolean
-    [key: string]: any
-  }
-}
+export type Features<T extends object> = Partial<T>

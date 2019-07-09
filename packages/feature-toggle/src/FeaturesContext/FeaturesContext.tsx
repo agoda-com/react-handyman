@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { Features } from './types'
 
-const FeaturesContext = React.createContext<Features>({})
+const FeaturesContext = React.createContext<any>({})
 
 export default FeaturesContext

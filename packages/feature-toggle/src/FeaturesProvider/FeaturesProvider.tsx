@@ -2,7 +2,7 @@ import * as React from 'react'
 import FeaturesContext, { Features } from '../FeaturesContext'
 
 interface Props {
-  features: Features
+  features: any
 }
 
 const FeaturesProvider: React.FC<Props> = React.memo(props => {
