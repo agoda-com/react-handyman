@@ -34,7 +34,7 @@ export default {
     {
       file: pkg.browser,
       format: 'umd',
-      name: 'feature-toggle',
+      name: 'feature-toggle-jsx',
     },
   ],
 }

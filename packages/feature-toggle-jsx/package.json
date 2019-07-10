@@ -5,9 +5,9 @@
   "license": "MIT",
   "author": "Nut Sornchumni <snut515@gmail.com>",
   "repository": "matmalkowski/react-handyman",
-  "main": "lib/feature-toggle.cjs.js",
-  "module": "lib/feature-toggle.esm.js",
-  "browser": "lib/feature-toggle.umd.js",
+  "main": "lib/feature-toggle-jsx.cjs.js",
+  "module": "lib/feature-toggle-jsx.esm.js",
+  "browser": "lib/feature-toggle-jsx.umd.js",
   "types": "lib/index.d.ts",
   "peerDependencies": {
     "react": "^16.8.6"
