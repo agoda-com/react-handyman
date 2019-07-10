@@ -23,19 +23,25 @@ import { withFeature } from "feature-toggle-jsx"
 const ChatComponent = _ => {...}
 
 export default withFeature(ChatComponent, "chat")
+```
 
+```jsx
 // ImagePreview
 import { withFeature } from "feature-toggle-jsx"
-const ImagePreviewComponent = ({ otherProps, perPage }) => {...}
+const ImagePreviewComponent = ({ props, perPage }) => {...}
 
 export default withFeature(ImagePreviewComponent, "preview")
+```
 
-// Entry
+```jsx
+// App
 import { FeatureProvider } from "feature-toggle-jsx"
+
 import ChatComponent from "./ChatComponent"
 import ImagePreviewComponent from "./ImagePreviewComponent"
 
 ...
+
 const features = {
   chat: {},
   preview: {
@@ -44,6 +50,7 @@ const features = {
 }
 
 ...
+
 <App>
   <FeatureProvider features={features}>
     <ChatComponent />
@@ -87,18 +94,18 @@ Feature flag configuration shape is:
 </FeaturesProvider>
 ```
 
-### `withFeaturesProvider()` higher order component
+### `withFeaturesProvider()` HOC
 
 ```jsx
 export default withFeaturesProvider(App, features)
 ```
 
-## Consuming feature flag
+## Consuming feature flags
 
-### `useFeature(name: string)` React hook
+### `useFeature(names: string[])` React hook
 
 ```jsx
-const feature = useFeature('chat')
+const [feature] = useFeatures('chat')
 
 if (feature) {
   // do something, render Chat component
@@ -107,27 +114,18 @@ if (feature) {
 }
 ```
 
-##### API
+If the configuration contains extra configuration:
 
-| param      | type                   | required | defaultValue | Description                                                                                                                    |
-| ---------- | ---------------------- | -------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `k`        | `string \| number`     | true     | -            | key value used to look up the translation in the `Translations` object.                                                        |
-| `notFound` | `string`               | true     | -            | The default fallback value to render in case when value under the `k` key has not been found                                   |
-| `...args`  | `(string \| number)[]` | false    | null         | Set of arguments to be used for string formatting with the template. Please see [**Formatting**](#Formatting) for more details |
+```jsx
+const [feature] = useFeatures('preview')
+
+// feature -> { perPage: 3 }
+```
 
 ---
 
-### `withFeature(c: Component, name: string)` Higher Order Component
+### `withFeature(c: Component, name: string)` HOC
 
 ```jsx
 export default withFeature(ChatComponent, 'chat')
 ```
-
-##### API
-
-`hoc`:
-
-| param            | type                                       | required | defaultValue | Description                                                         |
-| ---------------- | ------------------------------------------ | -------- | ------------ | ------------------------------------------------------------------- |
-| `component`      | `React.ComponentType`                      | true     | -            | An react component that we want to bind internationalized props to. |
-| `mapI18nToProps` | `(i18n: I18nSelector) => TranslatedProps)` | true     | -            | Selector function to be called when mapping translations to props.  |
