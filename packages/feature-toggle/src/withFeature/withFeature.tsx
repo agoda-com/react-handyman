@@ -1,20 +1,19 @@
 import * as React from 'react'
-import useFeature from '../useFeature/useFeature'
+import useFeature from '../useFeatures/useFeature'
 import { nameOf } from '../react-utils'
 
 // Need this to land in TypeScript first for better type inference
 // Link: https://github.com/Microsoft/TypeScript/issues/26242
-const withFeature = <TFeatures, TComponentProps = {}>(
+const withFeature = <T extends object, TComponentProps = {}>(
   Component: React.ComponentType<TComponentProps>,
-  name: keyof TFeatures
+  name: keyof T
 ) => {
-  type TName = keyof TFeatures
-  type OwnProps = Omit<TComponentProps, keyof TFeatures[TName]>
+  type OwnProps = Omit<TComponentProps, keyof T>
 
   const Wrapped: React.FC<OwnProps> = React.memo(props => {
-    const feature = useFeature<TFeatures, keyof TFeatures>(name)
+    const feature = useFeature<T>()[name]
 
-    return feature ? <Component {...props as TComponentProps} {...feature} /> : null
+    return feature ? <Component {...props as any} {...{ [name]: feature }} /> : null
   })
 
   Wrapped.displayName = `withFeature[${name}](${nameOf(Component)})`

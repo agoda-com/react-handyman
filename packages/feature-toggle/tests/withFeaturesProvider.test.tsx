@@ -8,7 +8,7 @@ import { Features, features } from './mock'
 
 const componentText = 'This is component'
 const Component: React.FC = ({ children }) => <div>{children}</div>
-const FeatureComponent = withFeature<{}, Features, 'simpleFeature'>(Component, 'simpleFeature')
+const FeatureComponent = withFeature<Features>(Component, 'simpleFeature')
 
 describe('withFeaturesProvider()', () => {
   afterEach(() => {
@@ -20,7 +20,7 @@ describe('withFeaturesProvider()', () => {
 
     const { container } = render(<Wrapped>{componentText}</Wrapped>)
 
-    const innerText = getNodeText(container.querySelector('div'))
+    const innerText = getNodeText(container.querySelector('div')!)
 
     expect(innerText).toEqual(componentText)
   })

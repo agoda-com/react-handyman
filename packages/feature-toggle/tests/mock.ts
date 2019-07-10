@@ -1,9 +1,13 @@
+export interface FeatureWithConfig {
+  items: string[]
+}
+
 export interface Features {
   simpleFeature: {}
-  featureWithConfig: { items: string[] }
+  featureWithConfig: FeatureWithConfig
   undefinedFeature: undefined
   disabledFeature: {}
-  disabledFeatureWithConfig: { items: number[] }
+  disabledFeatureWithConfig: FeatureWithConfig
 }
 
 export const features: Partial<Features> = {

@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { withFeature } from 'feature-toggle-jsx'
-import { Features } from './types'
+import { Features, Config } from './types'
 
 interface Props {
-  items: string[]
+  myFeatureWithConfig: Config
 }
 
-const MyFeatureComponentWithConfig: React.FC<Props> = ({ items }) => (
+const MyFeatureComponentWithConfig: React.FC<Props> = ({ myFeatureWithConfig: { items } }) => (
   <>
     <p>
       <strong>My Component</strong>

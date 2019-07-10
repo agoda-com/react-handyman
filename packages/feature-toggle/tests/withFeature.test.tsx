@@ -4,17 +4,18 @@ import { render, cleanup, getNodeText } from '@testing-library/react'
 
 import FeatureProvider from '../src/FeaturesProvider'
 import withFeature from '../src/withFeature'
-import { Features, features } from './mock'
+import { Features, features, FeatureWithConfig } from './mock'
 
 const componentText = 'I am component.'
-const configText = (items: string[]) => `Config: [${items.join(', ')}].`
+const configText = (items: string[]) => `Config: [${(items || []).join(', ')}].`
 
 const NoConfigComponent: React.FC = _ => <div>{componentText}</div>
 
 interface Props {
-  items: string[]
+  featureWithConfig: FeatureWithConfig
+  text: string
 }
-const NeedConfigComponent: React.FC<Props> = ({ items }) => (
+const NeedConfigComponent: React.FC<Props> = ({ featureWithConfig: { items } }) => (
   <div>
     {componentText} {configText(items)}
   </div>
@@ -34,21 +35,7 @@ describe('withFeature()', () => {
       </FeatureProvider>
     )
 
-    const innerText = getNodeText(container.querySelector('div'))
-
-    expect(innerText).toEqual(componentText)
-  })
-
-  it('should render component when feature flag is enabled but config object is undefined', () => {
-    const Wrapped = withFeature<Features>(NoConfigComponent, 'undefinedFeature')
-
-    const { container } = render(
-      <FeatureProvider features={features}>
-        <Wrapped />
-      </FeatureProvider>
-    )
-
-    const innerText = getNodeText(container.querySelector('div'))
+    const innerText = getNodeText(container.querySelector('div')!)
 
     expect(innerText).toEqual(componentText)
   })
@@ -58,11 +45,11 @@ describe('withFeature()', () => {
 
     const { container } = render(
       <FeatureProvider features={features}>
-        <Wrapped />
+        <Wrapped text={componentText} />
       </FeatureProvider>
     )
 
-    const innerText = getNodeText(container.querySelector('div'))
+    const innerText = getNodeText(container.querySelector('div')!)
 
     expect(innerText).toContain(componentText)
     expect(innerText).toContain(configText(features.featureWithConfig!.items))
@@ -88,7 +75,7 @@ describe('withFeature()', () => {
     expect(() => {
       const { container } = render(
         <FeatureProvider features={features}>
-          <Wrapped />
+          <Wrapped text={componentText} />
         </FeatureProvider>
       )
 
