@@ -30,7 +30,9 @@
   "scripts": {
     "prebuild": "rimraf lib",
     "build": "rollup -c && yarn emit-declarations",
-    "watch": "rollup -c -w",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:code": "rollup -c -w",
+    "watch:types": "yarn emit-declarations --watch",
     "typecheck": "tsc -p tsconfig.typecheck.json",
     "emit-declarations": "tsc -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
   }
