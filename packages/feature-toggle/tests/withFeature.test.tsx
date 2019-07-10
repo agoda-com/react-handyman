@@ -16,7 +16,7 @@ describe('withFeature()', () => {
     cleanup()
     jest.clearAllMocks()
   })
-  it('should render component when feature flag is enabled', () => {
+  it('render component when feature flag is enabled', () => {
     const Wrapped = withFeature<Features>(NoConfigComponent, 'simpleFeature')
 
     const { container } = render(
@@ -30,7 +30,7 @@ describe('withFeature()', () => {
     expect(innerText).toEqual(componentText)
   })
 
-  it('should render component with config when feature flag is enabled', () => {
+  it('render component with config when feature flag is enabled', () => {
     interface Props {
       featureWithConfig: FeatureWithConfig
       text: string
@@ -54,7 +54,7 @@ describe('withFeature()', () => {
     expect(innerText).toContain(configText(features.featureWithConfig!.items))
   })
 
-  it('should not render component when feature flag is disabled', () => {
+  it('not render component when feature flag is disabled', () => {
     const Wrapped = withFeature<Features>(NoConfigComponent, 'disabledFeature')
 
     const { container } = render(
@@ -68,7 +68,7 @@ describe('withFeature()', () => {
     expect(innerText).toBeFalsy()
   })
 
-  it('should not render component with config when feature flag is disabled', () => {
+  it('not render component with config when feature flag is disabled', () => {
     interface Props {
       disabledFeatureWithConfig: FeatureWithConfig
       text: string

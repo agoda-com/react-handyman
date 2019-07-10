@@ -5,7 +5,7 @@ import { FeatureSchema } from '../FeaturesContext/FeaturesContext'
 
 // Need this to land in TypeScript first for better type inference
 // Link: https://github.com/Microsoft/TypeScript/issues/26242
-const withFeature = <T, TComponentProps = {}, K extends keyof FeatureSchema<T> = any>(
+const withFeature = <T, TComponentProps = {}, K extends keyof FeatureSchema<T> = keyof FeatureSchema<T>>(
   Component: React.ComponentType<TComponentProps>,
   name: K
 ) => {

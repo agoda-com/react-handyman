@@ -1,2 +1,2 @@
-import useFeature from './useFeatures'
-export default useFeature
+import useFeatures from './useFeatures'
+export default useFeatures

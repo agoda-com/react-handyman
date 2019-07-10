@@ -14,9 +14,9 @@ const features: Partial<Features> = {
 const FeatureToggleExamples: React.FC = () => {
   return (
     <>
-      <WrappedComponent />
+      <WrappedComponent text="TEXT" />
       <DisabledComponent />
-      <WrappedComponentWithConfig />
+      <WrappedComponentWithConfig text="TEXT" number={3} />
     </>
   )
 }

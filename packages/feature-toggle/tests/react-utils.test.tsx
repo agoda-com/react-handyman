@@ -20,7 +20,7 @@ describe(`nameOf()`, () => {
       expect(nameOf(FunctionComponentWithoutDisplayName)).toBe(FunctionComponentWithoutDisplayName.name)
     })
 
-    test(`return Anonymous for inline function`, () => {
+    test(`return Anonymous for inline arrow function`, () => {
       expect(nameOf(_ => <div />)).toBe(AnonymousFunctionName)
     })
   })

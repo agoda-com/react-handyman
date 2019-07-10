@@ -15,7 +15,7 @@ describe('withFeaturesProvider()', () => {
     cleanup()
     jest.clearAllMocks()
   })
-  it('should initialize context', () => {
+  it('initialize context', () => {
     const Wrapped = withFeaturesProvider(FeatureComponent, features)
 
     const { container } = render(<Wrapped>{componentText}</Wrapped>)
