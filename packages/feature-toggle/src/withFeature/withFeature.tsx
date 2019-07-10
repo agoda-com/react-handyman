@@ -1,17 +1,18 @@
 import * as React from 'react'
-import useFeature from '../useFeatures/useFeature'
+import useFeatures from '../useFeatures/useFeatures'
 import { nameOf } from '../react-utils'
+import { FeatureSchema } from '../FeaturesContext/FeaturesContext'
 
 // Need this to land in TypeScript first for better type inference
 // Link: https://github.com/Microsoft/TypeScript/issues/26242
-const withFeature = <T extends object, TComponentProps = {}>(
+const withFeature = <T, TComponentProps = {}, K extends keyof FeatureSchema<T> = any>(
   Component: React.ComponentType<TComponentProps>,
-  name: keyof T
+  name: K
 ) => {
-  type OwnProps = Omit<TComponentProps, keyof T>
+  type OwnProps = Omit<TComponentProps, K>
 
   const Wrapped: React.FC<OwnProps> = React.memo(props => {
-    const feature = useFeature<T>()[name]
+    const [feature] = useFeatures<T, K>(name)
 
     return feature ? <Component {...props as any} {...{ [name]: feature }} /> : null
   })

@@ -1,15 +1,12 @@
 import * as React from 'react'
 import FeaturesContext from '../FeaturesContext'
+import { FeatureSchema } from '../FeaturesContext/FeaturesContext'
 
-interface Props {
-  features: any
-}
-
-const FeaturesProvider: React.FC<Props> = React.memo(props => {
-  const { features, children } = props
-
-  return <FeaturesContext.Provider value={features}>{children}</FeaturesContext.Provider>
-})
+const FeaturesProvider = React.memo(
+  <T extends {}>({ features, children }: { features: FeatureSchema<T>; children: React.ReactNode }) => {
+    return <FeaturesContext.Provider value={features}>{children}</FeaturesContext.Provider>
+  }
+)
 
 FeaturesProvider.displayName = 'FeaturesProvider'
 export default FeaturesProvider

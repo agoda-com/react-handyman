@@ -1,10 +1,11 @@
 import * as React from 'react'
 import FeaturesProvider from '../FeaturesProvider'
 import { nameOf } from '../react-utils'
+import { FeatureSchema } from '../FeaturesContext/FeaturesContext'
 
-const withFeaturesProvider = <TComponentProps, TFeatures>(
+const withFeaturesProvider = <TComponentProps, TFeature>(
   Component: React.ComponentType<TComponentProps>,
-  features: TFeatures
+  features: FeatureSchema<TFeature>
 ) => {
   const Wrapped: React.FC<TComponentProps> = React.memo(props => {
     return (

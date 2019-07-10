@@ -11,16 +11,6 @@ const configText = (items: string[]) => `Config: [${(items || []).join(', ')}].`
 
 const NoConfigComponent: React.FC = _ => <div>{componentText}</div>
 
-interface Props {
-  featureWithConfig: FeatureWithConfig
-  text: string
-}
-const NeedConfigComponent: React.FC<Props> = ({ featureWithConfig: { items } }) => (
-  <div>
-    {componentText} {configText(items)}
-  </div>
-)
-
 describe('withFeature()', () => {
   afterEach(() => {
     cleanup()
@@ -41,6 +31,15 @@ describe('withFeature()', () => {
   })
 
   it('should render component with config when feature flag is enabled', () => {
+    interface Props {
+      featureWithConfig: FeatureWithConfig
+      text: string
+    }
+    const NeedConfigComponent: React.FC<Props> = props => (
+      <div>
+        {props.text} {configText(props.featureWithConfig.items)}
+      </div>
+    )
     const Wrapped = withFeature<Features, Props>(NeedConfigComponent, 'featureWithConfig')
 
     const { container } = render(
@@ -70,6 +69,16 @@ describe('withFeature()', () => {
   })
 
   it('should not render component with config when feature flag is disabled', () => {
+    interface Props {
+      disabledFeatureWithConfig: FeatureWithConfig
+      text: string
+    }
+    const NeedConfigComponent: React.FC<Props> = props => (
+      <div>
+        {props.text} {configText(props.disabledFeatureWithConfig.items)}
+      </div>
+    )
+
     const Wrapped = withFeature<Features, Props>(NeedConfigComponent, 'disabledFeatureWithConfig')
 
     expect(() => {

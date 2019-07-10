@@ -2,7 +2,7 @@ import 'jest'
 import * as React from 'react'
 import { render, getNodeText } from '@testing-library/react'
 
-import useFeature from '../src/useFeatures'
+import useFeatures from '../src/useFeatures'
 import FeatureProvider from '../src/FeaturesProvider'
 import { Features, features } from './mock'
 
@@ -18,7 +18,7 @@ const testWithComponent = (Component: React.ComponentType) =>
 describe('useFeature hook', () => {
   it('should return empty object for feature with no configuration', () => {
     const Component: React.FC = _ => {
-      const feature = useFeature<Features>()['simpleFeature']
+      const [feature] = useFeatures<Features, 'simpleFeature'>('simpleFeature')
 
       expect(feature).toBe(features.simpleFeature)
 
@@ -30,7 +30,7 @@ describe('useFeature hook', () => {
 
   it('should return configuration object for feature with configuration', () => {
     const Component: React.FC = _ => {
-      const feature = useFeature<Features>()['featureWithConfig']
+      const [feature] = useFeatures<Features, 'featureWithConfig'>('featureWithConfig')
 
       expect(feature).toBe(features.featureWithConfig)
 
@@ -42,7 +42,7 @@ describe('useFeature hook', () => {
 
   it('should return undefined when feature is not enabled', () => {
     const Component: React.FC = _ => {
-      const feature = useFeature<Features>()['disabledFeature']
+      const [feature] = useFeatures<Features, 'disabledFeature'>('disabledFeature')
 
       expect(feature).not.toBeDefined()
 
@@ -54,7 +54,7 @@ describe('useFeature hook', () => {
 
   it('should return undefined when feature with configuration is not enabled', () => {
     const Component: React.FC = _ => {
-      const feature = useFeature<Features>()['disabledFeatureWithConfig']
+      const [feature] = useFeatures<Features, 'disabledFeatureWithConfig'>('disabledFeatureWithConfig')
 
       expect(feature).not.toBeDefined()
 
