@@ -31,7 +31,7 @@
     "prebuild": "rimraf lib",
     "build": "rollup -c && yarn emit-declarations",
     "watch": "rollup -c -w",
-    "typecheck": "tsc",
+    "typecheck": "tsc -p tsconfig.typecheck.json",
     "emit-declarations": "tsc -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
   }
 }
