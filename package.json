@@ -57,5 +57,28 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "greenkeeper": {
+    "ignore": [
+      "semantic-release",
+      "semantic-release-monorepo"
+    ],
+    "commitMessages": {
+      "initialBadge": "chore: :memo: Docs: Add Greenkeeper badge",
+      "initialDependencies": "chore: :gem: Upgrade: Update dependencies",
+      "initialBranches": "chore: :tada: Build: Whitelist greenkeeper branches",
+      "dependencyUpdate": "chore: :gem: Upgrade: Update ${dependency} to version ${version}",
+      "devDependencyUpdate": "chore: :gem: Upgrade: Update ${dependency} to version ${version}",
+      "dependencyPin": "chore: :bug: Fix: Pin ${dependency} to ${oldVersion}",
+      "devDependencyPin": "chore: :bug: Fix: Pin ${dependency} to ${oldVersion}"
+    },
+    "prTitles": {
+      "initialPR": "chore: Update dependencies to enable Greenkeeper!!!",
+      "initialPrBadge": "chore: Add badge to enable Greenkeeper!!!!",
+      "initialPrBadgeOnly": "chore: Add Greenkeeper badge!!!",
+      "initialSubgroupPR": "chore: Update dependencies for ${group}!!!",
+      "basicPR": "chore: Update ${dependency} to the latest!!!",
+      "groupPR": "chore: Update ${dependency} in group ${group} to the latest!!!!"
+    }
   }
 }
