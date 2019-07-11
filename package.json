@@ -61,7 +61,10 @@
   "greenkeeper": {
     "ignore": [
       "semantic-release",
-      "semantic-release-monorepo"
+      "semantic-release-monorepo",
+      "feature-toggle-jsx",
+      "format-to-jsx",
+      "i18n-jsx"
     ],
     "commitMessages": {
       "initialBadge": "chore: :memo: Docs: Add Greenkeeper badge",

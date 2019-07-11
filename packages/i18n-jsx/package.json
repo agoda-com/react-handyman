@@ -1,7 +1,7 @@
 {
   "name": "i18n-jsx",
   "description": "React (JS) text internationalization",
-  "version": "0.3.2",
+  "version": "0.0.0-development",
   "license": "MIT",
   "author": "Maciej Malkowski <monkey3310@gmail.com>",
   "repository": {
@@ -29,7 +29,7 @@
     "rollup-plugin-node-resolve": "^5.0.1",
     "rollup-plugin-terser": "^5.0.0",
     "typescript": "3.5.3",
-    "semantic-release": "15.13.18",
+    "semantic-release": "=15.9.17",
     "semantic-release-monorepo": "6.1.1"
   },
   "files": [

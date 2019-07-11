@@ -1,7 +1,7 @@
 {
   "name": "format-to-jsx",
   "description": "React (JS) string formatting",
-  "version": "0.2.1",
+  "version": "0.0.0-development",
   "license": "MIT",
   "author": "Maciej Malkowski <monkey3310@gmail.com>",
   "repository": {
@@ -26,7 +26,7 @@
     "rollup-plugin-node-resolve": "^5.0.1",
     "rollup-plugin-terser": "^5.0.0",
     "typescript": "3.5.3",
-    "semantic-release": "15.13.18",
+    "semantic-release": "=15.9.17",
     "semantic-release-monorepo": "6.1.1"
   },
   "files": [
