@@ -68,7 +68,13 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-<table><tr><td align="center"><a href="https://medium.com/@mat.malkowski"><img src="https://avatars3.githubusercontent.com/u/1546903?v=4" width="100px;" alt="Maciej Małkowski"/><br /><sub><b>Maciej Małkowski</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=matmalkowski" title="Code">💻</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=matmalkowski" title="Documentation">📖</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=matmalkowski" title="Tests">⚠️</a></td><td align="center"><a href="https://github.com/znut"><img src="https://avatars2.githubusercontent.com/u/1188327?v=4" width="100px;" alt="Nut Sornchumni"/><br /><sub><b>Nut Sornchumni</b></sub></a><br /><a href="#review-znut" title="Reviewed Pull Requests">👀</a></td><td align="center"><a href="https://github.com/PoomSmart"><img src="https://avatars3.githubusercontent.com/u/3608783?v=4" width="100px;" alt="Thatchapon Unprasert"/><br /><sub><b>Thatchapon Unprasert</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=PoomSmart" title="Documentation">📖</a></td></tr></table>
+<table>
+  <tr>
+    <td align="center"><a href="https://medium.com/@mat.malkowski"><img src="https://avatars3.githubusercontent.com/u/1546903?v=4" width="100px;" alt="Maciej Małkowski"/><br /><sub><b>Maciej Małkowski</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=matmalkowski" title="Code">💻</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=matmalkowski" title="Documentation">📖</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=matmalkowski" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/znut"><img src="https://avatars2.githubusercontent.com/u/1188327?v=4" width="100px;" alt="Nut Sornchumni"/><br /><sub><b>Nut Sornchumni</b></sub></a><br /><a href="#review-znut" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=znut" title="Code">💻</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=znut" title="Documentation">📖</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=znut" title="Tests">⚠️</a></td>
+    <td align="center"><a href="https://github.com/PoomSmart"><img src="https://avatars3.githubusercontent.com/u/3608783?v=4" width="100px;" alt="Thatchapon Unprasert"/><br /><sub><b>Thatchapon Unprasert</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=PoomSmart" title="Documentation">📖</a></td>
+  </tr>
+</table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
