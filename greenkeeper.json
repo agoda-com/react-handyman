@@ -1,0 +1,13 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "package.json",
+        "packages/feature-toggle-jsx/package.json",
+        "packages/format-to-jsx/package.json",
+        "packages/i18n-jsx/package.json",
+        "packages/sandbox/package.json"
+      ]
+    }
+  }
+}
