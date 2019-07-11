@@ -7,7 +7,7 @@
 
 # format-to-jsx
 
-> 👉 Take note that this package is in still early stage of developement, and there might be breaking changes introduced while we are on the roadmap to stable 1.0.0 version. To check the progress and what will be supported see our [**Roadmap**](/ROADMAP.md)
+> 👉 Take note that this package is in still early stage of development, and there might be breaking changes introduced while we are finalizing on the API
 
 String formatter with support of injecting JSX elements as parameters.
 
