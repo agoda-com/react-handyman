@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^8.0.1",
-    "@types/react": "16.8.19",
+    "@types/react": "16.8.23",
     "nodecat": "^2.0.0",
     "react": "^16.8.6",
     "rimraf": "^2.6.3",
@@ -25,8 +25,8 @@
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-node-resolve": "^5.0.1",
     "rollup-plugin-terser": "^5.0.0",
-    "typescript": "3.5.1",
-    "semantic-release": "=15.9.17",
+    "typescript": "3.5.3",
+    "semantic-release": "15.13.18",
     "semantic-release-monorepo": "6.1.1"
   },
   "files": [
