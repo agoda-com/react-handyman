@@ -8,6 +8,7 @@ const format = <TArgs extends FArgs>(
   if (!template || template.length === 0) {
     throw new Error(`[format-to-jsx]: format() method has been called without a template string!`)
   }
+  if (args.length === 0) return template as any
   const reg = /\{([^{}]+)\}/g
   let containsJSX = false
   const argsDictionary =
