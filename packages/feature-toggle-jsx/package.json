@@ -1,7 +1,7 @@
 {
   "name": "feature-toggle-jsx",
   "description": "Toggle component on/off based on feature configuration",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "author": "Nut Sornchumni <snut515@gmail.com>",
   "repository": "matmalkowski/react-handyman",
