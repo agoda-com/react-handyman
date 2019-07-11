@@ -1,6 +1,7 @@
 {
   "name": "sandbox",
   "private": true,
+  "version": "0.0.0-development",
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "24.0.15",
