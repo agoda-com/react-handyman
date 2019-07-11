@@ -12,6 +12,7 @@
     "typescript": "3.5.1"
   },
   "dependencies": {
+    "feature-toggle-jsx": "0.1.0",
     "i18n-jsx": "^0.3.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
@@ -19,7 +20,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch": "yarn start"
   },
   "eslintConfig": {
     "extends": "react-app"

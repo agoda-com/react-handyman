@@ -1,19 +1,16 @@
 {
-  "name": "i18n-jsx",
-  "description": "React (JS) text internationalization",
-  "version": "0.3.2",
+  "name": "feature-toggle-jsx",
+  "description": "Toggle component on/off based on feature configuration",
+  "version": "0.1.0",
   "license": "MIT",
-  "author": "Maciej Malkowski <monkey3310@gmail.com>",
+  "author": "Nut Sornchumni <snut515@gmail.com>",
   "repository": "matmalkowski/react-handyman",
-  "main": "lib/i18n-jsx.cjs.js",
-  "module": "lib/i18n-jsx.esm.js",
-  "browser": "lib/i18n-jsx.umd.js",
+  "main": "lib/feature-toggle-jsx.cjs.js",
+  "module": "lib/feature-toggle-jsx.esm.js",
+  "browser": "lib/feature-toggle-jsx.umd.js",
   "types": "lib/index.d.ts",
   "peerDependencies": {
     "react": "^16.8.6"
-  },
-  "dependencies": {
-    "format-to-jsx": "^0.2.1"
   },
   "devDependencies": {
     "@testing-library/react": "^8.0.1",
@@ -33,8 +30,10 @@
   "scripts": {
     "prebuild": "rimraf lib",
     "build": "rollup -c && yarn emit-declarations",
-    "watch": "rollup -c -w",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:code": "rollup -c -w",
+    "watch:types": "yarn emit-declarations --watch",
     "typecheck": "tsc",
-    "emit-declarations": "tsc -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
+    "emit-declarations": "tsc -p tsconfig.build.json -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
   }
 }

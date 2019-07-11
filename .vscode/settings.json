@@ -1,10 +1,12 @@
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-      "source.fixAll.tslint": true
+    "source.fixAll.tslint": true
   },
   "files.exclude": {
+    "**/build": true,
+    "**/coverage": true,
     "**/lib": true,
-    "**/coverage": true
+    "**/node_modules": true
   }
 }
