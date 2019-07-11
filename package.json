@@ -28,7 +28,7 @@
     "watch": "lerna run --parallel watch",
     "test": "jest",
     "coveralls": "jest --coverage && nodecat ./coverage/lcov.info | coveralls",
-    "version:patch": "lerna version patch --no-push"
+    "semantic-release": "lerna run --concurrency 1 semantic-release"
   },
   "jest": {
     "collectCoverageFrom": [
@@ -37,5 +37,9 @@
       "!<rootDir>/packages/sandbox/**/*",
       "!**/node_modules/"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matmalkowski/react-handyman.git"
   }
 }

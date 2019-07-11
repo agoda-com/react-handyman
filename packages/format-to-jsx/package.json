@@ -4,7 +4,10 @@
   "version": "0.2.1",
   "license": "MIT",
   "author": "Maciej Malkowski <monkey3310@gmail.com>",
-  "repository": "matmalkowski/react-handyman",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matmalkowski/react-handyman.git"
+  },
   "main": "lib/format-to-jsx.cjs.js",
   "module": "lib/format-to-jsx.esm.js",
   "browser": "lib/format-to-jsx.umd.js",
@@ -22,12 +25,15 @@
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-node-resolve": "^5.0.1",
     "rollup-plugin-terser": "^5.0.0",
-    "typescript": "3.5.1"
+    "typescript": "3.5.1",
+    "semantic-release": "15.13.18",
+    "semantic-release-monorepo": "6.1.1"
   },
   "files": [
     "lib"
   ],
   "scripts": {
+    "semantic-release": "semantic-release -e semantic-release-monorepo",
     "prebuild": "rimraf lib",
     "build": "rollup -c && yarn emit-declarations",
     "watch": "rollup -c -w",

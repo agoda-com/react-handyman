@@ -14,12 +14,9 @@ script:
   - yarn test
   - yarn coveralls
 
-# install our .npmrc system-wide
-before_deploy:
-  - cp .npmrc-publish ~/.npmrc
 deploy:
   provider: script
-  script: npx lerna publish -y from-package
+  script: yarn semantic-release
   skip_cleanup: true
   on:
     branch: master
