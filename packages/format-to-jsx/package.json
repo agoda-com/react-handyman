@@ -38,6 +38,6 @@
     "build": "rollup -c && yarn emit-declarations",
     "watch": "rollup -c -w",
     "typecheck": "tsc",
-    "emit-declarations": "tsc -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
+    "emit-declarations": "tsc -p tsconfig.build.json -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
   }
 }

@@ -1,6 +1,6 @@
 import 'jest'
 import * as React from 'react'
-import { render, cleanup, getNodeText } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 
 import I18n from '../src/I18n'
 import withI18nProvider from '../src/withI18nProvider'
@@ -29,9 +29,7 @@ describe('withI18nProvider()', () => {
       </Wrapped>
     )
 
-    const innerText = getNodeText(container.querySelector('span'))
-
-    expect(innerText).toEqual('Context value')
+    expect(container.textContent).toEqual('Context value')
   })
 
   it('should initialize context based on selector passed', () => {
@@ -46,8 +44,6 @@ describe('withI18nProvider()', () => {
       </Wrapped>
     )
 
-    const innerText = getNodeText(container.querySelector('span'))
-
-    expect(innerText).toEqual('Context value')
+    expect(container.textContent).toEqual('Context value')
   })
 })
