@@ -1,7 +1,6 @@
 import * as React from 'react'
 import useI18n from '../useI18n/useI18n'
 import { I18nSelector } from '../useI18n/selector'
-import { PropsWithChildren } from 'react'
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 export type Optionalize<T extends K, K> = Omit<T, keyof K>;
@@ -21,4 +20,4 @@ const withI18n = <TProps extends TI18nProps, TI18nProps extends {}>(
   return Wrapped;
 }
 
-export default withI18n
+export default withI18n;
