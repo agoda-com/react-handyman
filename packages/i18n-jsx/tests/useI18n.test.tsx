@@ -1,6 +1,6 @@
 import 'jest'
 import * as React from 'react'
-import { render, getNodeText } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 const consoleWarn = jest.spyOn(global.console, 'warn').mockImplementation(() => {})
 
@@ -23,9 +23,7 @@ const testWithComponent = (Component: React.ComponentType, expected: string) => 
     </I18nProvider>
   )
 
-  const innerText = getNodeText(container.querySelector('span'))
-
-  expect(innerText).toEqual(expected)
+  expect(container.textContent).toEqual(expected)
 }
 
 describe('useI18n hook should return i18n function that', () => {

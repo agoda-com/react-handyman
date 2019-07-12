@@ -1,6 +1,6 @@
 import 'jest'
 import * as React from 'react'
-import { render, cleanup, getNodeText } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 
 const consoleWarn = jest.spyOn(global.console, 'warn').mockImplementation(() => {})
 const consoleError = jest.spyOn(global.console, 'error').mockImplementation(() => {})
@@ -30,9 +30,7 @@ describe('<I18n />', () => {
       </I18nProvider>
     )
 
-    const innerText = getNodeText(container.querySelector('span'))
-
-    expect(innerText).toEqual('number based key')
+    expect(container.textContent).toEqual('number based key')
   })
 
   it('should render text based on a string k prop', () => {
@@ -44,9 +42,7 @@ describe('<I18n />', () => {
       </I18nProvider>
     )
 
-    const innerText = getNodeText(container.querySelector('span'))
-
-    expect(innerText).toEqual('string based key')
+    expect(container.textContent).toEqual('string based key')
   })
 
   it('should render default fallback value when k key is not present in context', () => {
@@ -58,10 +54,9 @@ describe('<I18n />', () => {
       </I18nProvider>
     )
 
-    const innerText = getNodeText(container.querySelector('span'))
-
-    expect(innerText).toEqual('Default value')
+    expect(container.textContent).toEqual('Default value')
   })
+
   describe('template text', () => {
     it('with with a numeric value', () => {
       const { container } = render(
@@ -74,9 +69,7 @@ describe('<I18n />', () => {
         </I18nProvider>
       )
 
-      const innerText = getNodeText(container.querySelector('span'))
-
-      expect(innerText).toEqual('string with 123 placeholder')
+      expect(container.textContent).toEqual('string with 123 placeholder')
     })
 
     it('should render with with a string value', () => {
@@ -90,9 +83,7 @@ describe('<I18n />', () => {
         </I18nProvider>
       )
 
-      const innerText = getNodeText(container.querySelector('span'))
-
-      expect(innerText).toEqual('string with some replaced string placeholder')
+      expect(container.textContent).toEqual('string with some replaced string placeholder')
     })
 
     it('should render with multiple values', () => {
@@ -106,9 +97,7 @@ describe('<I18n />', () => {
         </I18nProvider>
       )
 
-      const innerText = getNodeText(container.querySelector('span'))
-
-      expect(innerText).toEqual('string with some replaced string placeholder and ending with another 123')
+      expect(container.textContent).toEqual('string with some replaced string placeholder and ending with another 123')
     })
 
     it('should render with string based template and object args', () => {
@@ -122,9 +111,7 @@ describe('<I18n />', () => {
         </I18nProvider>
       )
 
-      const innerText = getNodeText(container.querySelector('span'))
-
-      expect(innerText).toEqual('string with 1 or 2 object based values')
+      expect(container.textContent).toEqual('string with 1 or 2 object based values')
     })
 
     it('should render default fallback value when k key is not present in context', () => {
@@ -138,9 +125,7 @@ describe('<I18n />', () => {
         </I18nProvider>
       )
 
-      const innerText = getNodeText(container.querySelector('span'))
-
-      expect(innerText).toEqual('string with some replaced string placeholder')
+      expect(container.textContent).toEqual('string with some replaced string placeholder')
     })
 
     it('should render default fallback value when k key is not present in context - multiple placeholders', () => {
@@ -154,9 +139,7 @@ describe('<I18n />', () => {
         </I18nProvider>
       )
 
-      const innerText = getNodeText(container.querySelector('span'))
-
-      expect(innerText).toEqual('string with some replaced string placeholder and ending with another 123')
+      expect(container.textContent).toEqual('string with some replaced string placeholder and ending with another 123')
     })
 
     it('should throw error when child element is missing', () => {
@@ -167,9 +150,8 @@ describe('<I18n />', () => {
           </span>
         </I18nProvider>
       )
-      const innerText = getNodeText(container.querySelector('span'))
 
-      expect(innerText).toEqual('')
+      expect(container.textContent).toEqual('')
       expect(consoleError).toHaveBeenCalledTimes(1)
       expect(consoleError).toHaveBeenCalledWith(
         `[i18n-jsx]: I18n component for key 'error' doesn't contain a valid default value. A default value must be provided as a single only child of the <I18n> component, and it must be a string value.`
@@ -186,9 +168,8 @@ describe('<I18n />', () => {
           </span>
         </I18nProvider>
       )
-      const innerText = getNodeText(container.querySelector('span'))
 
-      expect(innerText).toEqual('')
+      expect(container.textContent).toEqual('')
       expect(consoleError).toHaveBeenCalledTimes(1)
       expect(consoleError).toHaveBeenCalledWith(
         `[i18n-jsx]: I18n component for key 'error' doesn't contain a valid default value. A default value must be provided as a single only child of the <I18n> component, and it must be a string value.`

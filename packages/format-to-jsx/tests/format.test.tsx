@@ -21,13 +21,15 @@ describe('format()', () => {
   })
 
   it('should throw error when undefined template is passed', () => {
-    expect(() => format(undefined)).toThrow(
+    expect(() => format(undefined as any)).toThrow(
       '[format-to-jsx]: format() method has been called without a template string!'
     )
   })
 
   it('should throw error when undefined template is passed', () => {
-    expect(() => format(null)).toThrow('[format-to-jsx]: format() method has been called without a template string!')
+    expect(() => format(null as any)).toThrow(
+      '[format-to-jsx]: format() method has been called without a template string!'
+    )
   })
 
   it('should throw error when undefined template is passed', () => {
