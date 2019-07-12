@@ -17,7 +17,7 @@ const withI18n = <TProps extends TI18nProps, TI18nProps extends {}>(
     return <Component {...props as TProps} {...mapI18nToProps(i18n)} />
   });
 
-  Wrapped.displayName = `withI18n(${Component.displayName})`
+  Wrapped.displayName = `withI18n(${Component.displayName})`;
   return Wrapped;
 }
 
