@@ -36,6 +36,10 @@ describe('format()', () => {
     expect(() => format('')).toThrow('[format-to-jsx]: format() method has been called without a template string!')
   })
 
+  it('should not format when no args are passed', () => {
+    expect(format('simple non template with {placeholder}')).toBe('simple non template with {placeholder}')
+  })
+
   it('should not format non-template strings', () => {
     expect(format('simple non template')).toBe('simple non template')
   })
