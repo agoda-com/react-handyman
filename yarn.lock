@@ -6258,10 +6258,10 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
-format-to-jsx@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/format-to-jsx/-/format-to-jsx-1.0.0.tgz#3fbba624495a7cd894f3b9c2c7ebd5adff2540f7"
-  integrity sha512-vGJ56akuarXpXw2Bq++inkzo1td1WTnVSw9R/IY6P6k3eZlv2KA/+GyVVA2HxP6AM2ux4DlK52AsQ4CckamHyA==
+format-to-jsx@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/format-to-jsx/-/format-to-jsx-1.0.1.tgz#f7e16d77ae4661dd44554bc2f275e5cb3e2df071"
+  integrity sha512-o6wnNlZi1QnfKDIgSdyTFbx/cjWIddNdjAG56V2zSLfeUJM+9vD1PaKYwO+dbgMFvqf1oC9caLHkt88grp/zyA==
 
 forwarded@~0.1.2:
   version "0.1.2"

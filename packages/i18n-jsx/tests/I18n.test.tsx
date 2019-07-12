@@ -21,6 +21,19 @@ describe('<I18n />', () => {
     cleanup()
     jest.clearAllMocks()
   })
+
+  it('should render not formatted text when no args were passed', () => {
+    const { container } = render(
+      <I18nProvider translations={translationsMock}>
+        <span>
+          <I18n k="example.template">{`string with {0} placeholder`}</I18n>
+        </span>
+      </I18nProvider>
+    )
+
+    expect(container.textContent).toEqual('string with {0} placeholder')
+  })
+
   it('should render text based on a numeric k prop', () => {
     const { container } = render(
       <I18nProvider translations={translationsMock}>
