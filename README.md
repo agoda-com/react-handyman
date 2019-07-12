@@ -1,6 +1,6 @@
 # 👨‍🔧 React handyman
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Greenkeeper badge](https://badges.greenkeeper.io/matmalkowski/react-handyman.svg)](https://greenkeeper.io/)
@@ -77,6 +77,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://medium.com/@mat.malkowski"><img src="https://avatars3.githubusercontent.com/u/1546903?v=4" width="100px;" alt="Maciej Małkowski"/><br /><sub><b>Maciej Małkowski</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=matmalkowski" title="Code">💻</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=matmalkowski" title="Documentation">📖</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=matmalkowski" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/znut"><img src="https://avatars2.githubusercontent.com/u/1188327?v=4" width="100px;" alt="Nut Sornchumni"/><br /><sub><b>Nut Sornchumni</b></sub></a><br /><a href="#review-znut" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=znut" title="Code">💻</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=znut" title="Documentation">📖</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=znut" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/PoomSmart"><img src="https://avatars3.githubusercontent.com/u/3608783?v=4" width="100px;" alt="Thatchapon Unprasert"/><br /><sub><b>Thatchapon Unprasert</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=PoomSmart" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/nickyshannon"><img src="https://avatars0.githubusercontent.com/u/2579455?v=4" width="100px;" alt="nickyshannon"/><br /><sub><b>nickyshannon</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=nickyshannon" title="Code">💻</a> <a href="#review-nickyshannon" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=nickyshannon" title="Tests">⚠️</a></td>
   </tr>
 </table>
 
