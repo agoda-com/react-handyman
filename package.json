@@ -8,22 +8,22 @@
   "description": "Utils and packages to extend your react.js based app",
   "author": "matmalkowski <monkey3310@gmail.com>",
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.0",
-    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-react": "^7.0.0",
-    "@babel/preset-typescript": "^7.3.3",
-    "@commitlint/cli": "^8.0.0",
-    "@commitlint/config-conventional": "^8.0.0",
+    "@babel/core": "7.4.5",
+    "@babel/plugin-proposal-class-properties": "7.5.0",
+    "@babel/plugin-proposal-object-rest-spread": "7.4.4",
+    "@babel/preset-env": "7.4.5",
+    "@babel/preset-react": "7.0.0",
+    "@babel/preset-typescript": "7.3.3",
+    "@commitlint/cli": "8.0.0",
+    "@commitlint/config-conventional": "8.0.0",
     "commitizen": "3.1.1",
-    "coveralls": "^3.0.4",
-    "cz-conventional-changelog": "^2.1.0",
-    "husky": "^3.0.0",
-    "jest": "^24.8.0",
-    "lerna": "^3.13.1",
-    "npm-run-all": "^4.1.5",
-    "typescript": "3.5.1"
+    "coveralls": "3.0.4",
+    "cz-conventional-changelog": "2.1.0",
+    "husky": "3.0.0",
+    "jest": "24.8.0",
+    "lerna": "3.13.1",
+    "npm-run-all": "4.1.5",
+    "typescript": "3.5.3"
   },
   "scripts": {
     "cz": "git-cz",
@@ -56,6 +56,32 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "greenkeeper": {
+    "ignore": [
+      "semantic-release",
+      "semantic-release-monorepo",
+      "feature-toggle-jsx",
+      "format-to-jsx",
+      "i18n-jsx"
+    ],
+    "commitMessages": {
+      "initialBadge": "chore: :memo: Docs: Add Greenkeeper badge",
+      "initialDependencies": "chore: :gem: Upgrade: Update dependencies",
+      "initialBranches": "chore: :tada: Build: Whitelist greenkeeper branches",
+      "dependencyUpdate": "chore: :gem: Upgrade: Update ${dependency} to version ${version}",
+      "devDependencyUpdate": "chore: :gem: Upgrade: Update ${dependency} to version ${version}",
+      "dependencyPin": "chore: :bug: Fix: Pin ${dependency} to ${oldVersion}",
+      "devDependencyPin": "chore: :bug: Fix: Pin ${dependency} to ${oldVersion}"
+    },
+    "prTitles": {
+      "initialPR": "chore: Update dependencies to enable Greenkeeper!!!",
+      "initialPrBadge": "chore: Add badge to enable Greenkeeper!!!!",
+      "initialPrBadgeOnly": "chore: Add Greenkeeper badge!!!",
+      "initialSubgroupPR": "chore: Update dependencies for ${group}!!!",
+      "basicPR": "chore: Update ${dependency} to the latest!!!",
+      "groupPR": "chore: Update ${dependency} in group ${group} to the latest!!!!"
     }
   }
 }

@@ -1,21 +1,21 @@
 {
   "name": "sandbox",
   "private": true,
-  "version": "0.2.2",
+  "version": "0.0.0-development",
   "license": "MIT",
   "devDependencies": {
-    "@types/jest": "24.0.13",
-    "@types/node": "12.0.7",
-    "@types/react": "16.8.19",
+    "@types/jest": "24.0.15",
+    "@types/node": "12.6.2",
+    "@types/react": "16.8.23",
     "@types/react-dom": "16.8.4",
     "react-scripts": "3.0.1",
-    "typescript": "3.5.1"
+    "typescript": "3.5.3"
   },
   "dependencies": {
-    "feature-toggle-jsx": "0.1.0",
-    "i18n-jsx": "^0.3.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "feature-toggle-jsx": "0.0.0-development",
+    "i18n-jsx": "0.0.0-development",
+    "react": "16.8.6",
+    "react-dom": "16.8.6"
   },
   "scripts": {
     "start": "react-scripts start",
