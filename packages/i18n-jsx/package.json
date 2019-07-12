@@ -13,21 +13,21 @@
   "browser": "lib/i18n-jsx.umd.js",
   "types": "lib/index.d.ts",
   "peerDependencies": {
-    "react": "^16.8.6"
+    "react": "16.8.6"
   },
   "dependencies": {
-    "format-to-jsx": "^1.0.0"
+    "format-to-jsx": "1.0.0"
   },
   "devDependencies": {
-    "@testing-library/react": "^8.0.1",
+    "@testing-library/react": "8.0.1",
     "@types/react": "16.8.23",
-    "nodecat": "^2.0.0",
-    "react": "^16.8.6",
-    "rimraf": "^2.6.3",
-    "rollup": "^1.14.6",
-    "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-node-resolve": "^5.0.1",
-    "rollup-plugin-terser": "^5.0.0",
+    "nodecat": "2.0.0",
+    "react": "16.8.6",
+    "rimraf": "2.6.3",
+    "rollup": "1.14.6",
+    "rollup-plugin-babel": "4.3.2",
+    "rollup-plugin-node-resolve": "5.0.1",
+    "rollup-plugin-terser": "5.0.0",
     "typescript": "3.5.3",
     "semantic-release": "=15.9.17",
     "semantic-release-monorepo": "6.1.1"

@@ -3,10 +3,12 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.tslint": true
   },
+  "tslint.exclude": ["**/*"],
   "files.exclude": {
     "**/build": true,
     "**/coverage": true,
     "**/lib": true,
     "**/node_modules": true
-  }
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
