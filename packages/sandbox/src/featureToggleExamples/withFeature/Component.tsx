@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { withFeature } from 'feature-toggle-jsx'
-import { Features } from './types'
+import { Features } from '../types'
 
 interface Props {
   text: string
