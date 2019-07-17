@@ -6,6 +6,8 @@ const App: React.FC = () => {
   return (
     <div>
       <I18nExamples />
+      <br />
+      <br />
       <FeatureToggleExamples />
     </div>
   )

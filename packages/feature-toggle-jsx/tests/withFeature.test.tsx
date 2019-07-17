@@ -1,6 +1,6 @@
 import 'jest'
 import * as React from 'react'
-import { render, cleanup, getNodeText } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 
 import FeatureProvider from '../src/FeaturesProvider'
 import withFeature from '../src/withFeature'
@@ -25,9 +25,7 @@ describe('withFeature()', () => {
       </FeatureProvider>
     )
 
-    const innerText = getNodeText(container.querySelector('div')!)
-
-    expect(innerText).toEqual(componentText)
+    expect(container.textContent).toEqual(componentText)
   })
 
   it('render component with config when feature flag is enabled', () => {
@@ -48,10 +46,8 @@ describe('withFeature()', () => {
       </FeatureProvider>
     )
 
-    const innerText = getNodeText(container.querySelector('div')!)
-
-    expect(innerText).toContain(componentText)
-    expect(innerText).toContain(configText(features.featureWithConfig!.items))
+    expect(container.textContent).toContain(componentText)
+    expect(container.textContent).toContain(configText(features.featureWithConfig!.items))
   })
 
   it('not render component when feature flag is disabled', () => {
@@ -63,9 +59,7 @@ describe('withFeature()', () => {
       </FeatureProvider>
     )
 
-    const innerText = getNodeText(container)
-
-    expect(innerText).toBeFalsy()
+    expect(container.textContent).toBeFalsy()
   })
 
   it('not render component with config when feature flag is disabled', () => {
@@ -88,9 +82,7 @@ describe('withFeature()', () => {
         </FeatureProvider>
       )
 
-      const innerText = getNodeText(container)
-
-      expect(innerText).toBeFalsy()
+      expect(container.textContent).toBeFalsy()
     }).not.toThrow()
   })
 })

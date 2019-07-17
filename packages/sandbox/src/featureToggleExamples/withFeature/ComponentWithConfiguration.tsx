@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { withFeature } from 'feature-toggle-jsx'
-import { Features, Config } from './types'
+import { Features, Config } from '../types'
 
 interface Props {
   // injected config from feature
