@@ -40,6 +40,7 @@
     "watch:code": "rollup -c -w",
     "watch:types": "yarn emit-declarations --watch",
     "typecheck": "tsc",
+    "lint": "eslint -c eslint.config.js --ext .ts ./src/",
     "emit-declarations": "tsc -p tsconfig.build.json -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
   }
 }
