@@ -42,7 +42,7 @@
     "typecheck": "lerna run typecheck",
     "build": "lerna run build",
     "watch": "lerna run --parallel watch",
-    "lint": "eslint --ext .ts --ignore-path .gitignore ./packages/",
+    "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore ./packages/",
     "test": "jest",
     "coveralls": "jest --coverage && nodecat ./coverage/lcov.info | coveralls",
     "semantic-release": "lerna run --concurrency 1 semantic-release"

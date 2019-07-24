@@ -7,7 +7,7 @@ const MyOtherFeatureComponent: React.FC<{}> = () => (
     <p>
       <strong>My Special Component</strong>
       <br />
-      <span>You should see this when it's disabled !?</span>
+      <span>You should see this when it&#39;s disabled !?</span>
     </p>
   </>
 )

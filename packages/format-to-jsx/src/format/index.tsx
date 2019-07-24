@@ -8,16 +8,18 @@ const format = <TArgs extends FArgs>(
   if (!template || template.length === 0) {
     throw new Error(`[format-to-jsx]: format() method has been called without a template string!`)
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   if (args.length === 0) return template as any
   const reg = /\{([^{}]+)\}/g
   let containsJSX = false
   const argsDictionary =
     args && typeof args[0] === 'object' && !React.isValidElement(args[0])
       ? args[0]
-      : args.reduce((acc: any, a, index) => {
-          acc[index] = a
-          return acc
-        }, {})
+      : // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/indent
+        args.reduce((acc: any, a, index) => {
+          acc[index] = a // eslint-disable-line @typescript-eslint/indent
+          return acc // eslint-disable-line @typescript-eslint/indent
+        }, {}) // eslint-disable-line @typescript-eslint/indent
   const parts = template.split(reg)
 
   if (process.env.NODE_ENV !== 'production') {
@@ -31,6 +33,7 @@ const format = <TArgs extends FArgs>(
     ).length
     const noOfArgs = Object.keys(argsDictionary).length
     if (noOfPlaceholders !== noOfArgs) {
+      // eslint-disable-next-line no-console
       console.warn(
         `[format-to-jsx]: Template '${template}' contains different number of placeholders than passed arguments ([${Object.keys(
           argsDictionary
@@ -53,6 +56,7 @@ const format = <TArgs extends FArgs>(
         return replaceValue
       } else {
         if (process.env.NODE_ENV !== 'production') {
+          // eslint-disable-next-line no-console
           console.warn(`[format-to-jsx]: Failed replacing the template '${template}' - '${key}' index wasn't provided!`)
         }
         return ''
@@ -61,10 +65,12 @@ const format = <TArgs extends FArgs>(
   })
   if (containsJSX) {
     return (
+      // eslint-disable-next-line react/no-array-index-key
       <>{results.map((e, index) => (React.isValidElement(e) ? React.cloneElement(e, { key: index }) : e))}</>
-    ) as any
+    ) as any // eslint-disable-line @typescript-eslint/no-explicit-any
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return results.join('') as any
 }
 

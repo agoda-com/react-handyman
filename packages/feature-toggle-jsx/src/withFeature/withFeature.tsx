@@ -13,7 +13,7 @@ const withFeature = <T, TComponentProps = {}, K extends keyof FeatureSchema<T> =
 
   const Wrapped: React.FC<OwnProps> = React.memo(props => {
     const [feature] = useFeatures<T, K>(name)
-
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return feature ? <Component {...(props as any)} {...{ [name]: feature }} /> : null
   })
 

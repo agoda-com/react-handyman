@@ -44,7 +44,7 @@ const I18nExamples: React.FC = () => {
       </p>
       <p>{objFormattedText}</p>
       <p>
-        <I18n k="example.invalid.or.missing.key">This default text is rendered because key doesn't exists</I18n>
+        <I18n k="example.invalid.or.missing.key">This default text is rendered because key doesn&#39;t exists</I18n>
       </p>
       <Component linkText={linkText} strongText={i18n('example.prop.strong', 'Default prop.strong text')} />
       <WrappedComponent linkText={linkText} />

@@ -4,7 +4,7 @@ import { render, cleanup } from '@testing-library/react'
 import I18n from '../src/I18n'
 import I18nProvider from '../src/I18nProvider'
 
-const consoleWarn = jest.spyOn(global.console, 'warn').mockImplementation(() => {})
+jest.spyOn(global.console, 'warn').mockImplementation(() => {})
 const consoleError = jest.spyOn(global.console, 'error').mockImplementation(() => {})
 
 const translationsMock = {
