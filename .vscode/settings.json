@@ -3,12 +3,24 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.tslint": true
   },
-  "tslint.exclude": ["**/*"],
   "files.exclude": {
     "**/build": true,
     "**/coverage": true,
     "**/lib": true,
     "**/node_modules": true
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "eslint.validate": [
+    {
+      "language": "typescript",
+      "autoFix": false
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": false
+    }
+  ],
+  "eslint.options": {
+    "extensions": ".ts"
+  }
 }

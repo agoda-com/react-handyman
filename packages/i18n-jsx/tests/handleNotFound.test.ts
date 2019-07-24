@@ -1,5 +1,3 @@
-import 'jest'
-
 import handleNotFound from '../src/utils/handleNotFound'
 
 const consoleWarn = jest.spyOn(global.console, 'warn').mockImplementation(() => {})
