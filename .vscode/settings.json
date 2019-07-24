@@ -13,14 +13,14 @@
   "eslint.validate": [
     {
       "language": "typescript",
-      "autoFix": false
+      "autoFix": true
     },
     {
       "language": "typescriptreact",
-      "autoFix": false
+      "autoFix": true
     }
   ],
   "eslint.options": {
-    "extensions": ".ts"
+    "extensions": ".ts,.tsx"
   }
 }
