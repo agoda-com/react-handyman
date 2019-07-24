@@ -1,4 +1,3 @@
-import 'jest'
 import * as React from 'react'
 import { render, cleanup } from '@testing-library/react'
 
@@ -9,7 +8,7 @@ import { Features, features, FeatureWithConfig } from './mock'
 const componentText = 'I am component.'
 const configText = (items: string[]) => `Config: [${(items || []).join(', ')}].`
 
-const NoConfigComponent: React.FC = _ => <div>{componentText}</div>
+const NoConfigComponent: React.FC = () => <div>{componentText}</div>
 
 describe('withFeature()', () => {
   afterEach(() => {
@@ -33,11 +32,14 @@ describe('withFeature()', () => {
       featureWithConfig: FeatureWithConfig
       text: string
     }
-    const NeedConfigComponent: React.FC<Props> = props => (
-      <div>
-        {props.text} {configText(props.featureWithConfig.items)}
-      </div>
-    )
+    const NeedConfigComponent: React.FC<Props> = props => {
+      const { text, featureWithConfig } = props
+      return (
+        <div>
+          {text} {configText(featureWithConfig.items)}
+        </div>
+      )
+    }
     const Wrapped = withFeature<Features, Props>(NeedConfigComponent, 'featureWithConfig')
 
     const { container } = render(
@@ -47,6 +49,7 @@ describe('withFeature()', () => {
     )
 
     expect(container.textContent).toContain(componentText)
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     expect(container.textContent).toContain(configText(features.featureWithConfig!.items))
   })
 
@@ -67,11 +70,14 @@ describe('withFeature()', () => {
       disabledFeatureWithConfig: FeatureWithConfig
       text: string
     }
-    const NeedConfigComponent: React.FC<Props> = props => (
-      <div>
-        {props.text} {configText(props.disabledFeatureWithConfig.items)}
-      </div>
-    )
+    const NeedConfigComponent: React.FC<Props> = props => {
+      const { text, disabledFeatureWithConfig } = props
+      return (
+        <div>
+          {text} {configText(disabledFeatureWithConfig.items)}
+        </div>
+      )
+    }
 
     const Wrapped = withFeature<Features, Props>(NeedConfigComponent, 'disabledFeatureWithConfig')
 

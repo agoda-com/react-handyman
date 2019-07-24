@@ -1,11 +1,10 @@
-import 'jest'
 import * as React from 'react'
 import { render } from '@testing-library/react'
 
-const consoleWarn = jest.spyOn(global.console, 'warn').mockImplementation(() => {})
-
 import useI18n from '../src/useI18n'
 import I18nProvider from '../src/I18nProvider'
+
+jest.spyOn(global.console, 'warn').mockImplementation(() => {})
 
 const translationsMock = {
   1: 'number based key',

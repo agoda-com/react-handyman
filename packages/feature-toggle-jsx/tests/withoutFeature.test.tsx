@@ -1,14 +1,13 @@
-import 'jest'
 import * as React from 'react'
 import { render, cleanup } from '@testing-library/react'
 
 import FeatureProvider from '../src/FeaturesProvider'
 import withoutFeature from '../src/withoutFeature'
-import { Features, features, FeatureWithConfig } from './mock'
+import { Features, features } from './mock'
 
 const componentText = 'I am component.'
 
-const NoConfigComponent: React.FC = _ => <div>{componentText}</div>
+const NoConfigComponent: React.FC = () => <div>{componentText}</div>
 
 describe('withoutFeature()', () => {
   afterEach(() => {

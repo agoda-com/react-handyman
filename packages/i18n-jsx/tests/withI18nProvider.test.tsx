@@ -1,4 +1,3 @@
-import 'jest'
 import * as React from 'react'
 import { render, cleanup } from '@testing-library/react'
 

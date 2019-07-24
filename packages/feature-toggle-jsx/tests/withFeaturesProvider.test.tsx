@@ -1,4 +1,3 @@
-import 'jest'
 import * as React from 'react'
 import { render, cleanup, getNodeText } from '@testing-library/react'
 
@@ -19,7 +18,7 @@ describe('withFeaturesProvider()', () => {
     const Wrapped = withFeaturesProvider(FeatureComponent, features)
 
     const { container } = render(<Wrapped>{componentText}</Wrapped>)
-
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const innerText = getNodeText(container.querySelector('div')!)
 
     expect(innerText).toEqual(componentText)
