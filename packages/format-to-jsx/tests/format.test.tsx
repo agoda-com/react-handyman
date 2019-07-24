@@ -1,10 +1,9 @@
-import 'jest'
 import * as React from 'react'
+
+import format from '../src/format'
 
 const consoleWarn = jest.spyOn(global.console, 'warn').mockImplementation(() => {})
 const consoleError = jest.spyOn(global.console, 'error').mockImplementation(() => {})
-
-import format from '../src/format'
 
 describe('format()', () => {
   const OLD_ENV = process.env
@@ -21,18 +20,20 @@ describe('format()', () => {
   })
 
   it('should throw error when undefined template is passed', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect(() => format(undefined as any)).toThrow(
       '[format-to-jsx]: format() method has been called without a template string!'
     )
   })
 
-  it('should throw error when undefined template is passed', () => {
+  it('should throw error when null template is passed', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect(() => format(null as any)).toThrow(
       '[format-to-jsx]: format() method has been called without a template string!'
     )
   })
 
-  it('should throw error when undefined template is passed', () => {
+  it('should throw error when empty template is passed', () => {
     expect(() => format('')).toThrow('[format-to-jsx]: format() method has been called without a template string!')
   })
 

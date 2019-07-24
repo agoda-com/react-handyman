@@ -1,8 +1,6 @@
-import 'jest'
+import handleNotFound from '../src/utils/handleNotFound'
 
 const consoleWarn = jest.spyOn(global.console, 'warn').mockImplementation(() => {})
-
-import handleNotFound from '../src/utils/handleNotFound'
 
 describe('handleNotFound()', () => {
   const OLD_ENV = process.env

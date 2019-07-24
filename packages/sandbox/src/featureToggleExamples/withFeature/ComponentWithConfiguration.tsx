@@ -20,7 +20,7 @@ const MyFeatureComponentWithConfig: React.FC<Props> = ({ myFeatureWithConfig: { 
         You should see this {text} and {number}
       </span>
       <br />
-      <span>with this configuration "{items.join(', ')}"</span>
+      <span>{`with this configuration "${items.join(', ')}"`}</span>
     </p>
   </>
 )

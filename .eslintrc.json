@@ -1,0 +1,51 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "jest"],
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/indent": ["warn", 2],
+    "@typescript-eslint/member-delimiter-style": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/jsx-one-expression-per-line": "off",
+    "react/prop-types": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".tsx"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": ["packages/**/tests/**/*.test.ts", "packages/**/tests/**/*.test.tsx"],
+      "env": {
+        "jest/globals": true
+      },
+      "rules": {
+        "import/no-extraneous-dependencies": "off",
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-alias-methods": "error",
+        "jest/no-identical-title": "error",
+        "jest/no-jasmine-globals": "error",
+        "jest/no-jest-import": "error",
+        "jest/no-test-prefixes": "error",
+        "jest/no-test-callback": "error",
+        "jest/no-test-return-statement": "error",
+        "jest/prefer-to-have-length": "warn",
+        "jest/prefer-spy-on": "error",
+        "jest/valid-expect": "error"
+      }
+    }
+  ]
+}

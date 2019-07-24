@@ -1,10 +1,10 @@
 import * as React from 'react'
 
-export type ArgsObj = {
+export interface ArgsObj {
   [key: string]: string | number
 }
 
-export type ArgsObjJsx = {
+export interface ArgsObjJsx {
   [key: string]: string | number | React.ReactNode
 }
 

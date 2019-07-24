@@ -17,6 +17,7 @@ const I18n: React.FC<Props> = React.memo(props => {
 
     return <>{i18n(k, children as string, ...(argsParsed as FArgs))}</>
   }
+  // eslint-disable-next-line no-console
   console.error(
     `[i18n-jsx]: I18n component for key '${k}' doesn't contain a valid default value. A default value must be provided as a single only child of the <I18n> component, and it must be a string value.`
   )
