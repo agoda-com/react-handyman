@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { ABTests } from './types'
 
-const ABTestsContext = React.createContext<ABTests>({})
+const ABTestsContext = React.createContext({})
 
 export default ABTestsContext

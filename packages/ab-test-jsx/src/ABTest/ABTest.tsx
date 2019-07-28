@@ -6,9 +6,9 @@ interface OwnProps<T> {
   variant: Variant
   name: Extract<keyof T, string | number>
 }
-interface Props<T> extends React.PropsWithChildren<OwnProps<T>> {}
+type Props<T> = React.PropsWithChildren<OwnProps<T>>
 
-export interface ABTestComponent<T extends ABTests> extends React.FC<Props<T>> {}
+export type ABTestComponent<T extends ABTests> = React.FC<Props<T>>
 
 const ABTest = React.memo(<T extends ABTests>(props: Props<T>) => {
   const { children, variant, name } = props

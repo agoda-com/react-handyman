@@ -1,14 +1,12 @@
 import * as React from 'react'
-import ABTestsContext from '../ABTestsContext'
+import ABTestsContext, { ABTests } from '../ABTestsContext'
 
-type TestName = string | number
+const useABTests = <T extends ABTests, TName extends Extract<keyof T, string | number>>() => {
+  const abTests = React.useContext(ABTestsContext) as T
 
-const useABTests = () => {
-  const abTests = React.useContext(ABTestsContext)
-
-  const getVariant = (name: TestName) => abTests[name] || 'A'
-  const isB = (name: TestName) => getVariant(name) === 'B'
-  const isA = (name: TestName) => getVariant(name) === 'A'
+  const getVariant = (name: TName) => abTests[name] || 'Z'
+  const isB = (name: TName) => getVariant(name) === 'B'
+  const isA = (name: TName) => getVariant(name) === 'A'
 
   return {
     getVariant,

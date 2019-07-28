@@ -1,11 +1,13 @@
 import * as React from 'react'
 import ABTestsContext, { ABTests } from '../ABTestsContext'
 
-interface Props {
-  abTests: ABTests
+interface OwnProps<T> {
+  abTests: T
 }
 
-const ABTestsProvider: React.FC<Props> = React.memo(props => {
+type Props<T> = React.PropsWithChildren<OwnProps<T>>
+
+const ABTestsProvider = React.memo(<T extends ABTests>(props: Props<T>) => {
   const { abTests, children } = props
   return <ABTestsContext.Provider value={abTests}>{children}</ABTestsContext.Provider>
 })

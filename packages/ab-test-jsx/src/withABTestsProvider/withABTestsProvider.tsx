@@ -2,11 +2,16 @@ import * as React from 'react'
 import { ABTests } from '../ABTestsContext'
 import ABTestsProvider from '../ABTestsProvider'
 
-type TranslationsSetter<TProps extends {}> = (componentProps: TProps) => ABTests
-
-const withABTestsProvider = <TProps extends {}>(
+export type withABTestsProviderComponent<T extends ABTests> = <TProps extends {}>(
   Component: React.ComponentType<TProps>,
-  abTests: TranslationsSetter<TProps> | ABTests
+  abTests: T | ABTestsSetter<TProps, T>
+) => React.FunctionComponent<TProps>
+
+type ABTestsSetter<TProps extends {}, T> = (componentProps: TProps) => T
+
+const withABTestsProvider = <T extends ABTests, TProps extends {}>(
+  Component: React.ComponentType<TProps>,
+  abTests: ABTestsSetter<TProps, T> | T
 ) => {
   const Wrapped: React.FC<TProps> = React.memo(props => {
     const values = typeof abTests === 'function' ? abTests(props) : abTests
