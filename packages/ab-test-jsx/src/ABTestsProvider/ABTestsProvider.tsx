@@ -7,6 +7,8 @@ interface OwnProps<T> {
 
 type Props<T> = React.PropsWithChildren<OwnProps<T>>
 
+export type ABTestProviderComponent<T extends ABTests> = React.FC<Props<T>>
+
 const ABTestsProvider = React.memo(<T extends ABTests>(props: Props<T>) => {
   const { abTests, children } = props
   return <ABTestsContext.Provider value={abTests}>{children}</ABTestsContext.Provider>

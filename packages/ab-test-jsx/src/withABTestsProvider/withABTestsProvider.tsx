@@ -2,7 +2,7 @@ import * as React from 'react'
 import { ABTests } from '../ABTestsContext'
 import ABTestsProvider from '../ABTestsProvider'
 
-export type withABTestsProviderComponent<T extends ABTests> = <TProps extends {}>(
+export type withABTestsProviderHoC<T extends ABTests> = <TProps extends {}>(
   Component: React.ComponentType<TProps>,
   abTests: T | ABTestsSetter<TProps, T>
 ) => React.FunctionComponent<TProps>

@@ -2,6 +2,16 @@ import * as React from 'react'
 import { ABTests } from '../ABTestsContext'
 import useABTests from '../useABTests'
 
+export type withABTestHoC<T extends ABTests> = <
+  TAProps extends {},
+  TBProps extends {},
+  TABTestName extends Extract<keyof T, string | number>
+>(
+  AVariantComponent: React.ComponentType<TAProps>,
+  BVariantComponent: React.ComponentType<TBProps>,
+  abTestName: TABTestName
+) => React.FC<TAProps & TBProps>
+
 const withABTest = <
   TAProps extends {},
   TBProps extends {},
