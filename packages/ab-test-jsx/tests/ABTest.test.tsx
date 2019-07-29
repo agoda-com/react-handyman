@@ -7,7 +7,7 @@ type Tests = {
   test2: ABTestJsx.Variant
 }
 
-const { ABTest, withABTestsProvider } = ABTestJsx as ABTestJsx.ABTestsModule<Tests>
+const { ABTest, ABTestsProvider } = ABTestJsx as ABTestJsx.ABTestsModule<Tests>
 
 describe('ABTest', () => {
   afterEach(() => {
@@ -32,9 +32,11 @@ describe('ABTest', () => {
       </>
     )
 
-    const Wrapped = withABTestsProvider(UnderTest, abTests)
-
-    const { container } = render(<Wrapped />)
+    const { container } = render(
+      <ABTestsProvider abTests={abTests}>
+        <UnderTest />
+      </ABTestsProvider>
+    )
 
     expect(container.textContent).toEqual('test1=A')
   })
@@ -56,9 +58,11 @@ describe('ABTest', () => {
       </>
     )
 
-    const Wrapped = withABTestsProvider(UnderTest, abTests)
-
-    const { container } = render(<Wrapped />)
+    const { container } = render(
+      <ABTestsProvider abTests={abTests}>
+        <UnderTest />
+      </ABTestsProvider>
+    )
 
     expect(container.textContent).toEqual('test2=B')
   })
@@ -86,9 +90,11 @@ describe('ABTest', () => {
       </>
     )
 
-    const Wrapped = withABTestsProvider(UnderTest, abTests)
-
-    const { container } = render(<Wrapped />)
+    const { container } = render(
+      <ABTestsProvider abTests={abTests}>
+        <UnderTest />
+      </ABTestsProvider>
+    )
 
     expect(container.textContent).toEqual('test1=A,test2=B')
   })
@@ -113,9 +119,11 @@ describe('ABTest', () => {
       </>
     )
 
-    const Wrapped = withABTestsProvider(UnderTest, abTests)
-
-    const { container } = render(<Wrapped />)
+    const { container } = render(
+      <ABTestsProvider abTests={abTests}>
+        <UnderTest />
+      </ABTestsProvider>
+    )
 
     expect(container.textContent).toEqual('test1=A')
   })
