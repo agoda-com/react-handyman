@@ -80,13 +80,116 @@ There are multiple ways of accessing AB tests allocation results in your compone
 
 In above example, if user gets _A_ variant of the test `changeHeaderSize`, they will get layout based on `h1` heading size. For _B_ variant, user gets `h2` as heading.
 
-// TODO: add more info about no limits when composing and number of components.
-// TODO API table
+> 💡 Note that when composing ab tests, you don't need to keep A & B variants of `<ABTest /> next to each other, as well you are not limited to single usage - you can wrap as many children as you wish, as long as they are in same tree as Context Provider
 
-## `usABTests` hook
+##### API
+
+| prop       | type               | required | defaultValue | Description                                                                     |
+| ---------- | ------------------ | -------- | ------------ | ------------------------------------------------------------------------------- |
+| `name`     | `string \| number` | true     | -            | key value used to look up AB test allocation                                    |
+| `variant`  | `A \| B`           | true     | -            | specifies under what allocation the children of the component will get rendered |
+| `children` | `React.Node[]`     | true     | -            | conditionally rendered components                                               |
+
+---
+
+## `useABTests()` hook
+
+You can use the `useABTests()` React hook to access the AB tests related values in your functional components. Hook will return an object with 3 functions that can be called to evaluate allocation:
+
+```js
+const Header: React.FC = () => {
+  const { getVariant, isB, isA } = useABTests()
+
+  const isNewHeader = isB('changeHeaderSize') // We can test and write conditional logic based on allocation
+
+  return isNewHeader ? <h1>Super dope header</h1> : <span>Super dope header</span>
+}
+```
+
+You can only grab function that is needed for your use case - example above just lists them all. Since this is simple object destructuring, you can for example, pick only `isB()` from the hook:
+
+```js
+const { isB } = useABTests()
+```
+
+##### API
+
+`getVariant(name: string | number) => Variant` - use this function to get current variant of AB test. `name` is the name of the test, returns `Variant` type (`A` | `B` | `Z`)
+
+`isB(name: string | number) => boolean` - use this function to check if specific AB tests is allocated to _B_ variant. `name` is the name of the test, returns `boolean`
+
+`isA(name: string | number) => boolean` - use this function to check if specific AB tests is allocated to _A_ variant. `name` is the name of the test, returns `boolean`
+
+---
 
 ## `withABTest` Higher Order Component
 
+Sometimes you have 2 different components that are suposed to be 2 different variants of AB tests. Lets say you implemented new complex Header layout and you want to render it only for B variant users:
+
+```js
+const HeaderUnderABTest = withABTest(Header, NewHeader, 'useNewHeader')
+```
+
+In above example, Header is A variant component, NewHeader is our B variant component, and 3rd parameter is the test name. Props of both A and B variants are both merged together so you can now easly use the tested component in code:
+
+```js
+<HeaderUnderABTest somePropFromHeader={1} anotherPropButFromNewHeader={2} />
+```
+
+##### API
+
+| param             | type                | description                                  |
+| ----------------- | ------------------- | -------------------------------------------- |
+| AVariantComponent | React.ComponentType | A variant of component                       |
+| BVariantComponent | React.ComponentType | B variant of component                       |
+| abTestName        | `string \| number`  | key value used to look up AB test allocation |
+
+Returns a component that will conditionally render either A or B variant parameter component based on test name and allocation. Props of both A and B variants are merged together and exposed.
+
 ## `withABTests` Higher Order Component
 
+If you need to pass all experiments from context as props into your component, you can use `withABTests` Higher Order Component. It will decorate your component with `abTests` prop containing all allocation data:
+
+```js
+const SomeComponent = ({ text, abTests }) => (
+  <>
+    <span>{text}</span>
+    {abTests.test1 === 'A' && <span>test1=A</span>}
+    {abTests.test1 === 'B' && <span>test1=B</span>}
+  </>
+)
+
+const SomeComponentWithABTests = withABTests(SomeComponent)
+```
+
 # Typescript support
+
+The library supports fully typed experience for allocation data as well as all components. To ensure type safety with AB tests names, you need to provide type defining your schema as generic argument as follows:
+
+```ts
+import * as ABTestJsx from 'ab-test-jsx'
+
+type TestsSchema = {
+  test1: ABTestJsx.Variant
+  test2: ABTestJsx.Variant
+}
+
+const {
+  ABTest,
+  ABTestsProvider,
+  useABTests,
+  withABTest,
+  withABTests,
+  withABTestsProvider,
+} = ABTestJsx as ABTestJsx.ABTestsModule<TestsSchema>
+```
+
+You should use those exports instead of going with library directly, and all your AB tests names will become type checked against the declared schema!
+
+Following example will result in type checking error, since `test3` is not a property that exists on `TestsSchema` type:
+
+```tsx
+<ABTest name="test3" variant="B">
+  <span>test2=B</span>
+</ABTest>
+```

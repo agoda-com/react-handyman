@@ -24,12 +24,14 @@ describe('withABTests', () => {
     type OwnProps = {
       text: string
     }
-
-    const UnderTest: React.FC<OwnProps & Tests> = ({ text, test1 }) => (
+    type TestProps = {
+      abTests: Tests
+    }
+    const UnderTest: React.FC<OwnProps & TestProps> = ({ text, abTests }) => (
       <>
         <span>{text}</span>
-        {test1 === 'A' && <span>test1=A</span>}
-        {test1 === 'B' && <span>test1=B</span>}
+        {abTests.test1 === 'A' && <span>test1=A</span>}
+        {abTests.test1 === 'B' && <span>test1=B</span>}
       </>
     )
 

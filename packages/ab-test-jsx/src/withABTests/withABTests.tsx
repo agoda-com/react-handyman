@@ -2,17 +2,18 @@ import * as React from 'react'
 import ABTestsContext, { ABTests } from '../ABTestsContext'
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
-type Optionalize<T extends K, K> = Omit<T, keyof K>
 
-export type withABTestsHoC<T extends ABTests> = <TProps extends T>(
+export type withABTestsHoC<T extends ABTests> = <TProps extends { abTests: T }>(
   Component: React.ComponentType<TProps>
-) => React.FC<Optionalize<TProps, T>>
+) => React.FC<Omit<TProps, 'abTests'>>
 
-const withABTests = <TProps extends TABTests, TABTests extends ABTests>(Component: React.ComponentType<TProps>) => {
-  type OwnProps = Optionalize<TProps, TABTests>
+const withABTests = <TProps extends { abTests: TABTests }, TABTests extends ABTests>(
+  Component: React.ComponentType<TProps>
+) => {
+  type OwnProps = Omit<TProps, 'abTests'>
   const Wrapped: React.FC<OwnProps> = React.memo(props => {
     const abTests = React.useContext(ABTestsContext)
-    return <Component {...(props as TProps)} {...abTests} />
+    return <Component {...(props as TProps)} abTests={abTests} />
   })
 
   Wrapped.displayName = `withABTests(${Component.displayName})`
