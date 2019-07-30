@@ -8,7 +8,7 @@ const withFeaturesProvider = <TComponentProps, TFeature>(
   features: ((props: TComponentProps) => FeatureSchema<TFeature>) | FeatureSchema<TFeature>
 ) => {
   const Wrapped: React.FC<TComponentProps> = React.memo(props => {
-    const featureValues = typeof features === 'function' ? features(props) : features;
+    const featureValues = typeof features === 'function' ? features(props) : features
     return (
       <FeaturesProvider features={featureValues}>
         <Component {...props} />
