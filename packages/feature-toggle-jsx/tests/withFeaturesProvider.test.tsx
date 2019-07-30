@@ -15,7 +15,7 @@ describe('withFeaturesProvider()', () => {
     jest.clearAllMocks()
   })
   it('initialize context', () => {
-    const Wrapped = withFeaturesProvider(FeatureComponent, features)
+    const Wrapped = withFeaturesProvider(FeatureComponent, () => features)
 
     const { container } = render(<Wrapped>{componentText}</Wrapped>)
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
