@@ -5,11 +5,12 @@ import { FeatureSchema } from '../FeaturesContext/FeaturesContext'
 
 const withFeaturesProvider = <TComponentProps, TFeature>(
   Component: React.ComponentType<TComponentProps>,
-  features: FeatureSchema<TFeature>
+  features: ((props: TComponentProps) => FeatureSchema<TFeature>) | FeatureSchema<TFeature>
 ) => {
   const Wrapped: React.FC<TComponentProps> = React.memo(props => {
+    const featureValues = typeof features === 'function' ? features(props) : features
     return (
-      <FeaturesProvider features={features}>
+      <FeaturesProvider features={featureValues}>
         <Component {...props} />
       </FeaturesProvider>
     )

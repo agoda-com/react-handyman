@@ -14,7 +14,16 @@ describe('withFeaturesProvider()', () => {
     cleanup()
     jest.clearAllMocks()
   })
-  it('initialize context', () => {
+  it('initialize context with function', () => {
+    const Wrapped = withFeaturesProvider(FeatureComponent, () => features)
+
+    const { container } = render(<Wrapped>{componentText}</Wrapped>)
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const innerText = getNodeText(container.querySelector('div')!)
+
+    expect(innerText).toEqual(componentText)
+  })
+  it('initialize context with object', () => {
     const Wrapped = withFeaturesProvider(FeatureComponent, features)
 
     const { container } = render(<Wrapped>{componentText}</Wrapped>)
