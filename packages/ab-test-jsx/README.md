@@ -8,7 +8,7 @@
 
 # ab-test-jsx
 
-React (JS) based client for consuming AB tests logic in your app.
+React (JS) based client for consuming AB test logic in your app.
 
 ```bash
 yarn add ab-test-jsx
@@ -20,13 +20,13 @@ npm install ab-test-jsx --save
 
 # Setup
 
-> 👉 Since `ab-test-jsx` is just a consumer library for your AB tests, you need to provide it with results of your allocation to tests running on the client. Its advised to to the allocation on the server side and simply hydrate the application with allocation state on first render.
+> 👉 `ab-test-jsx` is a consumer library for AB tests, provide results of allocation to running tests on the client. It's advised to  allocate on the server-side and simply hydrate the application with allocation state on first render.
 
-`ab-test-jsx` uses ContextAPI to provide allocation information to components via Components/Hook/HOC. You need to set up the ContextAPI provided before you can consume the AB tests allocation results in underlying components. To do so, you can use `ABTestsProvider` or higher order component - `withABTestsProvider`
+`ab-test-jsx` uses the ContextAPI to provide allocation information to components via Components/Hook/HOC. Set-up the ContextAPI provider before consuming the AB test allocation results in child components. Either use `ABTestsProvider` or the higher order component - `withABTestsProvider`
 
 ## `<ABTestsProvider />` component
 
-Your app should we wrapped at the root level, pass the ab tests allocation results object using the `abTests` prop:
+The app should be wrapped at the root level. Pass the ab tests allocation results object using the `abTests` prop:
 
 ```js
 <ABTestsProvider abTests={abTests}>
@@ -36,13 +36,13 @@ Your app should we wrapped at the root level, pass the ab tests allocation resul
 
 ## `withABTestsProvider` Higher Order Component
 
-You can wrap export of your application root with the HOC and pass the ab tests allocation results object using param:
+Wrap export of application root with the HOC and pass the ab tests allocation results object using param:
 
 ```js
 const WrappedApp = withABTestsProvider(App, abTests)
 ```
 
-You can also use a function that will return `abTests` - this way you can access some data from props when decorating the component:
+It's also possible to use a function that will return `abTests` - to access data from props when decorating the component:
 
 ```js
 const abTestsSelector = props => props.tests
@@ -51,7 +51,7 @@ const WrappedApp = withABTestsProvider(App, abTestsSelector)
 
 ## `ABTests` context
 
-Your abTests, or allocation results, should be an object (dictionary) that specifies the name of the test (key) and allocated variant of that test for the session: `A` or `B`:
+AB tests or allocation results should be an object (dictionary) that specifies the name of the test (key) and allocated variant of that test for the session: `A` or `B`:
 
 ```ts
 type Variant = 'A' | 'B'
@@ -63,7 +63,7 @@ interface ABTests {
 
 # Usage
 
-There are multiple ways of accessing AB tests allocation results in your components. You can compose your JSX tree with `ABTest` component, use `useABTests` hook to access some getter functions, or experiment with conditional rendering of 2 components as single one based on allocation result - `withABTest`. For custom logic, you can always decorate your components props with the abTests context by using `withABTests` HOC.
+There are multiple ways of accessing AB tests allocation results in components. Either compose the JSX tree with `ABTest` component, use `useABTests` hook to access some getter functions, or experiment with conditional rendering of 2 components as single one based on allocation result - `withABTest`. For custom logic, always decorate components props with the abTests context by using `withABTests` HOC.
 
 ## `<ABTest />` component
 
@@ -80,7 +80,7 @@ There are multiple ways of accessing AB tests allocation results in your compone
 
 In above example, if user gets _A_ variant of the test `changeHeaderSize`, they will get layout based on `h1` heading size. For _B_ variant, user gets `h2` as heading.
 
-> 💡 Note that when composing ab tests, you don't need to keep A & B variants of `<ABTest /> next to each other, as well you are not limited to single usage - you can wrap as many children as you wish, as long as they are in same tree as Context Provider
+> 💡 Note that when composing AB tests, don't  keep A & B variants of `<ABTest /> next to each other, as well you are not limited to single usage. It's possible to wrap as many children as needed as long as they are in same tree as Context Provider
 
 ##### API
 
@@ -94,7 +94,7 @@ In above example, if user gets _A_ variant of the test `changeHeaderSize`, they 
 
 ## `useABTests()` hook
 
-You can use the `useABTests()` React hook to access the AB tests related values in your functional components. Hook will return an object with 3 functions that can be called to evaluate allocation:
+Use the `useABTests()` React hook to access the AB tests related values in functional components. Hook will return an object with 3 functions that can be called to evaluate allocation:
 
 ```js
 const Header: React.FC = () => {
@@ -106,7 +106,7 @@ const Header: React.FC = () => {
 }
 ```
 
-You can only grab function that is needed for your use case - example above just lists them all. Since this is simple object destructuring, you can for example, pick only `isB()` from the hook:
+Use a function that is needed for each use case - example above lists them all. Since this is simple object destructuring use `isB()` from the hook:
 
 ```js
 const { isB } = useABTests()
@@ -124,13 +124,13 @@ const { isB } = useABTests()
 
 ## `withABTest` Higher Order Component
 
-Sometimes you have 2 different components that are suposed to be 2 different variants of AB tests. Lets say you implemented new complex Header layout and you want to render it only for B variant users:
+USE if there are 2 different components that are suposed to be 2 different variants of AB tests. Lets say you implemented new complex Header layout and you want to render it only for B variant users:
 
 ```js
 const HeaderUnderABTest = withABTest(Header, NewHeader, 'useNewHeader')
 ```
 
-In above example, Header is A variant component, NewHeader is our B variant component, and 3rd parameter is the test name. Props of both A and B variants are both merged together so you can now easly use the tested component in code:
+In above example, Header is A variant component, NewHeader is our B variant component, and 3rd parameter is the test name. Props of both A and B variants are both merged together so it's easier to use the tested component in code:
 
 ```js
 <HeaderUnderABTest somePropFromHeader={1} anotherPropButFromNewHeader={2} />
@@ -148,7 +148,7 @@ Returns a component that will conditionally render either A or B variant paramet
 
 ## `withABTests` Higher Order Component
 
-If you need to pass all experiments from context as props into your component, you can use `withABTests` Higher Order Component. It will decorate your component with `abTests` prop containing all allocation data:
+If you need to pass all experiments from context as props into a component, use `withABTests` Higher Order Component. It will decorate the component with `abTests` prop containing all allocation data:
 
 ```js
 const SomeComponent = ({ text, abTests }) => (
@@ -164,7 +164,7 @@ const SomeComponentWithABTests = withABTests(SomeComponent)
 
 # Typescript support
 
-The library supports fully typed experience for allocation data as well as all components. To ensure type safety with AB tests names, you need to provide type defining your schema as generic argument as follows:
+The library supports fully typed experience for allocation data as well as all components. To ensure type safety with AB tests names provide a type defining schema as a generic argument:
 
 ```ts
 import * as ABTestJsx from 'ab-test-jsx'
@@ -184,7 +184,7 @@ const {
 } = ABTestJsx as ABTestJsx.ABTestsModule<TestsSchema>
 ```
 
-You should use those exports instead of going with library directly, and all your AB tests names will become type checked against the declared schema!
+Use exports instead of going with library directly, and all AB tests names will become type checked against the declared schema!
 
 Following example will result in type checking error, since `test3` is not a property that exists on `TestsSchema` type:
 
