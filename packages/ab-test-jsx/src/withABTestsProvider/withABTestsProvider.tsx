@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { ABTests } from '../ABTestsContext'
 import ABTestsProvider from '../ABTestsProvider'
+import { nameOf } from '../react-utils'
 
 export type withABTestsProviderHoC<T extends ABTests> = <TProps extends {}>(
   Component: React.ComponentType<TProps>,
@@ -22,7 +23,7 @@ const withABTestsProvider = <T extends ABTests, TProps extends {}>(
     )
   })
 
-  Wrapped.displayName = `withABTestsProvider(${Component.displayName})`
+  Wrapped.displayName = `withABTestsProvider(${nameOf(Component)})`
   return Wrapped
 }
 

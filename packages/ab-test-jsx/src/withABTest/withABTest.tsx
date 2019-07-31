@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { ABTests } from '../ABTestsContext'
 import useABTests from '../useABTests'
+import { nameOf } from '../react-utils'
 
 export type withABTestHoC<T extends ABTests> = <
   TAProps extends {},
@@ -32,7 +33,7 @@ const withABTest = <
     }
   })
 
-  Wrapped.displayName = `withABTest(A:${AVariantComponent.displayName}, B:${BVariantComponent.displayName})`
+  Wrapped.displayName = `withABTest(A:${nameOf(AVariantComponent)}, B:${nameOf(BVariantComponent)})`
   return Wrapped
 }
 

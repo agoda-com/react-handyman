@@ -1,5 +1,6 @@
 import * as React from 'react'
 import ABTestsContext, { ABTests } from '../ABTestsContext'
+import { nameOf } from '../react-utils'
 
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 
@@ -16,7 +17,7 @@ const withABTests = <TProps extends { abTests: TABTests }, TABTests extends ABTe
     return <Component {...(props as TProps)} abTests={abTests} />
   })
 
-  Wrapped.displayName = `withABTests(${Component.displayName})`
+  Wrapped.displayName = `withABTests(${nameOf(Component)})`
   return Wrapped
 }
 
