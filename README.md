@@ -9,12 +9,65 @@ This is a monorepo containing all packages that can help you extend functionalit
 
 ---
 
+# [ab-test-jsx](/packages/ab-test-jsx)
+
+[![npm](https://img.shields.io/npm/v/ab-test-jsx.svg)](https://www.npmjs.com/package/ab-test-jsx)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/ab-test-jsx.svg)](https://bundlephobia.com/result?p=ab-test-jsx)
+[![Build Status](https://travis-ci.org/matmalkowski/react-handyman.svg?branch=master)](https://travis-ci.org/matmalkowski/react-handyman)
+[![Coverage Status](https://coveralls.io/repos/github/matmalkowski/react-handyman/badge.svg?branch=master&service=github)](https://coveralls.io/github/matmalkowski/react-handyman?branch=master)
+
+React (JS) based client for consuming AB test logic in your app.
+
+Do conditional rendering based on experiment allocation in your JSX with help of `ABTest` component:
+
+```jsx
+import { ABTest } from 'ab-test-jsx'
+
+const Header: React.FC = () => (
+  <>
+    <ABTest name="header-experiment" variant="A">
+      <h1>Old header implementation</span>
+    </ABTest>
+    <ABTest name="header-experiment" variant="B">
+      <h2>New header!</h2>
+    </ABTest>
+  </>
+)
+```
+
+Use custom hook to access allocation results and implement custom logic in your components:
+
+```jsx
+const SearchBox: React.FC = () => {
+  const { isB } = useABTests()
+  const apiEndpoint = isB('use-new-api') ? newApiUrl : apiUrl
+  return <Autocomplete api={apiEndpoint} />
+}
+```
+
+Please see more examples, detailed documentation and other available components in the [package README file](/packages/ab-test-jsx)!
+
+---
+
+# [feature-toggle-jsx](/packages/feature-toggle-jsx)
+
+[![npm](https://img.shields.io/npm/v/feature-toggle-jsx.svg)](https://www.npmjs.com/package/feature-toggle-jsx)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/feature-toggle-jsx.svg)](https://bundlephobia.com/result?p=feature-toggle-jsx)
+[![Build Status](https://travis-ci.org/matmalkowski/react-handyman.svg?branch=master)](https://travis-ci.org/matmalkowski/react-handyman)
+[![Coverage Status](https://coveralls.io/repos/github/matmalkowski/react-handyman/badge.svg?branch=master&service=github)](https://coveralls.io/github/matmalkowski/react-handyman?branch=master)
+
+Toggle visibility of your react components based on features configuration of your app.
+
+Check out details and more examples in [package README file](/packages/feature-toggle-jsx).
+
+---
+
+# [i18n-jsx](/packages/i18n-jsx)
+
 [![npm](https://img.shields.io/npm/v/i18n-jsx.svg)](https://www.npmjs.com/package/i18n-jsx)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/i18n-jsx.svg)](https://bundlephobia.com/result?p=i18n-jsx)
 [![Build Status](https://travis-ci.org/matmalkowski/react-handyman.svg?branch=master)](https://travis-ci.org/matmalkowski/react-handyman)
 [![Coverage Status](https://coveralls.io/repos/github/matmalkowski/react-handyman/badge.svg?branch=master&service=github)](https://coveralls.io/github/matmalkowski/react-handyman?branch=master)
-
-# [i18n-jsx](/packages/i18n-jsx)
 
 React (JS) text internationalization and externalizing. Supports string formatting and fallback to default values.
 
@@ -44,12 +97,14 @@ I18nExamples component will render:
 
 Check out details and more examples in [package README file](/packages/i18n-jsx).
 
+---
+
+# [format-to-jsx](/packages/format-to-jsx)
+
 [![npm](https://img.shields.io/npm/v/format-to-jsx.svg)](https://www.npmjs.com/package/format-to-jsx)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/format-to-jsx.svg)](https://bundlephobia.com/result?p=format-to-jsx)
 [![Build Status](https://travis-ci.org/matmalkowski/react-handyman.svg?branch=master)](https://travis-ci.org/matmalkowski/react-handyman)
 [![Coverage Status](https://coveralls.io/repos/github/matmalkowski/react-handyman/badge.svg?branch=master&service=github)](https://coveralls.io/github/matmalkowski/react-handyman?branch=master)
-
-# [format-to-jsx](/packages/format-to-jsx)
 
 Easy string formatting with support of injecting JSX elements and object based params
 
@@ -65,6 +120,8 @@ format('Example {1} with different placeholders order {0}', 1, <strong>2</strong
 ```
 
 Check out details and more examples in [package README file](/packages/format-to-jsx).
+
+---
 
 ## Contributors
 
