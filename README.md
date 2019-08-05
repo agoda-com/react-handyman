@@ -58,6 +58,15 @@ Please see more examples, detailed documentation and other available components 
 
 Toggle visibility of your react components based on features configuration of your app.
 
+```jsx
+// HOC
+export default withFeature(ChatComponent, 'chat')
+export default withoutFeature(PlaceholderComponent, 'chat')
+
+// Hook
+const [chat, chatv2] = useFeatures('chat', 'chatv2')
+```
+
 Check out details and more examples in [package README file](/packages/feature-toggle-jsx).
 
 ---
