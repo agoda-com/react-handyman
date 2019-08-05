@@ -8,6 +8,14 @@
     "type": "git",
     "url": "https://github.com/matmalkowski/react-handyman.git"
   },
+  "keywords": [
+    "react",
+    "string formatting",
+    "formatting",
+    "jsx",
+    "string format",
+    "format"
+  ],
   "main": "lib/format-to-jsx.cjs.js",
   "module": "lib/format-to-jsx.esm.js",
   "browser": "lib/format-to-jsx.umd.js",

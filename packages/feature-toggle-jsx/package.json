@@ -8,6 +8,11 @@
     "type": "git",
     "url": "https://github.com/matmalkowski/react-handyman.git"
   },
+  "keywords": [
+    "react",
+    "feature toggle",
+    "toggle"
+  ],
   "main": "lib/feature-toggle-jsx.cjs.js",
   "module": "lib/feature-toggle-jsx.esm.js",
   "browser": "lib/feature-toggle-jsx.umd.js",
@@ -39,7 +44,7 @@
     "watch": "npm-run-all --parallel watch:*",
     "watch:code": "rollup -c -w",
     "watch:types": "yarn emit-declarations --watch",
-    "typecheck": "tsc",    
+    "typecheck": "tsc",
     "emit-declarations": "tsc -p tsconfig.build.json -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
   }
 }

@@ -8,6 +8,12 @@
     "type": "git",
     "url": "https://github.com/matmalkowski/react-handyman.git"
   },
+  "keywords": [
+    "react",
+    "i18n",
+    "translations",
+    "internationalization"
+  ],
   "main": "lib/i18n-jsx.cjs.js",
   "module": "lib/i18n-jsx.esm.js",
   "browser": "lib/i18n-jsx.umd.js",

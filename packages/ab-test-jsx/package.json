@@ -4,6 +4,19 @@
   "version": "0.0.0-development",
   "license": "MIT",
   "author": "Maciej Malkowski <monkey3310@gmail.com>",
+  "keywords": [
+    "react",
+    "ab",
+    "A/B",
+    "ab test",
+    "A/B test",
+    "ab testing",
+    "A/B testing",
+    "utils",
+    "experiment",
+    "ab-test",
+    "react component"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/matmalkowski/react-handyman.git"
