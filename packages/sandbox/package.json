@@ -15,7 +15,7 @@
     "ab-test-jsx": "0.0.0-development",
     "feature-toggle-jsx": "0.0.0-development",
     "i18n-jsx": "0.0.0-development",
-    "react": "16.8.6",
+    "react": "16.9.0",
     "react-dom": "16.8.6"
   },
   "scripts": {
