@@ -24,7 +24,7 @@
     "@testing-library/react": "8.0.7",
     "@types/react": "16.8.24",
     "nodecat": "2.0.0",
-    "react": "16.8.6",
+    "react": "16.9.0",
     "rimraf": "2.6.3",
     "rollup": "1.19.3",
     "rollup-plugin-babel": "4.3.2",
