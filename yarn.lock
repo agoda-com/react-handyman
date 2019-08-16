@@ -6576,10 +6576,10 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
-format-to-jsx@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/format-to-jsx/-/format-to-jsx-1.0.1.tgz#f7e16d77ae4661dd44554bc2f275e5cb3e2df071"
-  integrity sha512-o6wnNlZi1QnfKDIgSdyTFbx/cjWIddNdjAG56V2zSLfeUJM+9vD1PaKYwO+dbgMFvqf1oC9caLHkt88grp/zyA==
+format-to-jsx@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/format-to-jsx/-/format-to-jsx-1.0.3.tgz#64215c80f56b87d4aa8f90c1a49dfcbb3b0b5fa5"
+  integrity sha512-VP9MAS+bct3sT/tTGJePqsXYIhRWqo6UBvPLmtioxqm9oZBzpKknICGrTSMw5HLyF3Bximlsa9+ADCo655z3cQ==
 
 forwarded@~0.1.2:
   version "0.1.2"

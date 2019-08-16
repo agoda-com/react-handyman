@@ -22,7 +22,7 @@
     "react": "^16.8.6"
   },
   "dependencies": {
-    "format-to-jsx": "^1.0.1"
+    "format-to-jsx": "^1.0.3"
   },
   "devDependencies": {
     "@testing-library/react": "9.1.2",
