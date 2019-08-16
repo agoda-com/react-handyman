@@ -131,15 +131,19 @@ describe('format()', () => {
     expect(consoleError).toHaveBeenCalledTimes(0)
   })
 
-  it('should format correctly with with string based indexes and an object param', () => {
+  it('should format correctly with string based indexes and an object param', () => {
     expect(format('{two} {one}', { one: 1, two: 2 })).toBe('2 1')
   })
 
-  it('should format correctly with with number based indexes and an object param', () => {
+  it('should format correctly with number based indexes and an object param', () => {
     expect(format('{1} {0}', { 0: 1, 1: 2 })).toBe('2 1')
   })
 
-  it('should format correctly with with string based indexes and an object param with JSX', () => {
+  it('should format correctly with zero in params', () => {
+    expect(format('{0} {1}', { 0: 0, 1: 1 })).toBe('0 1')
+  })
+
+  it('should format correctly with string based indexes and an object param with JSX', () => {
     expect(format('{one} {two}', { one: 1, two: <span>text inside 2</span> })).toMatchSnapshot()
   })
 })

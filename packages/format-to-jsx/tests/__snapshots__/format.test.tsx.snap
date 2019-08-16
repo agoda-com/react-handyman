@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`format() should format correctly with with string based indexes and an object param with JSX 1`] = `
+exports[`format() should format correctly with string based indexes and an object param with JSX 1`] = `
 <React.Fragment>
   
   1
