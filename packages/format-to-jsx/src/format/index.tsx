@@ -49,7 +49,7 @@ const format = <TArgs extends FArgs>(
       const key = value
       const replaceValue = argsDictionary[key]
 
-      if (replaceValue) {
+      if (key in argsDictionary) {
         if (typeof replaceValue !== 'string' && typeof replaceValue !== 'number') {
           containsJSX = true
         }
