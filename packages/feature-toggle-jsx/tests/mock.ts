@@ -10,6 +10,7 @@ export interface Features {
   disabledFeatureWithConfig: FeatureWithConfig
 }
 
+// eslint-disable-next-line import/prefer-default-export
 export const features: Partial<Features> = {
   simpleFeature: {},
   featureWithConfig: { items: ['these', 'are', 'my', 'config', 'items'] },
