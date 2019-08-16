@@ -19,18 +19,18 @@
   "browser": "lib/i18n-jsx.umd.js",
   "types": "lib/index.d.ts",
   "peerDependencies": {
-    "react": "16.8.6"
+    "react": "^16.8.6"
   },
   "dependencies": {
     "format-to-jsx": "^1.0.1"
   },
   "devDependencies": {
-    "@testing-library/react": "8.0.7",
-    "@types/react": "16.8.24",
+    "@testing-library/react": "9.1.2",
+    "@types/react": "16.8.25",
     "nodecat": "2.0.0",
-    "react": "16.8.6",
-    "rimraf": "2.6.3",
-    "rollup": "1.19.3",
+    "react": "16.9.0",
+    "rimraf": "2.7.0",
+    "rollup": "1.19.4",
     "rollup-plugin-babel": "4.3.2",
     "rollup-plugin-node-resolve": "5.0.1",
     "rollup-plugin-terser": "5.0.0",
