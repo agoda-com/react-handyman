@@ -23,10 +23,10 @@
       "avatar_url": "https://avatars2.githubusercontent.com/u/1188327?v=4",
       "profile": "https://github.com/znut",
       "contributions": [
-        "review",
         "code",
         "doc",
-        "test"
+        "test",
+        "review"
       ]
     },
     {
@@ -45,8 +45,8 @@
       "profile": "https://github.com/nickyshannon",
       "contributions": [
         "code",
-        "review",
-        "test"
+        "test",
+        "review"
       ]
     },
     {
