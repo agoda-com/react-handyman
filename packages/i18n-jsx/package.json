@@ -25,7 +25,7 @@
     "format-to-jsx": "^1.0.3"
   },
   "devDependencies": {
-    "@testing-library/react": "9.1.2",
+    "@testing-library/react": "9.1.3",
     "@types/react": "16.8.25",
     "nodecat": "2.0.0",
     "react": "16.9.0",
