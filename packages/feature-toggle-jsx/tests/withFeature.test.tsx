@@ -53,6 +53,68 @@ describe('withFeature()', () => {
     expect(container.textContent).toContain(configText(features.featureWithConfig!.items))
   })
 
+  it('render component with valid feature detail', () => {
+    interface Props {
+      featureWithConfig: FeatureWithConfig
+      text: string
+    }
+    const NeedConfigComponent: React.FC<Props> = props => {
+      const { text, featureWithConfig } = props
+      return (
+        <div>
+          {text} {configText(featureWithConfig.items)}
+        </div>
+      )
+    }
+
+    const Wrapped = withFeature<Features, Props>(
+      NeedConfigComponent,
+      'featureWithConfig',
+      (feature: FeatureWithConfig) => {
+        return feature.items.length > 1
+      }
+    )
+
+    const { container } = render(
+      <FeatureProvider features={features}>
+        <Wrapped text={componentText} />
+      </FeatureProvider>
+    )
+
+    expect(container.textContent).toContain(componentText)
+  })
+
+  it('not render component with invalid feature detail', () => {
+    interface Props {
+      featureWithConfig: FeatureWithConfig
+      text: string
+    }
+    const NeedConfigComponent: React.FC<Props> = props => {
+      const { text, featureWithConfig } = props
+      return (
+        <div>
+          {text} {configText(featureWithConfig.items)}
+        </div>
+      )
+    }
+
+    const Wrapped = withFeature<Features, Props>(
+      NeedConfigComponent,
+      'featureWithConfig',
+      (features: FeatureWithConfig) => {
+        return features.items.length == 0
+      }
+    )
+
+    const { container } = render(
+      <FeatureProvider features={features}>
+        <Wrapped text={componentText} />
+      </FeatureProvider>
+    )
+
+    expect(container.textContent).not.toContain(componentText)
+  })
+
   it('not render component when feature flag is disabled', () => {
     const Wrapped = withFeature<Features>(NoConfigComponent, 'disabledFeature')
 
