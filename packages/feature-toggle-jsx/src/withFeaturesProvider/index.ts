@@ -1,3 +1,3 @@
-import withFeaturesProvider from './withFeaturesProvider'
+import withFeaturesProvider from './withFeaturesProvider';
 
-export default withFeaturesProvider
+export default withFeaturesProvider;

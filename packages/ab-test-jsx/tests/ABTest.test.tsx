@@ -1,25 +1,25 @@
-import React from 'react'
-import { render, cleanup } from '@testing-library/react'
-import * as ABTestJsx from '../src/index'
+import React from 'react';
+import { render, cleanup } from '@testing-library/react';
+import * as ABTestJsx from '../src/index';
 
 type Tests = {
   test1: ABTestJsx.Variant
   test2: ABTestJsx.Variant
 }
 
-const { ABTest, ABTestsProvider } = ABTestJsx as ABTestJsx.ABTestsModule<Tests>
+const { ABTest, ABTestsProvider } = ABTestJsx as ABTestJsx.ABTestsModule<Tests>;
 
 describe('ABTest', () => {
   afterEach(() => {
-    cleanup()
-    jest.clearAllMocks()
-  })
+    cleanup();
+    jest.clearAllMocks();
+  });
 
   it('if test is evaluated as A, should render only A variant children', () => {
     const abTests: Tests = {
       test1: 'A',
-      test2: 'B',
-    }
+      test2: 'B'
+    };
 
     const UnderTest: React.FC = () => (
       <>
@@ -30,22 +30,22 @@ describe('ABTest', () => {
           <span>test1=B</span>
         </ABTest>
       </>
-    )
+    );
 
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>
-    )
+      </ABTestsProvider>,
+    );
 
-    expect(container.textContent).toEqual('test1=A')
-  })
+    expect(container.textContent).toEqual('test1=A');
+  });
 
   it('if test is evaluated as B, should render only B variant children', () => {
     const abTests: Tests = {
       test1: 'A',
-      test2: 'B',
-    }
+      test2: 'B'
+    };
 
     const UnderTest: React.FC = () => (
       <>
@@ -56,22 +56,22 @@ describe('ABTest', () => {
           <span>test2=B</span>
         </ABTest>
       </>
-    )
+    );
 
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>
-    )
+      </ABTestsProvider>,
+    );
 
-    expect(container.textContent).toEqual('test2=B')
-  })
+    expect(container.textContent).toEqual('test2=B');
+  });
 
   it('should render correct variants for multiple experiments', () => {
     const abTests: Tests = {
       test1: 'A',
-      test2: 'B',
-    }
+      test2: 'B'
+    };
 
     const UnderTest: React.FC = () => (
       <>
@@ -88,22 +88,22 @@ describe('ABTest', () => {
           <span>test2=B</span>
         </ABTest>
       </>
-    )
+    );
 
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>
-    )
+      </ABTestsProvider>,
+    );
 
-    expect(container.textContent).toEqual('test1=A,test2=B')
-  })
+    expect(container.textContent).toEqual('test1=A,test2=B');
+  });
 
   it('should not render A nor B variant if experiment cannot be evaluated (Z)', () => {
     const abTests: Tests = {
       test1: 'A',
-      test2: 'B',
-    }
+      test2: 'B'
+    };
 
     const UnderTest: React.FC = () => (
       <>
@@ -117,14 +117,14 @@ describe('ABTest', () => {
           <span>test3(not-allocated)=B</span>
         </ABTestJsx.ABTest>
       </>
-    )
+    );
 
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>
-    )
+      </ABTestsProvider>,
+    );
 
-    expect(container.textContent).toEqual('test1=A')
-  })
-})
+    expect(container.textContent).toEqual('test1=A');
+  });
+});

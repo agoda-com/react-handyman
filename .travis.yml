@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - '10'
+env:
+  - GK_LOCK_YARN_OPTS='-W'
+
 # install newest yarn
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash

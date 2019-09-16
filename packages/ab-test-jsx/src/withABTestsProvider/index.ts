@@ -1,3 +1,3 @@
-import withABTestsProvider from './withABTestsProvider'
+import withABTestsProvider from './withABTestsProvider';
 
-export default withABTestsProvider
+export default withABTestsProvider;

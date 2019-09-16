@@ -1,3 +1,3 @@
-import withoutFeature from './withoutFeature'
+import withoutFeature from './withoutFeature';
 
-export default withoutFeature
+export default withoutFeature;

@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Translations } from './types'
+import * as React from 'react';
+import { Translations } from './types';
 
-const TranslationsContext = React.createContext<Translations>({})
+const TranslationsContext = React.createContext<Translations>({});
 
-export default TranslationsContext
+export default TranslationsContext;

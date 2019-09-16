@@ -1,3 +1,3 @@
-import useFeatures from './useFeatures'
+import useFeatures from './useFeatures';
 
-export default useFeatures
+export default useFeatures;

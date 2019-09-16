@@ -1,4 +1,4 @@
-import ABTestsContext from './ABTestsContext'
+import ABTestsContext from './ABTestsContext';
 
-export * from './types'
-export default ABTestsContext
+export * from './types';
+export default ABTestsContext;

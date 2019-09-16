@@ -1,4 +1,4 @@
-import { FArgs, FArgsPrimitives } from '../utils/types'
+import { FArgs, FArgsPrimitives } from '../utils/types';
 
 // eslint-disable-next-line import/prefer-default-export
 export type I18nSelector = <TArgs extends FArgs>(

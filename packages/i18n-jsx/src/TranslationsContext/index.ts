@@ -1,4 +1,4 @@
-import TranslationsContext from './TranslationsContext'
+import TranslationsContext from './TranslationsContext';
 
-export * from './types'
-export default TranslationsContext
+export * from './types';
+export default TranslationsContext;

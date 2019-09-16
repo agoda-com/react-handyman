@@ -1,3 +1,3 @@
-import FeaturesContext from './FeaturesContext'
+import FeaturesContext from './FeaturesContext';
 
-export default FeaturesContext
+export default FeaturesContext;

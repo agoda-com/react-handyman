@@ -1,5 +1,5 @@
-import * as React from 'react'
+import * as React from 'react';
 
-const ABTestsContext = React.createContext({})
+const ABTestsContext = React.createContext({});
 
-export default ABTestsContext
+export default ABTestsContext;

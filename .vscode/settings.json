@@ -1,15 +1,11 @@
 {
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": true
-  },
+  
   "files.exclude": {
     "**/build": true,
     "**/coverage": true,
     "**/lib": true,
     "**/node_modules": true
   },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "eslint.validate": [
     {
       "language": "typescript",
@@ -21,6 +17,10 @@
     }
   ],
   "eslint.options": {
-    "extensions": ".ts,.tsx"
-  }
+    "extensions": [".ts", ".tsx"]
+  },
+  "typescript.tsdk": "node_modules\\typescript\\lib",
+
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true
 }

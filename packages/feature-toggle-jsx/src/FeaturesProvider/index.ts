@@ -1,3 +1,3 @@
-import FeaturesProvider from './FeaturesProvider'
+import FeaturesProvider from './FeaturesProvider';
 
-export default FeaturesProvider
+export default FeaturesProvider;
