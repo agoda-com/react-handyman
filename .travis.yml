@@ -5,15 +5,18 @@ node_js:
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash
   - export PATH="$HOME/.yarn/bin:$PATH"
-
+install:
+  - npm install -g codecov
 before_script:
   - yarn install
 script:
   - yarn build
   - yarn typecheck
   - yarn lint
-  - yarn test
-  - yarn coveralls
+  - yarn test:coverage
+
+after_success:
+  - codecov
 
 deploy:
   provider: script
