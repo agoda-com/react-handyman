@@ -1,7 +1,7 @@
 [![npm](https://img.shields.io/npm/v/ab-test-jsx.svg)](https://www.npmjs.com/package/ab-test-jsx)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/ab-test-jsx.svg)](https://bundlephobia.com/result?p=ab-test-jsx)
 [![Build Status](https://travis-ci.org/matmalkowski/react-handyman.svg?branch=master)](https://travis-ci.org/matmalkowski/react-handyman)
-[![Coverage Status](https://coveralls.io/repos/github/matmalkowski/react-handyman/badge.svg?branch=master&service=github)](https://coveralls.io/github/matmalkowski/react-handyman?branch=master)
+[![codecov](https://codecov.io/gh/matmalkowski/react-handyman/branch/master/graph/badge.svg)](https://codecov.io/gh/matmalkowski/react-handyman)
 [![Greenkeeper badge](https://badges.greenkeeper.io/matmalkowski/react-handyman.svg)](https://greenkeeper.io/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
@@ -20,7 +20,7 @@ npm install ab-test-jsx --save
 
 # Setup
 
-> 👉 `ab-test-jsx` is a consumer library for AB tests, provide results of allocation to running tests on the client. It's advised to  allocate on the server-side and simply hydrate the application with allocation state on first render.
+> 👉 `ab-test-jsx` is a consumer library for AB tests, provide results of allocation to running tests on the client. It's advised to allocate on the server-side and simply hydrate the application with allocation state on first render.
 
 `ab-test-jsx` uses the ContextAPI to provide allocation information to components via Components/Hook/HOC. Set-up the ContextAPI provider before consuming the AB test allocation results in child components. Either use `ABTestsProvider` or the higher order component - `withABTestsProvider`
 
@@ -80,7 +80,7 @@ There are multiple ways of accessing AB tests allocation results in components. 
 
 In above example, if user gets _A_ variant of the test `changeHeaderSize`, they will get layout based on `h1` heading size. For _B_ variant, user gets `h2` as heading.
 
-> 💡 Note that when composing AB tests, don't  keep A & B variants of `<ABTest /> next to each other, as well you are not limited to single usage. It's possible to wrap as many children as needed as long as they are in same tree as Context Provider
+> 💡 Note that when composing AB tests, don't keep A & B variants of `<ABTest /> next to each other, as well you are not limited to single usage. It's possible to wrap as many children as needed as long as they are in same tree as Context Provider
 
 ##### API
 

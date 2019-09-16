@@ -21,7 +21,6 @@
     "@typescript-eslint/eslint-plugin": "^2.2.0",
     "@typescript-eslint/parser": "^2.2.0",
     "commitizen": "4.0.3",
-    "coveralls": "3.0.6",
     "cz-conventional-changelog": "3.0.2",
     "eslint": "^6.4.0",
     "eslint-config-airbnb": "^18.0.1",
@@ -44,7 +43,7 @@
     "watch": "lerna run --parallel watch",
     "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore ./packages/",
     "test": "jest",
-    "coveralls": "jest --coverage && nodecat ./coverage/lcov.info | coveralls",
+    "test:coverage": "jest --coverage",
     "semantic-release": "lerna run --concurrency 1 semantic-release"
   },
   "jest": {
