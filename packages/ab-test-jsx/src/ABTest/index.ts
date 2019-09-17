@@ -1,3 +1,3 @@
-import ABTest from './ABTest'
+import ABTest from './ABTest';
 
-export default ABTest
+export default ABTest;

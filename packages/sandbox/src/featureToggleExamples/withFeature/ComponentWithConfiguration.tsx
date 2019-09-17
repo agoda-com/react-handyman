@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { withFeature } from 'feature-toggle-jsx'
-import { Features, Config } from '../types'
+import * as React from 'react';
+import { withFeature } from 'feature-toggle-jsx';
+import { Features, Config } from '../types';
 
 interface Props {
   // injected config from feature
@@ -23,10 +23,10 @@ const MyFeatureComponentWithConfig: React.FC<Props> = ({ myFeatureWithConfig: { 
       <span>{`with this configuration "${items.join(', ')}"`}</span>
     </p>
   </>
-)
+);
 
-const WrappedComponentWithConfig = withFeature<Features, Props>(MyFeatureComponentWithConfig, 'myFeatureWithConfig')
+const WrappedComponentWithConfig = withFeature<Features, Props>(MyFeatureComponentWithConfig, 'myFeatureWithConfig');
 
-export { WrappedComponentWithConfig }
+export { WrappedComponentWithConfig };
 
-export default MyFeatureComponentWithConfig
+export default MyFeatureComponentWithConfig;

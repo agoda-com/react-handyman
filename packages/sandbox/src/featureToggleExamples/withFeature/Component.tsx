@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { withFeature } from 'feature-toggle-jsx'
-import { Features } from '../types'
+import * as React from 'react';
+import { withFeature } from 'feature-toggle-jsx';
+import { Features } from '../types';
 
 interface Props {
   text: string
@@ -14,10 +14,10 @@ const MyFeatureComponent: React.FC<Props> = ({ text }) => (
       <span>You should see this {text}</span>
     </p>
   </>
-)
+);
 
-const WrappedComponent = withFeature<Features, Props>(MyFeatureComponent, 'myFeature')
+const WrappedComponent = withFeature<Features, Props>(MyFeatureComponent, 'myFeature');
 
-export { WrappedComponent }
+export { WrappedComponent };
 
-export default MyFeatureComponent
+export default MyFeatureComponent;

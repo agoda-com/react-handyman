@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { withoutFeature } from 'feature-toggle-jsx'
-import { Features } from '../types'
+import * as React from 'react';
+import { withoutFeature } from 'feature-toggle-jsx';
+import { Features } from '../types';
 
 const MyOtherFeatureComponent: React.FC<{}> = () => (
   <>
@@ -10,10 +10,10 @@ const MyOtherFeatureComponent: React.FC<{}> = () => (
       <span>You should see this when it&#39;s disabled !?</span>
     </p>
   </>
-)
+);
 
-const WrappedComponent = withoutFeature<Features>(MyOtherFeatureComponent, 'myOtherFeature')
+const WrappedComponent = withoutFeature<Features>(MyOtherFeatureComponent, 'myOtherFeature');
 
-export { WrappedComponent }
+export { WrappedComponent };
 
-export default MyOtherFeatureComponent
+export default MyOtherFeatureComponent;

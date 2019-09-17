@@ -1,3 +1,3 @@
-import useABTests from './useABTests'
+import useABTests from './useABTests';
 
-export default useABTests
+export default useABTests;

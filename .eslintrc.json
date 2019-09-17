@@ -3,7 +3,10 @@
   "parserOptions": {
     "project": "./tsconfig.json"
   },
-  "plugins": ["@typescript-eslint", "jest"],
+  "plugins": [
+    "@typescript-eslint",
+    "jest"
+  ],
   "extends": [
     "airbnb",
     "eslint:recommended",
@@ -11,24 +14,57 @@
     "plugin:@typescript-eslint/recommended"
   ],
   "rules": {
-    "@typescript-eslint/indent": ["warn", 2],
+    "indent": "off",
+    "@typescript-eslint/indent": [
+      "error",
+      2
+    ],
     "@typescript-eslint/member-delimiter-style": "off",
     "@typescript-eslint/explicit-function-return-type": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [
+          ".tsx"
+        ]
+      }
+    ],
     "react/jsx-one-expression-per-line": "off",
     "react/prop-types": "off",
-    "@typescript-eslint/prefer-interface": "off"
+    "@typescript-eslint/prefer-interface": "off",
+    "linebreak-style": "off",
+    "max-len": [
+      "error",
+      {
+        "code": 120,
+        "tabWidth": 2,
+        "ignoreTemplateLiterals": true,
+        "ignoreStrings": true,
+        "ignoreComments": true
+      }
+    ],
+    "comma-dangle": [
+      "error",
+      "never"
+    ],
+    "implicit-arrow-linebreak": "off"
   },
   "settings": {
     "import/resolver": {
       "node": {
-        "extensions": [".ts", ".tsx"]
+        "extensions": [
+          ".ts",
+          ".tsx"
+        ]
       }
     }
   },
   "overrides": [
     {
-      "files": ["packages/**/tests/**/*.test.ts", "packages/**/tests/**/*.test.tsx"],
+      "files": [
+        "packages/**/tests/**/*.test.ts",
+        "packages/**/tests/**/*.test.tsx"
+      ],
       "env": {
         "jest/globals": true
       },
@@ -45,7 +81,9 @@
         "jest/no-test-return-statement": "error",
         "jest/prefer-to-have-length": "warn",
         "jest/prefer-spy-on": "error",
-        "jest/valid-expect": "error"
+        "jest/valid-expect": "error",
+        "max-classes-per-file": "off",
+        "react/static-property-placement": "off"
       }
     }
   ]

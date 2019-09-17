@@ -1,3 +1,3 @@
-import withABTest from './withABTest'
+import withABTest from './withABTest';
 
-export default withABTest
+export default withABTest;

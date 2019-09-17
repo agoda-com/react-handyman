@@ -14,7 +14,7 @@ export interface Features {
 export const features: Partial<Features> = {
   simpleFeature: {},
   featureWithConfig: { items: ['these', 'are', 'my', 'config', 'items'] },
-  undefinedFeature: undefined,
-  //disabledFeature: {},
-  //disabledFeatureWithConfig: { items: ['these', 'are', 'my', 'config', 'items'] },
-}
+  undefinedFeature: undefined
+  // disabledFeature: {},
+  // disabledFeatureWithConfig: { items: ['these', 'are', 'my', 'config', 'items'] },
+};

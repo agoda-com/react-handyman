@@ -1,3 +1,3 @@
-import withFeature from './withFeature'
+import withFeature from './withFeature';
 
-export default withFeature
+export default withFeature;

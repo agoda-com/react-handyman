@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Variant, ABTests } from '../ABTestsContext'
-import useABTests from '../useABTests'
+import * as React from 'react';
+import { Variant, ABTests } from '../ABTestsContext';
+import useABTests from '../useABTests';
 
 interface OwnProps<T> {
   variant: Variant
@@ -11,14 +11,14 @@ type Props<T> = React.PropsWithChildren<OwnProps<T>>
 export type ABTestComponent<T extends ABTests> = React.FC<Props<T>>
 
 const ABTest = React.memo(<T extends ABTests>(props: Props<T>) => {
-  const { children, variant, name } = props
-  const { getVariant } = useABTests()
+  const { children, variant, name } = props;
+  const { getVariant } = useABTests();
 
   if (getVariant(name) === variant) {
-    return <>{children}</>
-  } else return null
-})
+    return <>{children}</>;
+  } return null;
+});
 
-ABTest.displayName = 'ABTest'
+ABTest.displayName = 'ABTest';
 
-export default ABTest
+export default ABTest;
