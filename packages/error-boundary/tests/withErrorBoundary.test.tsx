@@ -32,10 +32,8 @@ describe('<ErrorBoundary />', () => {
     const ComponentWithError = withErrorBoundary(DummyErrorComponent, 'component name', errorCallback);
 
     jest.spyOn(ComponentWithError.prototype, 'componentDidCatch');
-    const { asFragment } = render(<ComponentWithError {...defaultProps} />);
+    render(<ComponentWithError {...defaultProps} />);
     expect(ComponentWithError.prototype.componentDidCatch).toHaveBeenCalledTimes(1);
     expect(errorCallback).toHaveBeenCalledTimes(1);
-
-    expect(asFragment).toMatchSnapshot();
   });
 });

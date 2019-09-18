@@ -26,6 +26,8 @@ const withErrorBoundary = <TProps extends {}>(
       }
     }
 
+    // TODO add fallback component on error?
+
     render(): JSX.Element {
       return <Component {...this.props} />;
     }
