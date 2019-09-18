@@ -1,67 +1,40 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
+import * as FeatureToggleJsx from '../src/index';
 
-import useFeatures from '../src/useFeatures';
-import FeatureProvider from '../src/FeaturesProvider';
-import { Features, features } from './mock';
+interface CustomFeatureConfig extends FeatureToggleJsx.FeatureConfig {
+  someFeat: FeatureToggleJsx.Feature
+}
 
-const testWithComponent = (Component: React.ComponentType) => render(
-  <FeatureProvider features={features}>
-    <div>
-      <Component />
-    </div>
-  </FeatureProvider>,
-);
+const {
+  FeaturesProvider,
+  useFeatures
+} = FeatureToggleJsx as FeatureToggleJsx.FeatureToggleModule<CustomFeatureConfig>;
 
-describe('useFeature() hook', () => {
-  describe('when feature is enabled', () => {
-    it('return {} for simple feature', () => {
-      const Component: React.FC = () => {
-        const [feature] = useFeatures<Features>('simpleFeature');
-
-        expect(feature).toBe(features.simpleFeature);
-
-        return null;
-      };
-
-      expect(() => testWithComponent(Component)).not.toThrow();
-    });
-    it('return config object for feature with configuration', () => {
-      const Component: React.FC = () => {
-        const [feature] = useFeatures<Features, 'featureWithConfig'>('featureWithConfig');
-
-        expect(feature).toBe(features.featureWithConfig);
-
-        return null;
-      };
-
-      expect(() => testWithComponent(Component)).not.toThrow();
-    });
+describe('useFeatures', () => {
+  afterEach(() => {
+    cleanup();
+    jest.clearAllMocks();
   });
 
-  describe('when feature is not enabled', () => {
-    it('should return undefined when feature is not enabled', () => {
-      const Component: React.FC = () => {
-        const [feature] = useFeatures<Features>('disabledFeature');
+  it('should return isEnabled for specific feature from context', () => {
+    const featuresConfig: CustomFeatureConfig = {
+      someFeat: {
+        isEnabled: true
+      }
+    };
 
-        expect(feature).not.toBeDefined();
+    const UnderTest: React.FC = () => {
+      const features = useFeatures();
+      return <span>someFeat={`${features.someFeat.isEnabled}`}</span>;
+    };
 
-        return null;
-      };
+    const { container } = render(
+      <FeaturesProvider features={featuresConfig}>
+        <UnderTest />
+      </FeaturesProvider>,
+    );
 
-      expect(() => testWithComponent(Component)).not.toThrow();
-    });
-
-    it('should return undefined when feature with configuration is not enabled', () => {
-      const Component: React.FC = () => {
-        const [feature] = useFeatures<Features>('disabledFeatureWithConfig');
-
-        expect(feature).not.toBeDefined();
-
-        return null;
-      };
-
-      expect(() => testWithComponent(Component)).not.toThrow();
-    });
+    expect(container.textContent).toEqual('someFeat=true');
   });
 });

@@ -1,17 +1,24 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
+import { FeatureConfig } from '../FeaturesContext';
 import FeaturesProvider from '../FeaturesProvider';
 import { nameOf } from '../react-utils';
-import { FeatureSchema } from '../FeaturesContext/FeaturesContext';
 
-const withFeaturesProvider = <TComponentProps, TFeature>(
-  Component: React.ComponentType<TComponentProps>,
-  features: ((props: TComponentProps) => FeatureSchema<TFeature>) | FeatureSchema<TFeature>,
+export type withFeaturesProviderHoC<T extends FeatureConfig> = <TProps extends {}>(
+  Component: React.ComponentType<TProps>,
+  features: T | FeaturesSetter<TProps, T>
+) => React.FunctionComponent<TProps>
+
+type FeaturesSetter<TProps extends {}, T> = (componentProps: TProps) => T
+
+const withFeaturesProvider = <T extends FeatureConfig, TProps extends {}>(
+  Component: React.ComponentType<TProps>,
+  features: FeaturesSetter<TProps, T> | T,
 ) => {
-  const Wrapped: React.FC<TComponentProps> = React.memo((props) => {
-    const featureValues = typeof features === 'function' ? features(props) : features;
+  const Wrapped: React.FC<TProps> = React.memo((props) => {
+    const values = typeof features === 'function' ? features(props) : features;
     return (
-      <FeaturesProvider features={featureValues}>
+      <FeaturesProvider features={values}>
         <Component {...props} />
       </FeaturesProvider>
     );
