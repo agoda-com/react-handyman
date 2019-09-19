@@ -1,22 +1,36 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
-import useFeatures from '../useFeatures/useFeatures';
+import { FeatureConfig } from '../FeaturesContext';
+import useFeature from '../useFeature';
 import { nameOf } from '../react-utils';
-import { FeatureSchema } from '../FeaturesContext/FeaturesContext';
 
-// Need this to land in TypeScript first for better type inference
-// Link: https://github.com/Microsoft/TypeScript/issues/26242
-const withoutFeature = <T, TComponentProps = {}, K extends keyof FeatureSchema<T> = keyof FeatureSchema<T>>(
-  Component: React.ComponentType<TComponentProps>,
-  name: K,
+export type withoutFeatureHoC<TFeatureConfig extends FeatureConfig> = <
+  TOrigProps extends {},
+  TFeatureName extends Extract<keyof TFeatureConfig, string | number>
+>(
+  Component: React.ComponentType<TOrigProps>,
+  featureName: TFeatureName,
+  isEnabled?: (feature: TFeatureConfig[TFeatureName]) => boolean
+) => React.FC<TOrigProps>;
+
+const withoutFeature = <
+  TOrigProps extends {},
+  TFeatureConfig extends FeatureConfig,
+  TFeatureName extends Extract<keyof TFeatureConfig, string | number>
+>(
+  Component: React.ComponentType<TOrigProps>,
+  featureName: TFeatureName,
+  isEnabled: (feature: TFeatureConfig[TFeatureName]) => boolean = (_) => _.isEnabled
 ) => {
-  const Wrapped: React.FC<TComponentProps> = React.memo((props) => {
-    const [feature] = useFeatures<T, K>(name);
+  const Wrapped: React.FC<TOrigProps> = React.memo((props) => {
+    const [enabled] = useFeature(featureName, isEnabled);
 
-    return !feature ? <Component {...props} /> : null;
+    if (!enabled) return <Component {...props} />;
+
+    return null;
   });
 
-  Wrapped.displayName = `withoutFeature[${name}](${nameOf(Component)})`;
+  Wrapped.displayName = `withoutFeature[${featureName}](${nameOf(Component)})`;
   return Wrapped;
 };
 

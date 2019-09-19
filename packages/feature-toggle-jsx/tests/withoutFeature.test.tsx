@@ -1,40 +1,90 @@
 import * as React from 'react';
 import { render, cleanup } from '@testing-library/react';
+import * as FeatureToggleJsx from '../src/index';
 
-import FeatureProvider from '../src/FeaturesProvider';
-import withoutFeature from '../src/withoutFeature';
-import { Features, features } from './mock';
+type CustomFeatureFields = {
+  someCustomField: boolean,
+}
 
-const componentText = 'I am component.';
+type CustomFeatureConfig = {
+  feat1: FeatureToggleJsx.Feature & CustomFeatureFields
+  feat2: FeatureToggleJsx.Feature
+}
 
-const NoConfigComponent: React.FC = () => <div>{componentText}</div>;
+const {
+  withFeaturesProvider,
+  withoutFeature
+} = FeatureToggleJsx as FeatureToggleJsx.FeatureToggleModule<CustomFeatureConfig>;
 
-describe('withoutFeature()', () => {
+describe('withoutFeature', () => {
   afterEach(() => {
     cleanup();
     jest.clearAllMocks();
   });
-  it('render component when feature flag is disabled', () => {
-    const Wrapped = withoutFeature<Features>(NoConfigComponent, 'disabledFeature');
 
-    const { container } = render(
-      <FeatureProvider features={features}>
-        <Wrapped />
-      </FeatureProvider>,
+  it('should only render wrapped component when feature is on', () => {
+    const featuresConfig: CustomFeatureConfig = {
+      feat1: {
+        isEnabled: true,
+        someCustomField: false
+      },
+      feat2: {
+        isEnabled: false
+      }
+    };
+
+    const App: React.FC = ({ children }) => <div>{children}</div>;
+    const Feat1: React.FC = () => <span>This is feature 1</span>;
+    const Feat2: React.FC = () => <span>This is feature 2</span>;
+
+    const WrappedFeat1 = withoutFeature(Feat1, 'feat1');
+    const WrappedFeat2 = withoutFeature(Feat2, 'feat2');
+
+    const UnderTest: React.FC = () => (
+      <><WrappedFeat1 /><WrappedFeat2 /></>
     );
 
-    expect(container.textContent).toEqual(componentText);
+    const WrappedApp = withFeaturesProvider(App, featuresConfig);
+
+    const { container } = render(
+      <WrappedApp>
+        <UnderTest />
+      </WrappedApp>,
+    );
+
+    expect(container.textContent).toEqual('This is feature 2');
   });
 
-  it('not render component when feature flag is enabled', () => {
-    const Wrapped = withoutFeature<Features>(NoConfigComponent, 'simpleFeature');
+  it('should enable using custom selector from feature config', () => {
+    const featuresConfig: CustomFeatureConfig = {
+      feat1: {
+        isEnabled: false,
+        someCustomField: false
+      },
+      feat2: {
+        isEnabled: true
+      }
+    };
 
-    const { container } = render(
-      <FeatureProvider features={features}>
-        <Wrapped />
-      </FeatureProvider>,
+    const App: React.FC = ({ children }) => <div>{children}</div>;
+    const Feat1: React.FC = () => <span>This is feature 1</span>;
+    const Feat2: React.FC = () => <span>This is feature 2</span>;
+
+    const WrappedFeat1 = withoutFeature(Feat1, 'feat1', (_) => _.someCustomField);
+    const WrappedFeat2 = withoutFeature(Feat2, 'feat2');
+
+    const UnderTest: React.FC = () => (
+      <><WrappedFeat1 /><WrappedFeat2 /></>
     );
 
-    expect(container.textContent).toBeFalsy();
+    const WrappedApp = withFeaturesProvider(App, featuresConfig);
+
+    const { container } = render(
+      <WrappedApp>
+        <UnderTest />
+      </WrappedApp>,
+    );
+
+    expect(container.textContent).toEqual('This is feature 1');
   });
 });

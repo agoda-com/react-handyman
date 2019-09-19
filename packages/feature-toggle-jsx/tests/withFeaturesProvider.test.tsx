@@ -1,35 +1,76 @@
 import * as React from 'react';
-import { render, cleanup, getNodeText } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
+import * as FeatureToggleJsx from '../src/index';
 
-import withFeaturesProvider from '../src/withFeaturesProvider';
-import withFeature from '../src/withFeature';
-import { Features, features } from './mock';
+interface CustomFeatureConfig extends FeatureToggleJsx.FeatureConfig {
+  customFlatFeature: FeatureToggleJsx.Feature
+}
 
-const componentText = 'This is component';
-const Component: React.FC = ({ children }) => <div>{children}</div>;
-const FeatureComponent = withFeature<Features>(Component, 'simpleFeature');
+const {
+  withFeaturesProvider,
+  useFeatures
+} = FeatureToggleJsx as FeatureToggleJsx.FeatureToggleModule<CustomFeatureConfig>;
 
-describe('withFeaturesProvider()', () => {
+describe('withFeaturesProvider', () => {
   afterEach(() => {
     cleanup();
     jest.clearAllMocks();
   });
-  it('initialize context with function', () => {
-    const Wrapped = withFeaturesProvider(FeatureComponent, () => features);
 
-    const { container } = render(<Wrapped>{componentText}</Wrapped>);
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const innerText = getNodeText(container.querySelector('div')!);
+  it('should wrap component with context data when passing features as value', () => {
+    const featuresConfig: CustomFeatureConfig = {
+      customFlatFeature: {
+        isEnabled: true
+      }
+    };
 
-    expect(innerText).toEqual(componentText);
+    const App: React.FC = ({ children }) => <div>{children}</div>;
+
+    const UnderTest: React.FC = () => {
+      const features = useFeatures();
+      return (
+        <span>{`${features.customFlatFeature.isEnabled}`}</span>
+      );
+    };
+
+    const WrappedApp = withFeaturesProvider(App, featuresConfig);
+
+    const { container } = render(
+      <WrappedApp>
+        <UnderTest />
+      </WrappedApp>,
+    );
+
+    expect(container.textContent).toEqual('true');
   });
-  it('initialize context with object', () => {
-    const Wrapped = withFeaturesProvider(FeatureComponent, features);
 
-    const { container } = render(<Wrapped>{componentText}</Wrapped>);
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const innerText = getNodeText(container.querySelector('div')!);
+  it('should wrap component with context data when passing features as function', () => {
+    const featuresConfig: CustomFeatureConfig = {
+      customFlatFeature: {
+        isEnabled: true
+      }
+    };
+    type Props = {
+      feats: CustomFeatureConfig
+    }
+    const App: React.FC<Props> = ({ children }) => <div>{children}</div>;
 
-    expect(innerText).toEqual(componentText);
+    const UnderTest: React.FC = () => {
+      const features = useFeatures();
+      return (
+        <span>{`${features.customFlatFeature.isEnabled}`}</span>
+      );
+    };
+
+    const featuresSelector = (props: Props) => props.feats;
+    const WrappedApp = withFeaturesProvider(App, featuresSelector);
+
+    const { container } = render(
+      <WrappedApp feats={featuresConfig}>
+        <UnderTest />
+      </WrappedApp>,
+    );
+
+    expect(container.textContent).toEqual('true');
   });
 });

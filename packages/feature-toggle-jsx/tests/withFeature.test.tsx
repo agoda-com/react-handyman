@@ -1,152 +1,90 @@
 import * as React from 'react';
 import { render, cleanup } from '@testing-library/react';
+import * as FeatureToggleJsx from '../src/index';
 
-import FeatureProvider from '../src/FeaturesProvider';
-import withFeature from '../src/withFeature';
-import { Features, features, FeatureWithConfig } from './mock';
+type CustomFeatureFields = {
+  someCustomField: boolean,
+}
 
-const componentText = 'I am component.';
-const configText = (items: string[]) => `Config: [${(items || []).join(', ')}].`;
+type CustomFeatureConfig = {
+  feat1: FeatureToggleJsx.Feature & CustomFeatureFields
+  feat2: FeatureToggleJsx.Feature
+}
 
-const NoConfigComponent: React.FC = () => <div>{componentText}</div>;
+const {
+  withFeaturesProvider,
+  withFeature
+} = FeatureToggleJsx as FeatureToggleJsx.FeatureToggleModule<CustomFeatureConfig>;
 
-describe('withFeature()', () => {
+describe('withFeature', () => {
   afterEach(() => {
     cleanup();
     jest.clearAllMocks();
   });
-  it('render component when feature flag is enabled', () => {
-    const Wrapped = withFeature<Features>(NoConfigComponent, 'simpleFeature');
 
-    const { container } = render(
-      <FeatureProvider features={features}>
-        <Wrapped />
-      </FeatureProvider>
-    );
-
-    expect(container.textContent).toEqual(componentText);
-  });
-
-  it('render component with config when feature flag is enabled', () => {
-    interface Props {
-      featureWithConfig: FeatureWithConfig;
-      text: string;
-    }
-    const NeedConfigComponent: React.FC<Props> = (props) => {
-      const { text, featureWithConfig } = props;
-      return (
-        <div>
-          {text} {configText(featureWithConfig.items)}
-        </div>
-      );
-    };
-    const Wrapped = withFeature<Features, Props>(NeedConfigComponent, 'featureWithConfig');
-
-    const { container } = render(
-      <FeatureProvider features={features}>
-        <Wrapped text={componentText} />
-      </FeatureProvider>
-    );
-
-    expect(container.textContent).toContain(componentText);
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    expect(container.textContent).toContain(configText(features.featureWithConfig!.items));
-  });
-
-  it('render component with valid feature detail', () => {
-    interface Props {
-      featureWithConfig: FeatureWithConfig;
-      text: string;
-    }
-    const NeedConfigComponent: React.FC<Props> = (props) => {
-      const { text, featureWithConfig } = props;
-      return (
-        <div>
-          {text} {configText(featureWithConfig.items)}
-        </div>
-      );
+  it('should only render wrapped component when feature is on', () => {
+    const featuresConfig: CustomFeatureConfig = {
+      feat1: {
+        isEnabled: true,
+        someCustomField: false
+      },
+      feat2: {
+        isEnabled: false
+      }
     };
 
-    const Wrapped = withFeature<Features, Props>(
-      NeedConfigComponent,
-      'featureWithConfig',
-      (feature: FeatureWithConfig) => feature.items.length > 1
+    const App: React.FC = ({ children }) => <div>{children}</div>;
+    const Feat1: React.FC = () => <span>This is feature 1</span>;
+    const Feat2: React.FC = () => <span>This is feature 2</span>;
+
+    const WrappedFeat1 = withFeature(Feat1, 'feat1');
+    const WrappedFeat2 = withFeature(Feat2, 'feat2');
+
+    const UnderTest: React.FC = () => (
+      <><WrappedFeat1 /><WrappedFeat2 /></>
     );
+
+    const WrappedApp = withFeaturesProvider(App, featuresConfig);
 
     const { container } = render(
-      <FeatureProvider features={features}>
-        <Wrapped text={componentText} />
-      </FeatureProvider>
+      <WrappedApp>
+        <UnderTest />
+      </WrappedApp>,
     );
 
-    expect(container.textContent).toContain(componentText);
+    expect(container.textContent).toEqual('This is feature 1');
   });
 
-  it('not render component with invalid feature detail', () => {
-    interface Props {
-      featureWithConfig: FeatureWithConfig;
-      text: string;
-    }
-    const NeedConfigComponent: React.FC<Props> = (props) => {
-      const { text, featureWithConfig } = props;
-      return (
-        <div>
-          {text} {configText(featureWithConfig.items)}
-        </div>
-      );
+  it('should enable using custom selector from feature config', () => {
+    const featuresConfig: CustomFeatureConfig = {
+      feat1: {
+        isEnabled: true,
+        someCustomField: true
+      },
+      feat2: {
+        isEnabled: false
+      }
     };
 
-    const Wrapped = withFeature<Features, Props>(
-      NeedConfigComponent,
-      'featureWithConfig',
-      (_: FeatureWithConfig) => _.items.length === 0
+    const App: React.FC = ({ children }) => <div>{children}</div>;
+    const Feat1: React.FC = () => <span>This is feature 1</span>;
+    const Feat2: React.FC = () => <span>This is feature 2</span>;
+
+    const WrappedFeat1 = withFeature(Feat1, 'feat1', (_) => _.someCustomField);
+    const WrappedFeat2 = withFeature(Feat2, 'feat2');
+
+    const UnderTest: React.FC = () => (
+      <><WrappedFeat1 /><WrappedFeat2 /></>
     );
+
+    const WrappedApp = withFeaturesProvider(App, featuresConfig);
 
     const { container } = render(
-      <FeatureProvider features={features}>
-        <Wrapped text={componentText} />
-      </FeatureProvider>
+      <WrappedApp>
+        <UnderTest />
+      </WrappedApp>,
     );
 
-    expect(container.textContent).not.toContain(componentText);
-  });
-
-  it('not render component when feature flag is disabled', () => {
-    const Wrapped = withFeature<Features>(NoConfigComponent, 'disabledFeature');
-
-    const { container } = render(
-      <FeatureProvider features={features}>
-        <Wrapped />
-      </FeatureProvider>
-    );
-
-    expect(container.textContent).toBeFalsy();
-  });
-
-  it('not render component with config when feature flag is disabled', () => {
-    interface Props {
-      disabledFeatureWithConfig: FeatureWithConfig;
-      text: string;
-    }
-    const NeedConfigComponent: React.FC<Props> = (props) => {
-      const { text, disabledFeatureWithConfig } = props;
-      return (
-        <div>
-          {text} {configText(disabledFeatureWithConfig.items)}
-        </div>
-      );
-    };
-
-    const Wrapped = withFeature<Features, Props>(NeedConfigComponent, 'disabledFeatureWithConfig');
-
-    expect(() => {
-      const { container } = render(
-        <FeatureProvider features={features}>
-          <Wrapped text={componentText} />
-        </FeatureProvider>
-      );
-
-      expect(container.textContent).toBeFalsy();
-    }).not.toThrow();
+    expect(container.textContent).toEqual('This is feature 1');
   });
 });
