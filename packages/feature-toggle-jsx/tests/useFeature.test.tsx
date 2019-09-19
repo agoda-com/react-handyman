@@ -51,7 +51,7 @@ describe('useFeature', () => {
     };
 
     const UnderTest: React.FC = () => {
-      const [isEnabled] = useFeature('someFeat', _ => _.someCustomField);
+      const [isEnabled] = useFeature('someFeat', (_) => _.someCustomField);
       return <span>someFeat={`${isEnabled}`}</span>;
     };
 
@@ -73,7 +73,7 @@ describe('useFeature', () => {
     };
 
     const UnderTest: React.FC = () => {
-      const [enabled, config] = useFeature('someFeat', _ => _.someCustomField);
+      const [enabled, config] = useFeature('someFeat', (_) => _.someCustomField);
       return <span>{`enabled:${enabled},config.isEnabled:${config.isEnabled},config.someCustomField:${config.someCustomField}`}</span>;
     };
 
@@ -95,7 +95,7 @@ describe('useFeature', () => {
     };
 
     const UnderTest: React.FC = () => {
-      const [enabled, config] = useFeature('someFeat2' as any, _ => _.someCustomField);
+      const [enabled, config] = useFeature('someFeat2' as keyof CustomFeatureConfig, (_) => _.someCustomField);
       return <span>{`enabled:${enabled},config.isEnabled:${config.isEnabled},config.someCustomField:${config.someCustomField}`}</span>;
     };
 
