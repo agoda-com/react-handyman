@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ErrorBoundary /> should call componentDidCatch and fire callback on error 1`] = `
+<DocumentFragment>
+  <h2>
+    Something went wrong.
+  </h2>
+</DocumentFragment>
+`;
+
+exports[`<ErrorBoundary /> should render fallback component on error 1`] = `
+<DocumentFragment>
+  <div>
+    <h3>
+      error
+    </h3>
+    <span>
+      
+    in BuggyComponent
+    in ErrorBoundary(nodejs)
+    </span>
+  </div>
+</DocumentFragment>
+`;

@@ -1,36 +1,50 @@
-import 'jest';
 import * as React from 'react';
-import withErrorBoundary from '../src/withErrorBoundary';
 import { render } from '@testing-library/react';
+import withErrorBoundary from '../src/withErrorBoundary';
+import { ErrorInfo } from 'react'
+import { ErrorFallbackProps } from '../src/ErrorBoundary/ErrorBoundary'
 
 interface DummyErrorComponentProps {
   name?: string;
 }
 const defaultProps: DummyErrorComponentProps = {
-  name: 'Test name',
+  name: 'Test name'
 };
 
-class DummyErrorComponent extends React.PureComponent<DummyErrorComponentProps, {}> {
+class BuggyComponent extends React.PureComponent<DummyErrorComponentProps, {}> {
   constructor(props: DummyErrorComponentProps) {
     super(props);
     throw Error('error');
   }
+
   render() {
-    return <div>Dummy Component with constructor error</div>;
+    return <div>Buggy Component with constructor error</div>;
   }
 }
-
 describe('<ErrorBoundary />', () => {
 
-  const errorCallback = jest.fn();
-
-  it('should call componentDidCatch on error and fire callback', () => {
-
-    const ComponentWithError = withErrorBoundary(DummyErrorComponent, 'component name', errorCallback);
-
-    jest.spyOn(ComponentWithError.prototype, 'componentDidCatch');
-    render(<ComponentWithError {...defaultProps} />);
-    expect(ComponentWithError.prototype.componentDidCatch).toHaveBeenCalledTimes(1);
-    expect(errorCallback).toHaveBeenCalledTimes(1);
+  beforeEach(() => {
+    jest.resetAllMocks();
   });
+
+  it('should render default fallback component on error', () => {
+    const errorCallback = jest.fn();
+    const ComponentWithError = withErrorBoundary(BuggyComponent, 'component name', errorCallback);
+    const { asFragment } = render(<ComponentWithError name={defaultProps.name} />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
+  it('should render custom fallback component on error', () => {
+    const CustomFallbackComponent = (props: ErrorFallbackProps) => (
+      <div>
+        <h3>{props.error.message}</h3>
+        <span>{props.errorStack}</span>
+      </div>
+    );
+    const errorCallback = jest.fn();
+    const ComponentWithError = withErrorBoundary(BuggyComponent, 'component name', errorCallback, CustomFallbackComponent);
+    const { asFragment } = render(<ComponentWithError name={defaultProps.name} />);
+    expect(asFragment()).toMatchSnapshot();
+  });
+
 });

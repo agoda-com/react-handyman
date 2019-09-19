@@ -1,37 +1,25 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
+import ErrorBoundary from '../ErrorBoundary';
+import { ErrorFallbackProps } from '../ErrorBoundary/ErrorBoundary'
 
-interface ErrorInfo {
-  componentStack: string;
-}
-
-const withErrorBoundary = <TProps extends {}>(
-  Component: React.ComponentType<TProps>,
+const withErrorBoundary = <TOrigProps extends {}>(
+  Component: React.ComponentType<TOrigProps>,
   name: string,
   onError: (error: Error, componentName: string, componentStack: string) => void,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  FallbackComponent?: (props: ErrorFallbackProps) => React.ReactNode,
 ) => {
 
-  return class ErrorBoundary extends React.PureComponent<TProps, {}> {
+  const ErrorBoundaryWrapper = (props: TOrigProps) => (
+      <ErrorBoundary onError={onError} name={name} render={FallbackComponent}>
+        <Component {...props} />
+      </ErrorBoundary>
+  );
 
-    static displayName = `withErrorBoundary(${Component.displayName})`;
+  ErrorBoundaryWrapper.displayName = `WithErrorBoundary(${name})`;
 
-    constructor(props: TProps) {
-      super(props);
-    }
-
-    componentDidCatch(error: Error, info: ErrorInfo) {
-      if (typeof onError === 'function') {
-        try {
-          onError.call(this, error, name, info ? info.componentStack : '');
-        } catch (e) { }
-      }
-    }
-
-    // TODO add fallback component on error?
-
-    render(): JSX.Element {
-      return <Component {...this.props} />;
-    }
-  };
-}
+  return ErrorBoundaryWrapper;
+};
 
 export default withErrorBoundary;

@@ -154,6 +154,8 @@ const componentErrorHandler = {
 withErrorBoundary(Component, 'component name', componentErrorHandler)
 ```
 
+Check out details and more examples in [package README file](/packages/error-boundary).
+
 ---
 
 ## Contributors
