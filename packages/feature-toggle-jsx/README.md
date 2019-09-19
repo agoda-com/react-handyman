@@ -26,6 +26,7 @@ import { withFeature } from "feature-toggle-jsx"
 const ChatComponent = _ => {...}
 
 export default withFeature(ChatComponent, "chat")
+
 ```
 
 ```jsx
@@ -33,7 +34,7 @@ export default withFeature(ChatComponent, "chat")
 import { withFeature } from "feature-toggle-jsx"
 const ImagePreviewComponent = ({ props, perPage }) => {...}
 
-export default withFeature(ImagePreviewComponent, "preview")
+export default withFeature(ImagePreviewComponent, "preview", _ =_.perPage == 2) // will only render if feature perPage value meets the selector criteria.
 ```
 
 ```jsx
@@ -46,8 +47,11 @@ import ImagePreviewComponent from "./ImagePreviewComponent"
 ...
 
 const features = {
-  chat: {},
+  chat: {
+    isEnabled: true,
+  },
   preview: {
+    isEnabled: true,
     perPage: 3,
   },
 }
@@ -67,23 +71,25 @@ const features = {
 
 ### Feature flag object (aka. the feature configurations)
 
-Feature configuration is a map of feature name and its configurations,
-or empty object if there is no extra configuration.
+Feature configuration is a map of feature name and its configurations, with required isEnabled flag as part of config. If feature is null or undefined, it will be evaluated as disabled.
 
-Extra configurations will be passed to component and can be used directly
-via props.
+Extra configurations can be used inside of component via `useFeature` hook or can be used to select different field than `isEnabled` to evaluate feature visibility.
 
 Feature flag configuration shape is:
 
 ```js
 {
   featureName: {
+    isEnabled: true,
     opt1: "1",
     opt2: 2,
     opt3: [3, 4, 5],
   },
-  chat: {},
+  chat: {
+    isEnabled: false,
+  },
   preview: {
+    isEnabled: true,
     perPage: 3,
   },
 }
@@ -105,30 +111,18 @@ export default withFeaturesProvider(App, features)
 
 ## Consuming feature flags
 
-### `useFeature(names: string[])` React hook
+### `useFeature(name: string, (feature) => boolean)` React hook
 
 ```jsx
-const [feature] = useFeatures('chat')
+const [isEnabled, config] = useFeature('chat')
 
 if (feature) {
   // do something, render Chat component
 } else {
   // "chat" feature is not enabled
 }
-```
 
-If the configuration contains extra configuration:
+// or if we wanna use diferent field for selecting enabled value:
+const [isEnabled, config] = useFeature('chat', _ => _.someConfigField == 0)
 
-```jsx
-const [feature] = useFeatures('preview')
-
-// feature -> { perPage: 3 }
-```
-
----
-
-### `withFeature(c: Component, name: string)` HOC
-
-```jsx
-export default withFeature(ChatComponent, 'chat')
 ```

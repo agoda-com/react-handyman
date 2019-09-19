@@ -13,10 +13,10 @@ type CustomFeatureConfig = {
 
 const {
   withFeaturesProvider,
-  withFeature
+  withoutFeature
 } = FeatureToggleJsx as FeatureToggleJsx.FeatureToggleModule<CustomFeatureConfig>;
 
-describe('withFeature', () => {
+describe('withoutFeature', () => {
   afterEach(() => {
     cleanup();
     jest.clearAllMocks();
@@ -37,8 +37,8 @@ describe('withFeature', () => {
     const Feat1: React.FC = () => <span>This is feature 1</span>;
     const Feat2: React.FC = () => <span>This is feature 2</span>;
 
-    const WrappedFeat1 = withFeature(Feat1, 'feat1');
-    const WrappedFeat2 = withFeature(Feat2, 'feat2');
+    const WrappedFeat1 = withoutFeature(Feat1, 'feat1');
+    const WrappedFeat2 = withoutFeature(Feat2, 'feat2');
 
     const UnderTest: React.FC = () => (
       <><WrappedFeat1 /><WrappedFeat2 /></>
@@ -52,17 +52,17 @@ describe('withFeature', () => {
       </WrappedApp>,
     );
 
-    expect(container.textContent).toEqual('This is feature 1');
+    expect(container.textContent).toEqual('This is feature 2');
   });
 
   it('should enable using custom selector from feature config', () => {
     const featuresConfig: CustomFeatureConfig = {
       feat1: {
-        isEnabled: true,
-        someCustomField: true
+        isEnabled: false,
+        someCustomField: false
       },
       feat2: {
-        isEnabled: false
+        isEnabled: true
       }
     };
 
@@ -70,8 +70,8 @@ describe('withFeature', () => {
     const Feat1: React.FC = () => <span>This is feature 1</span>;
     const Feat2: React.FC = () => <span>This is feature 2</span>;
 
-    const WrappedFeat1 = withFeature(Feat1, 'feat1', (_) => _.someCustomField);
-    const WrappedFeat2 = withFeature(Feat2, 'feat2');
+    const WrappedFeat1 = withoutFeature(Feat1, 'feat1', (_) => _.someCustomField);
+    const WrappedFeat2 = withoutFeature(Feat2, 'feat2');
 
     const UnderTest: React.FC = () => (
       <><WrappedFeat1 /><WrappedFeat2 /></>
