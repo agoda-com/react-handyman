@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import * as FeatureToggleJsx from '../src/index';
 
-interface CustomFeatureConfig extends FeatureToggleJsx.FeatureConfig {
+type CustomFeatureConfig = {
   someFeat: FeatureToggleJsx.Feature
 }
 

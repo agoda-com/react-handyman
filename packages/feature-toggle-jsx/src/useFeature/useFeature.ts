@@ -6,7 +6,7 @@ export type useFeatureHook<
 > = <TFeatureName extends Extract<keyof TFeatureConfig, string | number>>(
   featureName: TFeatureName,
   isEnabled?: (feature: TFeatureConfig[TFeatureName]) => boolean
-) => [boolean, (TFeatureConfig[TFeatureName] | null)];
+) => [boolean, TFeatureConfig[TFeatureName]];
 
 const useFeature = <
   TFeatureConfig extends FeatureConfig,
@@ -14,11 +14,11 @@ const useFeature = <
 >(
   featureName: TFeatureName,
   isEnabled: (feature: TFeatureConfig[TFeatureName]) => boolean = (_) => _.isEnabled
-): [boolean, (TFeatureConfig[TFeatureName] | null)] => {
+): [boolean, TFeatureConfig[TFeatureName]] => {
   const features = useFeatures<TFeatureConfig>();
 
   const feature = features[featureName];
-  if (!feature) return [false, null];
+  if (!feature) return [false, { isEnabled: false } as TFeatureConfig[TFeatureName]];
 
   return [
     isEnabled(feature),
