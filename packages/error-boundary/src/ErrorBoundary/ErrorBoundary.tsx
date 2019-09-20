@@ -1,4 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import * as React from 'react';
 
 const DEFAULT_ERROR = 'Error was swallowed.';
@@ -18,15 +20,15 @@ interface ErrorInfo {
 }
 
 interface Props {
-  onError: (error: Error, componentName: string, componentStack: string) => void,
+  onError: (componentName: string, error: Error, componentStack: string) => void,
   name: string,
   children?: any,
-  render?: (props: ErrorFallbackProps) => React.ReactNode,
+  FallbackComponent?: React.ComponentType<any>,
 }
 
 class ErrorBoundary extends React.PureComponent<Props, ErrorBoundaryState> {
   // eslint-disable-next-line  react/static-property-placement
-  static displayName = `ErrorBoundary(${name})`;
+  static displayName = 'ErrorBoundary';
 
   constructor(props: Props) {
     super(props);
@@ -34,11 +36,11 @@ class ErrorBoundary extends React.PureComponent<Props, ErrorBoundaryState> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    const { onError } = this.props;
+    const { onError, name } = this.props;
 
     if (typeof onError === 'function') {
       try {
-        onError.call(this, error, name, errorInfo ? errorInfo.componentStack : '');
+        onError(name, error, errorInfo ? errorInfo.componentStack : 'No stack');
       } catch (e) {
         // eslint-disable-next-line no-console
         console.error(e);
@@ -50,21 +52,13 @@ class ErrorBoundary extends React.PureComponent<Props, ErrorBoundaryState> {
 
   render(): JSX.Element {
     const { error, errorInfo } = this.state;
-    const { children, render } = this.props;
+    const { children, FallbackComponent } = this.props;
 
     // error flow
     if (error) {
-      if (render) {
-        return (
-          <>
-            {render({
-              error: error,
-              errorStack: errorInfo ? errorInfo.componentStack : 'Stack not found'
-            })}
-          </>
-        )
+      if (FallbackComponent) {
+        return <FallbackComponent error={error} errorStack={errorInfo ? errorInfo.componentStack : 'Stack not found'} />;
       }
-
       return <h2>Something went wrong.</h2>;
     }
 

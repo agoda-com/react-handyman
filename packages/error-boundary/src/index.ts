@@ -1,3 +1,2 @@
-import withErrorBoundary from './withErrorBoundary';
-
-export default withErrorBoundary;
+export { default as withErrorBoundary } from './withErrorBoundary';
+export * from './ErrorBoundary';
