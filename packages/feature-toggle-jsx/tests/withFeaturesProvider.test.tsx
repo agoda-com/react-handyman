@@ -2,8 +2,13 @@ import * as React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import * as FeatureToggleJsx from '../src/index';
 
-interface CustomFeatureConfig extends FeatureToggleJsx.FeatureConfig {
-  customFlatFeature: FeatureToggleJsx.Feature
+type CustomFeatureConfig = {
+  someFeat: {
+    someCustomField: number,
+  },
+  anotherFeat: {
+    itsOver: number
+  }
 }
 
 const {
@@ -18,18 +23,18 @@ describe('withFeaturesProvider', () => {
   });
 
   it('should wrap component with context data when passing features as value', () => {
-    const featuresConfig: CustomFeatureConfig = {
-      customFlatFeature: {
-        isEnabled: true
+    const featuresConfig = {
+      someFeat: {
+        someCustomField: 10
       }
-    };
+    } as CustomFeatureConfig;
 
     const App: React.FC = ({ children }) => <div>{children}</div>;
 
     const UnderTest: React.FC = () => {
       const features = useFeatures();
       return (
-        <span>{`${features.customFlatFeature.isEnabled}`}</span>
+        <span>{`${features.someFeat.someCustomField}`}</span>
       );
     };
 
@@ -41,15 +46,16 @@ describe('withFeaturesProvider', () => {
       </WrappedApp>,
     );
 
-    expect(container.textContent).toEqual('true');
+    expect(container.textContent).toEqual('10');
   });
 
   it('should wrap component with context data when passing features as function', () => {
-    const featuresConfig: CustomFeatureConfig = {
-      customFlatFeature: {
-        isEnabled: true
+    const featuresConfig = {
+      someFeat: {
+        someCustomField: 10
       }
-    };
+    } as CustomFeatureConfig;
+
     type Props = {
       feats: CustomFeatureConfig
     }
@@ -58,7 +64,7 @@ describe('withFeaturesProvider', () => {
     const UnderTest: React.FC = () => {
       const features = useFeatures();
       return (
-        <span>{`${features.customFlatFeature.isEnabled}`}</span>
+        <span>{`${features.someFeat.someCustomField}`}</span>
       );
     };
 
@@ -71,6 +77,6 @@ describe('withFeaturesProvider', () => {
       </WrappedApp>,
     );
 
-    expect(container.textContent).toEqual('true');
+    expect(container.textContent).toEqual('10');
   });
 });
