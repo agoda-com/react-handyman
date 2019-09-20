@@ -8,7 +8,7 @@
 
 # error-boundary
 
-Handle errors on wrapped component and provide a fall back component.
+Handle errors on wrapped component and provide a fall back.
 
 ```bash
 yarn add error-boundary
