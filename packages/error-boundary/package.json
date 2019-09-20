@@ -1,0 +1,48 @@
+{
+  "name": "error-boundary",
+  "description": "React (JS) string formatting",
+  "version": "0.0.0-development",
+  "license": "MIT",
+  "author": "Nicky Shannon @nickyshannon",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matmalkowski/react-handyman.git"
+  },
+  "keywords": [
+    "error boundary",
+    "error catch",
+    "error"
+  ],
+  "main": "lib/error-boundary.cjs.js",
+  "module": "lib/error-boundary.esm.js",
+  "browser": "lib/error-boundary.umd.js",
+  "types": "lib/index.d.ts",
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@testing-library/react": "9.1.4",
+    "@types/react": "16.8.25",
+    "nodecat": "2.0.0",
+    "react": "16.9.0",
+    "rimraf": "2.7.0",
+    "rollup": "1.21.3",
+    "rollup-plugin-babel": "4.3.2",
+    "rollup-plugin-node-resolve": "5.0.1",
+    "rollup-plugin-terser": "5.1.2",
+    "typescript": "3.5.3",
+    "semantic-release": "=15.9.17",
+    "semantic-release-monorepo": "6.1.1"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "semantic-release": "semantic-release -e semantic-release-monorepo",
+    "prebuild": "rimraf lib",
+    "build": "rollup -c && yarn emit-declarations",
+    "watch": "rollup -c -w",
+    "typecheck": "tsc",
+    "emit-declarations": "tsc -p tsconfig.build.json -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
+  }
+}
