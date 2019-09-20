@@ -30,7 +30,7 @@ import ErrorBoundary from 'error-boundary'
 </ErrorBoundary>
 ```
 
-### `withFeaturesProvider()` HOC
+### `withErrorBoundary()` HOC
 
 HOC for error handling every use case of a component.
 
