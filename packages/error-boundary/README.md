@@ -8,7 +8,7 @@
 
 # error-boundary
 
-Handle errors on any component
+Handle errors on wrapped component and provide a fall back component.
 
 ```bash
 yarn add error-boundary
@@ -18,10 +18,24 @@ yarn add error-boundary
 npm install error-boundary --save
 ```
 
-## Example
+### `<ErrorBoundary />` Component (Recommended)
+
+Handle errors for specific use case of component.
 
 ```ts
-import error-boundary from 'error-boundary'
+import ErrorBoundary from 'error-boundary'
+
+<ErrorBoundary onError={componentErrorHandler} name="component name" FallbackComponent={CustomFallbackComponent}>
+    ...component tree you want to handle errors
+</ErrorBoundary>
+```
+
+### `withFeaturesProvider()` HOC
+
+HOC for error handling every use case of a component.
+
+```ts
+import withErrorBoundary from 'error-boundary'
 
 const componentErrorHandler = {
     handleComponentError(error: Error, name: string, stack: string): void {
@@ -29,14 +43,15 @@ const componentErrorHandler = {
     }
 }
 
-withErrorBoundary(Component, 'component name', componentErrorHandler)
+withErrorBoundary(Component, componentErrorHandler)
 ```
 
 ##### API
 
 | prop       | type                   | required | defaultValue | Description                                                                                                                    |
 | ---------- | ---------------------- | -------- | ------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| `component` | `React.ComponentType`     | true     | -            | A React component that we want to bind error boundary to                                                        |
+| `component` | `React.ComponentType`     | true     | -            | A component that we want to bind error boundary to                                                        |
 | `name`      | `string`     | true     | -            | Component name to identify in stack message                                                       |
-| `callback`  | `(error: Error, name: string, stack: string) => void`     | true     | -            | Error callback handler                                                     |
+| `onError`  | `(name: string, error: Error, stack: string) => void`     | true     | -            | Error callback handler                                                     |
+| `FallbackComponent` | `React.ComponentType`     | false     | -            | A fallback component when error occurs                                                       |
 
