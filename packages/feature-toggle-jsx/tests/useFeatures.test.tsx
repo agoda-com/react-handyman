@@ -3,7 +3,12 @@ import { render, cleanup } from '@testing-library/react';
 import * as FeatureToggleJsx from '../src/index';
 
 type CustomFeatureConfig = {
-  someFeat: FeatureToggleJsx.Feature
+  someFeat: {
+    someCustomField: number,
+  },
+  anotherFeat: {
+    itsOver: number
+  }
 }
 
 const {
@@ -18,15 +23,15 @@ describe('useFeatures', () => {
   });
 
   it('should return isEnabled for specific feature from context', () => {
-    const featuresConfig: CustomFeatureConfig = {
+    const featuresConfig = {
       someFeat: {
-        isEnabled: true
+        someCustomField: 10
       }
-    };
+    } as CustomFeatureConfig;
 
     const UnderTest: React.FC = () => {
       const features = useFeatures();
-      return <span>someFeat={`${features.someFeat.isEnabled}`}</span>;
+      return <span>someFeat.someCustomField={`${features.someFeat.someCustomField}`}</span>;
     };
 
     const { container } = render(
@@ -35,6 +40,6 @@ describe('useFeatures', () => {
       </FeaturesProvider>,
     );
 
-    expect(container.textContent).toEqual('someFeat=true');
+    expect(container.textContent).toEqual('someFeat.someCustomField=10');
   });
 });

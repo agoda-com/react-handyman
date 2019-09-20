@@ -20,7 +20,7 @@ const withFeature = <
 >(
   Component: React.ComponentType<TOrigProps>,
   featureName: TFeatureName,
-  isEnabled: (feature: TFeatureConfig[TFeatureName]) => boolean = (_) => _.isEnabled
+  isEnabled: (feature: TFeatureConfig[TFeatureName]) => boolean = (_) => !!_
 ) => {
   const Wrapped: React.FC<TOrigProps> = React.memo((props) => {
     const [enabled] = useFeature(featureName, isEnabled);
