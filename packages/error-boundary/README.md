@@ -26,7 +26,7 @@ Handle errors for specific use case of component.
 import ErrorBoundary from 'error-boundary'
 
 <ErrorBoundary onError={componentErrorHandler} name="component name" FallbackComponent={CustomFallbackComponent}>
-    ...component tree you want to handle errors
+    ...component tree to handle errors
 </ErrorBoundary>
 ```
 
