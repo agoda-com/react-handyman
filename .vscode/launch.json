@@ -8,9 +8,9 @@
       "type": "node",
       "request": "launch",
       "protocol": "inspector",
-      "name": "I18n-jsx: Debug Jest Test",
+      "name": "Debug Jest Test",
       "program": "${workspaceRoot}/node_modules/jest-cli/bin/jest.js",
-      "cwd": "${workspaceRoot}/packages/i18n-jsx",
+      "cwd": "${workspaceRoot}",
       "args": ["--runInBand", "${fileBasename}"],
       "sourceMaps": true,
       "console": "integratedTerminal"
