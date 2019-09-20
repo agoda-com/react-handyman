@@ -3,25 +3,27 @@ import { render, cleanup } from '@testing-library/react';
 import ErrorBoundary, { ErrorFallbackProps } from '../src/ErrorBoundary';
 
 describe('<ErrorBoundary />', () => {
+  class BuggyComponent extends React.PureComponent<{}, {}> {
+    constructor(props: {}) {
+      super(props);
+      throw Error('error');
+    }
+
+    render() {
+      return <div>Dummy Component with constructor error</div>;
+    }
+  }
+
+  beforeEach(() => {
+    jest.spyOn(console, 'error').mockImplementation();
+  });
+
   afterEach(() => {
     cleanup();
-    jest.resetAllMocks();
+    jest.clearAllMocks();
   });
 
   it('should render fallback component on error', () => {
-    class BuggyComponent extends React.PureComponent<{}, {}> {
-      static displayName = 'BuggyComponent';
-
-      constructor(props: {}) {
-        super(props);
-        throw Error('error');
-      }
-
-      render() {
-        return <div>Dummy Component with constructor error</div>;
-      }
-    }
-
     const CustomFallbackComponent = (props: ErrorFallbackProps) => {
       const { error, errorStack } = props;
 
@@ -44,17 +46,6 @@ describe('<ErrorBoundary />', () => {
   });
 
   it('should call componentDidCatch and fire callback on error', () => {
-    class BuggyComponent extends React.PureComponent<{}, {}> {
-      constructor(props: {}) {
-        super(props);
-        throw Error('error');
-      }
-
-      render() {
-        return <div>Dummy Component with constructor error</div>;
-      }
-    }
-
     const errorCallback = jest.fn().mockImplementation();
 
     jest.spyOn(ErrorBoundary.prototype, 'componentDidCatch');
@@ -72,18 +63,7 @@ describe('<ErrorBoundary />', () => {
   });
 
   it('should handle callback exception', () => {
-    class BuggyComponent extends React.PureComponent<{}, {}> {
-      constructor(props: {}) {
-        super(props);
-        throw Error('error');
-      }
-
-      render() {
-        return <div>Dummy Component with constructor error</div>;
-      }
-    }
-
-    const consoleError = jest.spyOn(console, 'error');
+    const consoleError = jest.spyOn(console, 'error').mockImplementation();
 
     const errorCallback = jest.fn().mockImplementation(() => {
       throw new Error();
@@ -95,6 +75,6 @@ describe('<ErrorBoundary />', () => {
       </ErrorBoundary>
     );
 
-    expect(consoleError).toHaveBeenCalled();
+    expect(consoleError.mock.calls[2][0]).toBeTruthy();
   });
 });

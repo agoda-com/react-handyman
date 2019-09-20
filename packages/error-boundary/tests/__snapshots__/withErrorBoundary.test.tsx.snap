@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ErrorBoundary /> should render custom fallback component on error 1`] = `
+exports[`<withErrorBoundary /> should render custom fallback component on error 1`] = `
 <DocumentFragment>
   <div>
     <h3>
@@ -16,7 +16,7 @@ exports[`<ErrorBoundary /> should render custom fallback component on error 1`] 
 </DocumentFragment>
 `;
 
-exports[`<ErrorBoundary /> should render default fallback component on error 1`] = `
+exports[`<withErrorBoundary /> should render default fallback component on error 1`] = `
 <DocumentFragment>
   <h2>
     Something went wrong.

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { cleanup, render } from '@testing-library/react';
 import withErrorBoundary from '../src/withErrorBoundary';
 import { ErrorFallbackProps } from '../src/ErrorBoundary';
 
@@ -20,9 +20,13 @@ class BuggyComponent extends React.PureComponent<DummyErrorComponentProps, {}> {
   }
 }
 
-describe('<ErrorBoundary />', () => {
+describe('<withErrorBoundary />', () => {
   beforeEach(() => {
-    jest.resetAllMocks();
+    jest.spyOn(console, 'error').mockImplementation();
+  });
+  afterEach(() => {
+    cleanup();
+    jest.clearAllMocks();
   });
 
   it('should render default fallback component on error', () => {
