@@ -70,4 +70,31 @@ describe('<ErrorBoundary />', () => {
 
     expect(asFragment()).toMatchSnapshot();
   });
+
+  it('should handle callback exception', () => {
+    class BuggyComponent extends React.PureComponent<{}, {}> {
+      constructor(props: {}) {
+        super(props);
+        throw Error('error');
+      }
+
+      render() {
+        return <div>Dummy Component with constructor error</div>;
+      }
+    }
+
+    const consoleError = jest.spyOn(console, 'error');
+
+    const errorCallback = jest.fn().mockImplementation(() => {
+      throw new Error();
+    });
+
+    render(
+      <ErrorBoundary onError={errorCallback} name="component name">
+        <BuggyComponent />
+      </ErrorBoundary>
+    );
+
+    expect(consoleError).toHaveBeenCalled();
+  });
 });
