@@ -1,6 +1,8 @@
 linters:
   eslint: 
     config: ./.eslintrc.json
+    extensions: ['.ts','.tsx']
+    
 files:
   ignore:
     - 'node_modules/*'
