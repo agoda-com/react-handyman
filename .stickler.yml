@@ -1,7 +1,7 @@
 linters:
   eslint: 
     config: ./.eslintrc.json
-    extensions: .js,.jsx
+    extensions: .ts,.tsx
     
 files:
   ignore:
