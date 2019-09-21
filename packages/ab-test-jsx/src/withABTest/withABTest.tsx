@@ -8,7 +8,7 @@ export type withABTestHoC<T extends ABTests> = <
   TAProps extends {},
   TBProps extends {},
   TABTestName extends Extract<keyof T, string | number>
->(
+  >(
   AVariantComponent: React.ComponentType<TAProps>,
   BVariantComponent: React.ComponentType<TBProps>,
   abTestName: TABTestName
@@ -39,4 +39,4 @@ const withABTest = <
   return Wrapped;
 };
 
-export default withABTest;
+export default withABTest
