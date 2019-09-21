@@ -8,7 +8,7 @@
 
 # error-boundary
 
-Handle errors on wrapped component and provide a fall back component.
+Handle errors on wrapped component and provide a fall back.
 
 ```bash
 yarn add error-boundary
@@ -26,11 +26,11 @@ Handle errors for specific use case of component.
 import ErrorBoundary from 'error-boundary'
 
 <ErrorBoundary onError={componentErrorHandler} name="component name" FallbackComponent={CustomFallbackComponent}>
-    ...component tree you want to handle errors
+    ...component tree to handle errors
 </ErrorBoundary>
 ```
 
-### `withFeaturesProvider()` HOC
+### `withErrorBoundary()` HOC
 
 HOC for error handling every use case of a component.
 
