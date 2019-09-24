@@ -13,7 +13,7 @@ const useFeature = <
   TFeatureName extends Extract<keyof TFeatureConfig, string | number>
 >(
   featureName: TFeatureName,
-  isEnabled: (feature: TFeatureConfig[TFeatureName]) => boolean = (_) => !!_
+  isEnabled: (feature: TFeatureConfig[TFeatureName]) => boolean = _ => !!_
 ): [boolean, TFeatureConfig[TFeatureName]] => {
   const features = useFeatures<TFeatureConfig>();
 
