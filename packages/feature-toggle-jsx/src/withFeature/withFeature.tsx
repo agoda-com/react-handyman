@@ -11,7 +11,7 @@ export type withFeatureHoC<TFeatureConfig extends FeatureConfig> = <
   Component: React.ComponentType<TOrigProps>,
   featureName: TFeatureName,
   isEnabled?: (feature: TFeatureConfig[TFeatureName]) => boolean
-) => React.FC<TOrigProps>;
+) =>    React.FC<TOrigProps>;
 
 const withFeature = <
   TOrigProps extends {},
