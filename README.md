@@ -63,12 +63,12 @@ Toggle visibility of your react components based on features configuration of yo
 export default withFeature(ChatComponent, 'chat')
 export default withoutFeature(PlaceholderComponent, 'chat')
 // with custom selector
-export default withFeature(ChatComponent, 'chat', _ = _.someConfigValue == true)
+export default withFeature(ChatComponent, 'chat', _ => _.someConfigValue == true)
 
 // Hook
 const [isEnabled, config] = useFeature('chat')
 
-const [isEnabled] = useFeature('chat' _ = _.someConfigValue == 4)
+const [isEnabled] = useFeature('chat' _ => _.someConfigValue == 4)
 ```
 
 Check out details and more examples in [package README file](/packages/feature-toggle-jsx).
