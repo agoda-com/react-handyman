@@ -25,16 +25,16 @@
     "format-to-jsx": "^1.0.3"
   },
   "devDependencies": {
-    "@testing-library/react": "9.1.4",
-    "@types/react": "16.8.25",
+    "@types/react": "16.9.2",
+    "@testing-library/react": "9.2.0",
     "nodecat": "2.0.0",
     "react": "16.9.0",
-    "rimraf": "2.7.0",
-    "rollup": "1.21.3",
-    "rollup-plugin-babel": "4.3.2",
-    "rollup-plugin-node-resolve": "5.0.1",
+    "rimraf": "3.0.0",
+    "rollup": "1.21.4",
+    "rollup-plugin-babel": "4.3.3",
+    "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-terser": "5.1.2",
-    "typescript": "3.5.3",
+    "typescript": "3.6.3",
     "semantic-release": "=15.9.17",
     "semantic-release-monorepo": "6.1.1"
   },

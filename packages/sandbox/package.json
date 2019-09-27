@@ -6,13 +6,13 @@
   "devDependencies": {
     "@types/jest": "24.0.18",
     "@types/node": "12.7.6",
-    "@types/react": "16.8.25",
+    "@types/react": "16.9.2",
     "@types/react-dom": "16.9.0",
-    "react-scripts": "3.1.0",
-    "typescript": "3.5.3"
+    "react-scripts": "3.1.2",
+    "typescript": "3.6.3"
   },
   "dependencies": {
-    "ab-test-jsx": "0.0.0-development",
+    "ab-test-jsx": "1.1.0",
     "feature-toggle-jsx": "0.0.0-development",
     "i18n-jsx": "0.0.0-development",
     "react": "16.9.0",
