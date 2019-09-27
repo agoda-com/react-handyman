@@ -11,7 +11,7 @@ before_install:
 install:
   - npm install -g codecov
 before_script:
-  - yarn install
+  - yarn install --frozen-lockfile
 script:
   - yarn build
   - yarn typecheck
