@@ -71,6 +71,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "HasanAJ",
+      "name": "Hasan AJ",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/29162870?v=4",
+      "profile": "https://github.com/HasanAJ",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
