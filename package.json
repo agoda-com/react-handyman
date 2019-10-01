@@ -72,7 +72,7 @@
     "ignore": [
       "semantic-release",
       "semantic-release-monorepo",
-      "error-boundary",
+      "error-boundary-jsx",
       "feature-toggle-jsx",
       "format-to-jsx",
       "i18n-jsx"

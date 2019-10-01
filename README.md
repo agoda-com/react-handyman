@@ -134,24 +134,24 @@ format('Example {1} with different placeholders order {0}', 1, <strong>2</strong
 
 Check out details and more examples in [package README file](/packages/format-to-jsx).
 
-# [error-boundary](/packages/error-boundary)
+# [error-boundary-jsx](/packages/error-boundary-jsx)
 
-[![npm](https://img.shields.io/npm/v/error-boundary.svg)](https://www.npmjs.com/package/error-boundary)
-[![npm bundle size](https://img.shields.io/bundlephobia/minzip/error-boundary.svg)](https://bundlephobia.com/result?p=error-boundary)
+[![npm](https://img.shields.io/npm/v/error-boundary.svg)](https://www.npmjs.com/package/error-boundary-jsx)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/error-boundary.svg)](https://bundlephobia.com/result?p=error-boundary-jsx)
 [![Build Status](https://travis-ci.org/matmalkowski/react-handyman.svg?branch=master)](https://travis-ci.org/matmalkowski/react-handyman)
 [![codecov](https://codecov.io/gh/matmalkowski/react-handyman/branch/master/graph/badge.svg)](https://codecov.io/gh/matmalkowski/react-handyman)
 
 Handle errors on wrapped component and provide a fall back.
 
 ```ts
-import ErrorBoundary from 'error-boundary'
+import ErrorBoundary from 'error-boundary-jsx'
 
 <ErrorBoundary onError={componentErrorHandler} name="component name" FallbackComponent={CustomFallbackComponent}>
     ...component tree to handle errors
 </ErrorBoundary>
 ```
 
-Check out details and more examples in [package README file](/packages/error-boundary).
+Check out details and more examples in [package README file](/packages/error-boundary-jsx).
 
 ---
 
