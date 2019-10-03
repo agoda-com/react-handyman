@@ -21,7 +21,7 @@
   "browser": "lib/format-to-jsx.umd.js",
   "types": "lib/index.d.ts",
   "peerDependencies": {
-    "react": "^16.8.6"
+    "react": "^16.10.2"
   },
   "devDependencies": {
     "@types/react": "16.9.2",
