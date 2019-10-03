@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "@types/react": "16.9.2",
-    "@testing-library/react": "9.2.0",
+    "@testing-library/react": "9.3.0",
     "nodecat": "2.0.0",
     "react": "16.9.0",
     "rimraf": "3.0.0",
