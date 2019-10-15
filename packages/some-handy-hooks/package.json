@@ -1,6 +1,6 @@
 {
-  "name": "i18n-jsx",
-  "description": "React (JS) text internationalization",
+  "name": "some-handy-hooks",
+  "description": "Bunch of react.js hooks for your app",
   "version": "0.0.0-development",
   "license": "MIT",
   "author": "Maciej Malkowski <monkey3310@gmail.com>",
@@ -10,19 +10,18 @@
   },
   "keywords": [
     "react",
-    "i18n",
-    "translations",
-    "internationalization"
+    "string formatting",
+    "formatting",
+    "jsx",
+    "string format",
+    "format"
   ],
-  "main": "lib/i18n-jsx.cjs.js",
-  "module": "lib/i18n-jsx.esm.js",
-  "browser": "lib/i18n-jsx.umd.js",
+  "main": "lib/some-handy-hooks.cjs.js",
+  "module": "lib/some-handy-hooks.esm.js",
+  "browser": "lib/some-handy-hooks.umd.js",
   "types": "lib/index.d.ts",
   "peerDependencies": {
     "react": "^16.8.6"
-  },
-  "dependencies": {
-    "format-to-jsx": "^1.0.3"
   },
   "devDependencies": {
     "@types/react": "16.9.2",

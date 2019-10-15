@@ -3,7 +3,7 @@
     "default": {
       "packages": [
         "package.json",
-        "packages/error-boundary/package.json",
+        "packages/error-boundary-jsx/package.json",
         "packages/feature-toggle-jsx/package.json",
         "packages/format-to-jsx/package.json",
         "packages/i18n-jsx/package.json",
