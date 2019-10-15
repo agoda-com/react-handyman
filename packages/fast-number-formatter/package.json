@@ -1,0 +1,54 @@
+{
+  "name": "fast-number-formatter",
+  "description": "Fast easy number formatting",
+  "version": "0.0.0-development",
+  "license": "MIT",
+  "author": "Søren Ullidtz <sullidtz@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matmalkowski/react-handyman.git"
+  },
+  "keywords": [
+    "react",
+    "fast number formatting",
+    "number formatting",
+    "number format",
+    "formatting",
+    "format"
+  ],
+  "main": "lib/fast-number-formatter.cjs.js",
+  "module": "lib/fast-number-formatter.esm.js",
+  "browser": "lib/fast-number-formatter.umd.js",
+  "types": "lib/index.d.ts",
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@testing-library/react": "9.2.0",
+    "@types/react": "16.8.25",
+    "full-icu": "^1.3.0",
+    "nodecat": "2.0.0",
+    "react": "16.9.0",
+    "rimraf": "2.7.0",
+    "rollup": "1.21.3",
+    "rollup-plugin-babel": "4.3.2",
+    "rollup-plugin-node-resolve": "5.0.1",
+    "rollup-plugin-terser": "5.1.2",
+    "semantic-release": "=15.9.17",
+    "semantic-release-monorepo": "6.1.1",
+    "typescript": "3.5.3"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "test": "node --icu-data-dir=node_modules/full-icu node_modules/jest/bin/jest.js --with-intl=full-icu",
+    "test:coverage": "node --icu-data-dir=node_modules/full-icu node_modules/jest/bin/jest.js --with-intl=full-icu --coverage",
+    "semantic-release": "semantic-release -e semantic-release-monorepo",
+    "prebuild": "rimraf lib",
+    "build": "rollup -c && yarn emit-declarations",
+    "watch": "rollup -c -w",
+    "typecheck": "tsc",
+    "emit-declarations": "tsc -p tsconfig.build.json -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
+  }
+}

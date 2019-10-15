@@ -42,8 +42,8 @@
     "build": "lerna run build",
     "watch": "lerna run --parallel watch",
     "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore ./packages/",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test": "node --icu-data-dir=node_modules/full-icu node_modules/jest/bin/jest.js --with-intl=full-icu",
+    "test:coverage": "node --icu-data-dir=node_modules/full-icu node_modules/jest/bin/jest.js --with-intl=full-icu --coverage",
     "semantic-release": "lerna run --concurrency 1 semantic-release"
   },
   "jest": {
@@ -75,7 +75,8 @@
       "error-boundary",
       "feature-toggle-jsx",
       "format-to-jsx",
-      "i18n-jsx"
+      "i18n-jsx",
+      "fast-number-formatter"
     ],
     "commitMessages": {
       "initialBadge": "chore: :memo: Docs: Add Greenkeeper badge",
@@ -94,5 +95,9 @@
       "basicPR": "chore: Update ${dependency} to the latest!!!",
       "groupPR": "chore: Update ${dependency} in group ${group} to the latest!!!!"
     }
+  },
+  "dependencies": {
+    "cross-env": "^6.0.3",
+    "full-icu": "^1.3.0"
   }
 }
