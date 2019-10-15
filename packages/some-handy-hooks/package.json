@@ -1,0 +1,51 @@
+{
+  "name": "some-handy-hooks",
+  "description": "Bunch of react.js hooks for your app",
+  "version": "0.0.0-development",
+  "license": "MIT",
+  "author": "Maciej Malkowski <monkey3310@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matmalkowski/react-handyman.git"
+  },
+  "keywords": [
+    "react",
+    "string formatting",
+    "formatting",
+    "jsx",
+    "string format",
+    "format"
+  ],
+  "main": "lib/some-handy-hooks.cjs.js",
+  "module": "lib/some-handy-hooks.esm.js",
+  "browser": "lib/some-handy-hooks.umd.js",
+  "types": "lib/index.d.ts",
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/react": "16.9.2",
+    "@testing-library/react": "9.2.0",
+    "nodecat": "2.0.0",
+    "react": "16.9.0",
+    "rimraf": "3.0.0",
+    "rollup": "1.21.4",
+    "rollup-plugin-babel": "4.3.3",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-terser": "5.1.2",
+    "typescript": "3.6.3",
+    "semantic-release": "=15.9.17",
+    "semantic-release-monorepo": "6.1.1"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "semantic-release": "semantic-release -e semantic-release-monorepo",
+    "prebuild": "rimraf lib",
+    "build": "rollup -c && yarn emit-declarations",
+    "watch": "rollup -c -w",
+    "typecheck": "tsc",
+    "emit-declarations": "tsc -p tsconfig.build.json -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
+  }
+}
