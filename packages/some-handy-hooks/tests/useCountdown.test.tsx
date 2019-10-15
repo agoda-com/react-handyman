@@ -28,7 +28,7 @@ describe('useCountdown', () => {
     expect(result.current.seconds).toBe(9);
   });
 
-  it('Should reduce seconds by tree for 3 ticks', () => {
+  it('Should reduce seconds by three for 3 ticks', () => {
     const { result } = renderHook(() => useCountdown({ seconds: 10 }));
     act(() => {
       doTheTick();
