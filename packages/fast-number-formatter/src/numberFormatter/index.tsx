@@ -1,18 +1,21 @@
 import { NumberFormatOptions } from './types';
 
+const latinNumberSystemArg = '-u-nu-latn';
 const defaultCulture = 'en-us';
 let currentCulture = defaultCulture;
-const defaultOptions: NumberFormatOptions = {}; // Set default options here if needed down the line
+let defaultOptions: NumberFormatOptions = {};
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const formatters: any = {};
 
-// WARNING: You should only call this method once for each time the culture is changed.
-// - If you need another format for some reason, use getNumberFormatter and provide a culture
-export const setCurrentCulture = (culture: string) => {
-  const lowerCulture = culture.toLowerCase();
-  if (currentCulture !== lowerCulture) {
-    currentCulture = lowerCulture;
-  }
+const getCultureFromKey = (culture: string): string => {
+  if (culture.match(/\w+-u-nu-\w+/i)) return culture;
+  return culture + latinNumberSystemArg;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const createNumberFormatter = (culture: string, options?: any) => {
+  if (options) return new Intl.NumberFormat(getCultureFromKey(culture), options);
+  return new Intl.NumberFormat(getCultureFromKey(culture));
 };
 
 const numberFormatOptionsToJson = (options: NumberFormatOptions): string => {
@@ -35,23 +38,50 @@ const numberFormatOptionsToJson = (options: NumberFormatOptions): string => {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
+const createOrGetNumberFormatter = (culture: string, options: any): Intl.NumberFormat => {
+  if (!formatters[culture]) {
+    formatters[culture] = {};
+  }
+  const jsonKey = numberFormatOptionsToJson(options);
+  if (!formatters[culture][jsonKey]) {
+    if (jsonKey === 'noOptions') {
+      formatters[culture][jsonKey] = createNumberFormatter(culture);
+    } else {
+      formatters[culture][jsonKey] = createNumberFormatter(culture, options);
+    }
+  }
+  return formatters[culture][jsonKey];
+};
+
+// To avoid affecting performance as much as possible we only test the culture code if it looks unfamiliar.
+const validateCulture = (culture: string) => {
+  if ((culture.length !== 2 && culture.length < 5) || !culture.match(/^[a-z]{2}(-[a-z]{2})?(-u-nu-[a-z]+)?$/i)) {
+    const options = { ...defaultOptions };
+    createOrGetNumberFormatter(culture, options).format(0);
+  }
+};
+
+export const setGlobalDefaultOptions = (options: NumberFormatOptions) => {
+  if (options) defaultOptions = options;
+};
+
+// WARNING: You should only call this method once for each time the culture is changed.
+// - If you need another format for some reason, use getNumberFormatter and provide a culture
+export const setCurrentCulture = (culture: string) => {
+  const lowerCulture = culture.toLowerCase();
+  if (currentCulture !== lowerCulture) {
+    validateCulture(lowerCulture);
+    currentCulture = lowerCulture;
+  }
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getWildcardNumberFormatter = (options: any, culture?: string): Intl.NumberFormat => {
   let cultureKey = culture;
   if (!cultureKey) {
     cultureKey = currentCulture;
   }
-  if (!formatters[cultureKey]) {
-    formatters[cultureKey] = {};
-  }
-  const jsonKey = numberFormatOptionsToJson(options);
-  if (!formatters[cultureKey][jsonKey]) {
-    if (jsonKey === 'noOptions') {
-      formatters[cultureKey][jsonKey] = new Intl.NumberFormat(cultureKey);
-    } else {
-      formatters[cultureKey][jsonKey] = new Intl.NumberFormat(cultureKey, options);
-    }
-  }
-  return formatters[cultureKey][jsonKey];
+  return createOrGetNumberFormatter(cultureKey, options);
 };
 
 export const getCustomNumberFormatter = (options: NumberFormatOptions, culture?: string): Intl.NumberFormat =>

@@ -12,6 +12,7 @@ describe('formatNumber()', () => {
     jest.resetModules();
     process.env = { ...OLD_ENV };
     delete process.env.NODE_ENV;
+    setCurrentCulture('en-US');
   });
 
   afterEach(() => {
@@ -40,22 +41,72 @@ describe('formatNumber()', () => {
     expect(formatNumber(1234567.8912)).toBe('1.234.567,891');
   });
 
-  it('uses new altered culture if current culture was set even if it\'s lower case', () => {
+  it('uses new altered culture if current culture was set even if it\'s lower case or shorthand', () => {
     setCurrentCulture('da-dk');
     expect(formatNumber(1234567.89012)).toBe('1.234.567,89');
+    setCurrentCulture('da-dk-u-nu-latn');
+    expect(formatNumber(1234567.8912)).toBe('1.234.567,891');
+    setCurrentCulture('da');
+    expect(formatNumber(1234567.8912)).toBe('1.234.567,891');
+    setCurrentCulture('da-u-nu-latn');
     expect(formatNumber(1234567.8912)).toBe('1.234.567,891');
   });
 
-  // TODO: Consider reverting to default culture code if this happens
-  it('throws an error if an obviously illegal culture code', () => {
-    setCurrentCulture('ceci-nest-pas-une-culture-code');
-    expect(() => formatNumber(1234567.89012)).toThrow('Invalid language tag: ceci-nest-pas-une-culture-code');
+  it('throws an error if an obviously illegal culture code is set globally using setCurrentCulture', () => {
+    const invalidLanguageTag = 'Invalid language tag: ';
+    const latinArg = '-u-nu-latn';
+
+    const obviouslyWrong = 'ceci-nest-pas-une-culture-code';
+    expect(() => setCurrentCulture(obviouslyWrong)).toThrow(invalidLanguageTag + obviouslyWrong + latinArg);
+
+    const wrong = '/da-dk/';
+    expect(() => setCurrentCulture(wrong)).toThrow(invalidLanguageTag + wrong + latinArg);
+
+    const alsoWrong = 'qq-q8';
+    expect(() => setCurrentCulture(alsoWrong)).toThrow(invalidLanguageTag + alsoWrong + latinArg);
+
+    const wrongButSwallowed = 'qq-qq';
+    expect(() => setCurrentCulture(wrongButSwallowed)).not.toThrow();
+    expect(formatNumber(1234567.8912)).toBe('1,234,567.891');
+
+    const wrongButCloseEnough = 'da-dc'; // Will match on 'da' for danish.
+    expect(() => setCurrentCulture(wrongButCloseEnough)).not.toThrow();
+    expect(formatNumber(1234567.8912)).toBe('1.234.567,891');
+
+    const notwrong = 'zh-hans-cn';
+    expect(() => setCurrentCulture(notwrong)).not.toThrow();
+    expect(formatNumber(1234567.8912)).toBe('1,234,567.891');
+
+    const notwrongeither = 'zh-hans-cn-u-nu-hanidec';
+    expect(() => setCurrentCulture(notwrongeither)).not.toThrow();
+    expect(formatNumber(1234567.8912)).toBe('一,二三四,五六七.八九一');
   });
 
   it('falls back to using "en-US" if current culture was set to an "fake" culture code', () => {
     setCurrentCulture('xy-zq');
     expect(formatNumber(1234567.89012)).toBe('1,234,567.89');
     expect(formatNumber(1234567.8912)).toBe('1,234,567.891');
+  });
+
+  it('enforces latin number system unless number system is explicitly noted in cuntry code arguments', () => {
+    setCurrentCulture('zh-Hans-CN');
+    expect(formatNumber(1234567.89012)).toBe('1,234,567.89');
+    setCurrentCulture('sr-Qaaa-RS');
+    expect(formatNumber(1234567.8912)).toBe('1.234.567,891');
+    setCurrentCulture('sr-Cyrl');
+    expect(formatNumber(1234567.8912)).toBe('1.234.567,891');
+    setCurrentCulture('th-TH-u-nu-thai');
+    expect(formatNumber(1234567.8912)).toBe('๑,๒๓๔,๕๖๗.๘๙๑');
+    setCurrentCulture('ar-EG');
+    expect(formatNumber(1234567.8912)).toBe('1,234,567.891');
+    setCurrentCulture('ar-EG-u-nu-latn');
+    expect(formatNumber(1234567.8912)).toBe('1,234,567.891');
+    setCurrentCulture('ar-EG-u-nu-arab');
+    expect(formatNumber(1234567.8912)).toBe('١٬٢٣٤٬٥٦٧٫٨٩١');
+    setCurrentCulture('da-DK-u-nu-arab');
+    expect(formatNumber(1234567.8912)).toBe('١٬٢٣٤٬٥٦٧٫٨٩١');
+    setCurrentCulture('da-u-nu-arab');
+    expect(formatNumber(1234567.8912)).toBe('١٬٢٣٤٬٥٦٧٫٨٩١');
   });
 });
 
@@ -66,6 +117,7 @@ describe('getNumberFormatter()', () => {
     jest.resetModules();
     process.env = { ...OLD_ENV };
     delete process.env.NODE_ENV;
+    setCurrentCulture('en-US');
   });
 
   afterEach(() => {
@@ -97,6 +149,7 @@ describe('getCustomNumberFormatter()', () => {
     jest.resetModules();
     process.env = { ...OLD_ENV };
     delete process.env.NODE_ENV;
+    setCurrentCulture('en-US');
   });
 
   afterEach(() => {
@@ -116,5 +169,20 @@ describe('getCustomNumberFormatter()', () => {
     const formatter = getCustomNumberFormatter(options);
     expect(formatter.format(1234567)).toBe('1,234,567.0');
     expect(formatter.format(1234567.8912)).toBe('1,234,567.891');
+  });
+
+  it('returns a formatter which enforces lating numbers unless country code arguments explicitly indicate the number system.', () => {
+    const options: NumberFormatOptions = {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 3,
+      localeMatcher: LocaleMatcher.bestFit,
+      style: Style.decimal,
+      unitDisplay: UnitDisplay.long,
+      notation: Notation.standard
+    };
+    const formatterOne = getCustomNumberFormatter(options, 'ar-EG');
+    expect(formatterOne.format(1234567.8912)).toBe('1,234,567.891');
+    const formatterTwo = getCustomNumberFormatter(options, 'ar-EG-u-nu-arab');
+    expect(formatterTwo.format(1234567.8912)).toBe('١٬٢٣٤٬٥٦٧٫٨٩١');
   });
 });

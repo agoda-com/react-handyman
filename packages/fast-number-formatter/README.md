@@ -20,14 +20,36 @@ yarn add fast-number-formatter
 npm install fast-number-formatter --save
 ```
 
-## Example
+## Examples
 
 ```ts
 import { formatNumber } from 'fast-number-formatter'
 
 const formattedString = formatNumber(12345.6789);
+// 12,345.67
+
+const threeDecimalString = formatNumber(12345.6789, 3);
+// 12,345.678
+
+setCurrentCulture('da-DK');
+const oneDecimalDanishString = formatNumber(12345.6789, 1);
+// 12.345,6
+
+const formatter = getNumberFormatter(4, 'da-DK');
+const fourDecimalDanishString = formatter.format(12345.6789)
+// 12.345,6789
+
+const options: NumberFormatOptions = {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 3,
+    localeMatcher: LocaleMatcher.bestFit,
+    style: Style.decimal,
+    unitDisplay: UnitDisplay.long,
+    notation: Notation.standard
+};
+const formatter = getCustomNumberFormatter(options, 'da-DK');
+const firstCustomFormattedString = formatter.format(12345.6789)
+// 12.345,678
+const secondCustomFormattedString = formatter.format(12345)
+// 12.345,0
 ```
-
-
-// TODO: Write documentation once there is somthing to document
-
