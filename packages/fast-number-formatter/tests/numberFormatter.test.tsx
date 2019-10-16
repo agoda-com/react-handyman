@@ -5,9 +5,6 @@ import {
   NumberFormatOptions, LocaleMatcher, Style, UnitDisplay, Notation
 } from '../src/numberFormatter/types';
 
-const consoleWarn = jest.spyOn(global.console, 'warn').mockImplementation(() => { });
-const consoleError = jest.spyOn(global.console, 'error').mockImplementation(() => { });
-
 describe('formatNumber()', () => {
   const OLD_ENV = process.env;
 
@@ -23,6 +20,7 @@ describe('formatNumber()', () => {
   });
 
   it('returns "NaN" for non number parameters', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     expect(formatNumber(undefined as any)).toBe('NaN');
   });
 
