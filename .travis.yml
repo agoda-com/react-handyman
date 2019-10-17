@@ -15,7 +15,7 @@ before_script:
 script:
   - yarn build
   - yarn typecheck
-  - yarn lint
+  - yarn lint --debug
   - yarn test:coverage
   - yarn bundlesize
 
