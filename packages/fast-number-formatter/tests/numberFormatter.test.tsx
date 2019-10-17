@@ -1,5 +1,5 @@
 import {
-  formatNumber, setCurrentCulture, getNumberFormatter, getCustomNumberFormatter
+  formatNumber, setCurrentCulture, getNumberFormatter, getCustomNumberFormatter, setGlobalDefaultOptions
 } from '../src/numberFormatter';
 import {
   NumberFormatOptions, LocaleMatcher, Style, UnitDisplay, Notation
@@ -13,6 +13,7 @@ describe('formatNumber()', () => {
     process.env = { ...OLD_ENV };
     delete process.env.NODE_ENV;
     setCurrentCulture('en-US');
+    setGlobalDefaultOptions({});
   });
 
   afterEach(() => {
@@ -108,6 +109,36 @@ describe('formatNumber()', () => {
     setCurrentCulture('da-u-nu-arab');
     expect(formatNumber(1234567.8912)).toBe('١٬٢٣٤٬٥٦٧٫٨٩١');
   });
+
+  it('uses global default options', () => {
+    const options: NumberFormatOptions = {
+      minimumFractionDigits: 1,
+      maximumFractionDigits: 3,
+      localeMatcher: LocaleMatcher.bestFit,
+      style: Style.percent,
+      unitDisplay: UnitDisplay.long,
+      notation: Notation.standard
+    };
+    setGlobalDefaultOptions(options);
+    setCurrentCulture('zh-Hans-CN');
+    expect(formatNumber(0.12)).toBe('12.0%');
+    setCurrentCulture('sr-Qaaa-RS');
+    expect(formatNumber(0.12, 2)).toBe('12,00%');
+  });
+
+  it('does not update global defaults if options are not truthy', () => {
+    const options: NumberFormatOptions = {
+      style: Style.percent
+    };
+    setGlobalDefaultOptions(options);
+    setCurrentCulture('zh-Hans-CN');
+    expect(formatNumber(0.12)).toBe('12%');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    setGlobalDefaultOptions(undefined as any);
+    expect(formatNumber(0.12)).toBe('12%');
+    setGlobalDefaultOptions({});
+    expect(formatNumber(0.12)).toBe('0.12');
+  });
 });
 
 describe('getNumberFormatter()', () => {
@@ -118,6 +149,7 @@ describe('getNumberFormatter()', () => {
     process.env = { ...OLD_ENV };
     delete process.env.NODE_ENV;
     setCurrentCulture('en-US');
+    setGlobalDefaultOptions({});
   });
 
   afterEach(() => {
@@ -150,6 +182,7 @@ describe('getCustomNumberFormatter()', () => {
     process.env = { ...OLD_ENV };
     delete process.env.NODE_ENV;
     setCurrentCulture('en-US');
+    setGlobalDefaultOptions({});
   });
 
   afterEach(() => {
