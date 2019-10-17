@@ -86,6 +86,21 @@
         "max-classes-per-file": "off",
         "react/static-property-placement": "off"
       }
+    },
+    {
+      "files": [
+        "packages/sandbox/**/*"
+      ],
+      "rules": {
+        "import/no-unresolved": [
+          "error",
+          {
+            "ignore": [
+              "i18n-jsx"
+            ]
+          }
+        ]
+      }
     }
   ]
 }
