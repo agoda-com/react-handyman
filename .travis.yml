@@ -13,9 +13,9 @@ install:
 before_script:
   - yarn install --frozen-lockfile
 script:
-  - yarn build
   - yarn typecheck
-  - yarn lint --debug
+  - yarn lint
+  - yarn build
   - yarn test:coverage
   - yarn bundlesize
 
