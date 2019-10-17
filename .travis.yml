@@ -17,6 +17,7 @@ script:
   - yarn typecheck
   - yarn lint
   - yarn test:coverage
+  - yarn bundlesize
 
 after_success:
   - codecov
