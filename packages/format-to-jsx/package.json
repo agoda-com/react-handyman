@@ -16,9 +16,9 @@
     "string format",
     "format"
   ],
-  "main": "lib/format-to-jsx.cjs.js",
-  "module": "lib/format-to-jsx.esm.js",
-  "browser": "lib/format-to-jsx.umd.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/index.js",
+  "browser": "lib/formattojsx.umd.js",
   "types": "lib/index.d.ts",
   "peerDependencies": {
     "react": "^16.8.6"
@@ -26,14 +26,7 @@
   "devDependencies": {
     "@types/react": "16.9.2",
     "@testing-library/react": "9.2.0",
-    "nodecat": "2.0.0",
     "react": "16.9.0",
-    "rimraf": "3.0.0",
-    "rollup": "1.21.4",
-    "rollup-plugin-babel": "4.3.3",
-    "rollup-plugin-node-resolve": "5.2.0",
-    "rollup-plugin-terser": "5.1.2",
-    "typescript": "3.6.3",
     "semantic-release": "=15.9.17",
     "semantic-release-monorepo": "6.1.1"
   },
