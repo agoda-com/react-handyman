@@ -1,7 +1,8 @@
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "noWatch": true
   },
   "plugins": [
     "@typescript-eslint",
@@ -84,6 +85,21 @@
         "jest/valid-expect": "error",
         "max-classes-per-file": "off",
         "react/static-property-placement": "off"
+      }
+    },
+    {
+      "files": [
+        "packages/sandbox/**/*"
+      ],
+      "rules": {
+        "import/no-unresolved": [
+          "error",
+          {
+            "ignore": [
+              "i18n-jsx"
+            ]
+          }
+        ]
       }
     }
   ]
