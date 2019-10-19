@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/react": "16.8.25",
-    "react": "16.9.0",
+    "react": "16.10.2",
     "semantic-release": "=15.9.17",
     "semantic-release-monorepo": "6.1.1"
   },
