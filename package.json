@@ -18,7 +18,8 @@
     "@babel/preset-typescript": "^7.6.0",
     "@commitlint/cli": "8.2.0",
     "@commitlint/config-conventional": "8.2.0",
-    "@testing-library/react-hooks": "^2.0.3",
+    "@testing-library/react-hooks": "^3.1.0",
+    "@testing-library/react": "9.1.2",
     "@typescript-eslint/eslint-plugin": "^2.4.0",
     "@typescript-eslint/parser": "^2.4.0",
     "bundlesize": "^0.18.0",
@@ -32,15 +33,15 @@
     "eslint-plugin-react": "^7.16.0",
     "husky": "^3.0.8",
     "jest": "^24.9.0",
-    "lerna": "3.16.4",
+    "lerna": "3.18.1",
     "npm-run-all": "4.1.5",
     "react-test-renderer": "^16.10.2",
     "rimraf": "2.7.0",
     "rollup": "1.19.4",
-    "rollup-plugin-babel": "4.3.2",
+    "rollup-plugin-babel": "4.3.3",
     "rollup-plugin-commonjs": "10.1.0",
-    "rollup-plugin-node-resolve": "5.0.1",
-    "rollup-plugin-terser": "5.0.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-terser": "5.1.2",
     "typescript": "3.6.3"
   },
   "scripts": {
@@ -76,33 +77,6 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
-  },
-  "greenkeeper": {
-    "ignore": [
-      "semantic-release",
-      "semantic-release-monorepo",
-      "error-boundary-jsx",
-      "feature-toggle-jsx",
-      "format-to-jsx",
-      "i18n-jsx"
-    ],
-    "commitMessages": {
-      "initialBadge": "chore: :memo: Docs: Add Greenkeeper badge",
-      "initialDependencies": "chore: :gem: Upgrade: Update dependencies",
-      "initialBranches": "chore: :tada: Build: Whitelist greenkeeper branches",
-      "dependencyUpdate": "chore: :gem: Upgrade: Update ${dependency} to version ${version}",
-      "devDependencyUpdate": "chore: :gem: Upgrade: Update ${dependency} to version ${version}",
-      "dependencyPin": "chore: :bug: Fix: Pin ${dependency} to ${oldVersion}",
-      "devDependencyPin": "chore: :bug: Fix: Pin ${dependency} to ${oldVersion}"
-    },
-    "prTitles": {
-      "initialPR": "chore: Update dependencies to enable Greenkeeper!!!",
-      "initialPrBadge": "chore: Add badge to enable Greenkeeper!!!!",
-      "initialPrBadgeOnly": "chore: Add Greenkeeper badge!!!",
-      "initialSubgroupPR": "chore: Update dependencies for ${group}!!!",
-      "basicPR": "chore: Update ${dependency} to the latest!!!",
-      "groupPR": "chore: Update ${dependency} in group ${group} to the latest!!!!"
     }
   }
 }
