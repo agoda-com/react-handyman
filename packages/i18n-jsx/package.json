@@ -26,7 +26,6 @@
   },
   "devDependencies": {
     "@types/react": "16.9.2",
-    "@testing-library/react": "9.2.0",
     "react": "16.9.0",
     "semantic-release": "=15.9.17",
     "semantic-release-monorepo": "6.1.1"
