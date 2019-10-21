@@ -2,7 +2,7 @@
   "files": [
     {
       "path": "./packages/ab-test-jsx/lib/abtestjsx.umd.js",
-      "maxSize": "720 B"
+      "maxSize": "770 B"
     },
     {
       "path": "./packages/error-boundary-jsx/lib/errorboundaryjsx.umd.js",
