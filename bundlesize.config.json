@@ -17,8 +17,8 @@
       "maxSize": "1 kB"
     },
     {
-      "path": "./packages/ab-test-jsx/lib/abtestjsx.umd.js",
-      "maxSize": "710 B"
+      "path": "./packages/i18n-jsx/lib/i18njsx.umd.js",
+      "maxSize": "1.6 kB"
     },
     {
       "path": "./packages/some-handy-hooks/lib/somehandyhooks.umd.js",
