@@ -34,6 +34,12 @@ The app should be wrapped at the root level. Pass the ab tests allocation result
 </ABTestsProvider>
 ```
 
+Additional settings can be passed:
+
+```
+defaultVariant: 'A' // what variant should be returned if experiment cannot be found in the context. Defaults to A
+```
+
 ## `withABTestsProvider` Higher Order Component
 
 Wrap export of application root with the HOC and pass the ab tests allocation results object using param:

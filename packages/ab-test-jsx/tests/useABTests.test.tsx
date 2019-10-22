@@ -155,7 +155,7 @@ describe('useABTests', () => {
     expect(container.textContent).toEqual('isA:false');
   });
 
-  it('isA should return false if test is Z', () => {
+  it('isA should return true if test is Z', () => {
     const abTests: Tests = {
       test1: 'A',
       test2: 'B'
@@ -172,10 +172,10 @@ describe('useABTests', () => {
       </ABTestsProvider>,
     );
 
-    expect(container.textContent).toEqual('isA:false');
+    expect(container.textContent).toEqual('isA:true');
   });
 
-  it('getVariant should return Z when experiment is not allocated in context', () => {
+  it('getVariant should return A when experiment is not allocated in context', () => {
     const abTests: Tests = {
       test1: 'A',
       test2: 'B'
@@ -188,6 +188,26 @@ describe('useABTests', () => {
 
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
+        <UnderTest />
+      </ABTestsProvider>,
+    );
+
+    expect(container.textContent).toEqual('getVariant:A');
+  });
+
+  it('getVariant should return Z when experiment is not allocated in context and Z is default', () => {
+    const abTests: Tests = {
+      test1: 'A',
+      test2: 'B'
+    };
+
+    const UnderTest: React.FC = () => {
+      const { getVariant } = ABTestJsx.useABTests();
+      return <span>getVariant:{getVariant('test3')}</span>;
+    };
+
+    const { container } = render(
+      <ABTestsProvider abTests={abTests} defaultVariant="Z">
         <UnderTest />
       </ABTestsProvider>,
     );
