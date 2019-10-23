@@ -8,3 +8,6 @@ update_configs:
       prefix: "fix"
       prefix_development: "chore"
       include_scope: true
+  ignored_updates:
+    - match:
+        dependency_name: "semantic-release"
