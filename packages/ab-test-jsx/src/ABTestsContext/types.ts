@@ -1,5 +1,5 @@
-export type Variant = 'A' | 'B' | undefined
+export type Variant = 'A' | 'B'
 
 export interface ABTests {
-  [key: string]: Variant
+  [key: string]: Variant | undefined
 }
