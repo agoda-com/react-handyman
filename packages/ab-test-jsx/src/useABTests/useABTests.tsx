@@ -12,7 +12,8 @@ const useABTests = <T extends ABTests, TName extends Extract<keyof T, string | n
   const abTests = React.useContext(ABTestsContext) as T;
   const settings = React.useContext(ABTestsSettings);
 
-  const getVariant = (name: TName): 'A' | 'B' | 'Z' => abTests[name] || settings.defaultVariant;
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const getVariant = (name: TName): 'A' | 'B' | 'Z' => abTests[name]! || settings.defaultVariant;
   const isB = (name: TName) => getVariant(name) === 'B';
   const isA = (name: TName) => getVariant(name) === 'A';
 
