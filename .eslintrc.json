@@ -7,7 +7,12 @@
   "extends": [
     "agoda"
   ],
-  "rules": {},
+  "rules": {
+    "@typescript-eslint/indent": [
+      "error",
+      2
+    ]
+  },
   "overrides": [
     {
       "files": [
