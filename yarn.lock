@@ -5517,6 +5517,13 @@ escodegen@^1.11.0, escodegen@^1.9.1:
   optionalDependencies:
     source-map "~0.6.1"
 
+eslint-config-agoda@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-agoda/-/eslint-config-agoda-1.0.1.tgz#d52bce7320469fe78588b4fe80e4bf8eed80adfa"
+  integrity sha512-OUt1b5SMqoSSIMBqZR0D7mWR5Beiw4v7xga/L88AjbCi+XNioCTytkxMWrqzt4Ni+BtPiqrFAm6uucCJ5X9KtQ==
+  dependencies:
+    eslint-config-airbnb "^18.0.1"
+
 eslint-config-airbnb-base@^14.0.0:
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-14.0.0.tgz#8a7bcb9643d13c55df4dd7444f138bf4efa61e17"
