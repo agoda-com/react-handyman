@@ -5501,9 +5501,9 @@ escodegen@^1.11.0, escodegen@^1.9.1:
     source-map "~0.6.1"
 
 eslint-config-agoda@^1.0.1:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/eslint-config-agoda/-/eslint-config-agoda-1.0.3.tgz#38bb1aa734d05e4f934495c87e88f076eac2aaa7"
-  integrity sha512-FGMu8EqJ6X0ogxJz3MlrOzqCYREgpg/7RFGu4iL3AbjCOmDscvgmYkKb+rLrMrXbCx3kDRRvAFjf8K9tVgQwGg==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/eslint-config-agoda/-/eslint-config-agoda-1.0.4.tgz#089788e41a696bbbd6f15606bcfa16141f19754d"
+  integrity sha512-3YIYJJvh+x014GbD72ePTSHc6Y6P9dWosf7nKlN/wpbu8QgupBCaFMCD0XNgObExqCkD3XKuWeyo9NuFLNpxSw==
   dependencies:
     eslint-config-airbnb "^18.0.1"
 
