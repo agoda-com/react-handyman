@@ -21,24 +21,16 @@
     "type": "git",
     "url": "https://github.com/matmalkowski/react-handyman.git"
   },
-  "main": "lib/ab-test-jsx.cjs.js",
-  "module": "lib/ab-test-jsx.esm.js",
-  "browser": "lib/ab-test-jsx.umd.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/index.js",
+  "browser": "lib/abtestjsx.umd.js",
   "types": "lib/index.d.ts",
   "peerDependencies": {
     "react": "^16.8.6"
   },
   "devDependencies": {
-    "@testing-library/react": "9.1.2",
-    "@types/react": "16.8.25",
-    "nodecat": "2.0.0",
-    "react": "16.9.0",
-    "rimraf": "2.7.0",
-    "rollup": "1.19.4",
-    "rollup-plugin-babel": "4.3.2",
-    "rollup-plugin-node-resolve": "5.0.1",
-    "rollup-plugin-terser": "5.0.0",
-    "typescript": "3.5.3",
+    "@types/react": "16.9.11",
+    "react": "16.11.0",
     "semantic-release": "=15.9.17",
     "semantic-release-monorepo": "6.1.1"
   },

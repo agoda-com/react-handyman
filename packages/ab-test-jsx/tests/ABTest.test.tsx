@@ -99,6 +99,34 @@ describe('ABTest', () => {
     expect(container.textContent).toEqual('test1=A,test2=B');
   });
 
+  it('should render A variant if experiment cannot be evaluated (A default)', () => {
+    const abTests: Tests = {
+      test1: 'A',
+      test2: 'B'
+    };
+
+    const UnderTest: React.FC = () => (
+      <>
+        <ABTest name="test1" variant="A">
+          <span>test1=A</span>
+        </ABTest>
+        <ABTestJsx.ABTest name="test3" variant="A">
+          <span>test3(not-allocated)=A</span>
+        </ABTestJsx.ABTest>
+        <ABTestJsx.ABTest name="test3" variant="B">
+          <span>test3(not-allocated)=B</span>
+        </ABTestJsx.ABTest>
+      </>
+    );
+
+    const { container } = render(
+      <ABTestsProvider abTests={abTests}>
+        <UnderTest />
+      </ABTestsProvider>,
+    );
+
+    expect(container.textContent).toEqual('test1=Atest3(not-allocated)=A');
+  });
   it('should not render A nor B variant if experiment cannot be evaluated (Z)', () => {
     const abTests: Tests = {
       test1: 'A',
@@ -120,7 +148,7 @@ describe('ABTest', () => {
     );
 
     const { container } = render(
-      <ABTestsProvider abTests={abTests}>
+      <ABTestsProvider abTests={abTests} defaultVariant="Z">
         <UnderTest />
       </ABTestsProvider>,
     );

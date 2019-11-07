@@ -2,7 +2,7 @@
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/ab-test-jsx.svg)](https://bundlephobia.com/result?p=ab-test-jsx)
 [![Build Status](https://travis-ci.org/matmalkowski/react-handyman.svg?branch=master)](https://travis-ci.org/matmalkowski/react-handyman)
 [![codecov](https://codecov.io/gh/matmalkowski/react-handyman/branch/master/graph/badge.svg)](https://codecov.io/gh/matmalkowski/react-handyman)
-[![Greenkeeper badge](https://badges.greenkeeper.io/matmalkowski/react-handyman.svg)](https://greenkeeper.io/)
+[![dependabot badge](https://badgen.net/dependabot/matmalkowski/react-handyman/?icon=dependabot.svg)](https://dependabot.com/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
@@ -32,6 +32,12 @@ The app should be wrapped at the root level. Pass the ab tests allocation result
 <ABTestsProvider abTests={abTests}>
   <AppRoot {...props} />
 </ABTestsProvider>
+```
+
+Additional settings can be passed:
+
+```
+defaultVariant: 'A' // what variant should be returned if experiment cannot be found in the context. Defaults to A
 ```
 
 ## `withABTestsProvider` Higher Order Component

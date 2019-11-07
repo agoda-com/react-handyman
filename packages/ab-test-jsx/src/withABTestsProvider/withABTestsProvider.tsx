@@ -6,7 +6,8 @@ import { nameOf } from '../react-utils';
 
 export type withABTestsProviderHoC<T extends ABTests> = <TProps extends {}>(
   Component: React.ComponentType<TProps>,
-  abTests: T | ABTestsSetter<TProps, T>
+  abTests: T | ABTestsSetter<TProps, T>,
+  defaultVariant?: 'A' | 'B' | 'Z'
 ) => React.FunctionComponent<TProps>
 
 type ABTestsSetter<TProps extends {}, T> = (componentProps: TProps) => T
@@ -14,11 +15,12 @@ type ABTestsSetter<TProps extends {}, T> = (componentProps: TProps) => T
 const withABTestsProvider = <T extends ABTests, TProps extends {}>(
   Component: React.ComponentType<TProps>,
   abTests: ABTestsSetter<TProps, T> | T,
+  defaultVariant?: 'A' | 'B' | 'Z'
 ) => {
   const Wrapped: React.FC<TProps> = React.memo((props) => {
     const values = typeof abTests === 'function' ? abTests(props) : abTests;
     return (
-      <ABTestsProvider abTests={values}>
+      <ABTestsProvider abTests={values} defaultVariant={defaultVariant}>
         <Component {...props} />
       </ABTestsProvider>
     );

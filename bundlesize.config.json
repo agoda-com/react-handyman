@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "path": "./packages/ab-test-jsx/lib/abtestjsx.umd.js",
+      "maxSize": "770 B"
+    },
+    {
+      "path": "./packages/error-boundary-jsx/lib/errorboundaryjsx.umd.js",
+      "maxSize": "1.1 kB"
+    },
+    {
+      "path": "./packages/feature-toggle-jsx/lib/featuretogglejsx.umd.js",
+      "maxSize": "840 B"
+    },
+    {
+      "path": "./packages/format-to-jsx/lib/formattojsx.umd.js",
+      "maxSize": "1 kB"
+    },
+    {
+      "path": "./packages/i18n-jsx/lib/i18njsx.umd.js",
+      "maxSize": "1.6 kB"
+    },
+    {
+      "path": "./packages/some-handy-hooks/lib/somehandyhooks.umd.js",
+      "maxSize": "920 B"
+    }
+  ]
+}
