@@ -42,7 +42,9 @@
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-terser": "5.1.2",
-    "typescript": "3.6.4"
+    "typescript": "3.6.4",
+    "cross-env": "^6.0.3",
+    "full-icu": "^1.3.0"
   },
   "scripts": {
     "cz": "git-cz",
@@ -106,9 +108,5 @@
       "basicPR": "chore: Update ${dependency} to the latest!!!",
       "groupPR": "chore: Update ${dependency} in group ${group} to the latest!!!!"
     }
-  },
-  "dependencies": {
-    "cross-env": "^6.0.3",
-    "full-icu": "^1.3.0"
   }
 }
