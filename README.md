@@ -1,6 +1,6 @@
 # 👨‍🔧 React handyman
 
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![dependabot badge](https://badgen.net/dependabot/matmalkowski/react-handyman/?icon=dependabot.svg)](https://dependabot.com/)
@@ -170,6 +170,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/Nielsie"><img src="https://avatars0.githubusercontent.com/u/11413207?v=4" width="100px;" alt="Nielsie"/><br /><sub><b>Nielsie</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=Nielsie" title="Code">💻</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=Nielsie" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://www.linkedin.com/in/mahmudul-hassan-06853b50/"><img src="https://avatars2.githubusercontent.com/u/2369887?v=4" width="100px;" alt="Md Mahmudul Hasan"/><br /><sub><b>Md Mahmudul Hasan</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=dinujubd" title="Code">💻</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=dinujubd" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/HasanAJ"><img src="https://avatars0.githubusercontent.com/u/29162870?v=4" width="100px;" alt="Hasan AJ"/><br /><sub><b>Hasan AJ</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=HasanAJ" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://m2film.dk/"><img src="https://avatars1.githubusercontent.com/u/23518653?v=4" width="100px;" alt="Soren Ullidtz"/><br /><sub><b>Soren Ullidtz</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=Ullidtz" title="Code">💻</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=Ullidtz" title="Tests">⚠️</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=Ullidtz" title="Documentation">📖</a></td>
   </tr>
 </table>
 
