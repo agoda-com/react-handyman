@@ -1,0 +1,43 @@
+{
+  "name": "fast-number-formatter",
+  "description": "Fast easy number formatting",
+  "version": "0.0.0-development",
+  "license": "MIT",
+  "author": "Søren Ullidtz <sullidtz@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matmalkowski/react-handyman.git"
+  },
+  "keywords": [
+    "react",
+    "fast number formatting",
+    "number formatting",
+    "number format",
+    "formatting",
+    "format"
+  ],
+  "main": "lib/fast-number-formatter.cjs.js",
+  "module": "lib/fast-number-formatter.esm.js",
+  "browser": "lib/fast-number-formatter.umd.js",
+  "types": "lib/index.d.ts",
+  "peerDependencies": {
+    "react": "^16.8.6"
+  },
+  "devDependencies": {
+    "@types/react": "16.9.11",
+    "react": "16.11.0",
+    "semantic-release": "=15.9.17",
+    "semantic-release-monorepo": "6.1.1"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "semantic-release": "semantic-release -e semantic-release-monorepo",
+    "prebuild": "rimraf lib",
+    "build": "rollup -c && yarn emit-declarations",
+    "watch": "rollup -c -w",
+    "typecheck": "tsc",
+    "emit-declarations": "tsc -p tsconfig.build.json -d --noEmit false --emitDeclarationOnly --isolatedModules false --declarationDir \"./lib/\""
+  }
+}

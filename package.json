@@ -42,7 +42,9 @@
     "rollup-plugin-commonjs": "10.1.0",
     "rollup-plugin-node-resolve": "5.2.0",
     "rollup-plugin-terser": "5.1.2",
-    "typescript": "3.6.4"
+    "typescript": "3.6.4",
+    "cross-env": "^6.0.3",
+    "full-icu": "^1.3.0"
   },
   "scripts": {
     "cz": "git-cz",
@@ -52,8 +54,8 @@
     "build": "lerna run build",
     "watch": "lerna run --parallel watch",
     "lint": "eslint --ext .ts,.tsx --ignore-path .gitignore ./packages/",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
+    "test": "node --icu-data-dir=node_modules/full-icu node_modules/jest/bin/jest.js --with-intl=full-icu",
+    "test:coverage": "node --icu-data-dir=node_modules/full-icu node_modules/jest/bin/jest.js --with-intl=full-icu --coverage",
     "bundlesize": "bundlesize",
     "semantic-release": "lerna run --concurrency 1 semantic-release"
   },
