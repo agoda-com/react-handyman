@@ -80,6 +80,17 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Ullidtz",
+      "name": "Soren Ullidtz",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/23518653?v=4",
+      "profile": "https://m2film.dk/",
+      "contributions": [
+        "code",
+        "test",
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
