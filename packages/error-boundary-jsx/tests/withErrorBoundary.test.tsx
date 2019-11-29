@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { cleanup, render } from '@testing-library/react';
 import withErrorBoundary from '../src/withErrorBoundary';
-import { ErrorFallbackProps } from '../src/ErrorBoundary';
+import { ErrorFallbackProps } from '../src/ErrorBoundary/ErrorBoundary';
 
 interface DummyErrorComponentProps {
   name?: string;
