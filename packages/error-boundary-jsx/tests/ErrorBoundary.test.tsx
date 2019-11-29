@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import ErrorBoundary, { ErrorFallbackProps } from '../src/ErrorBoundary';
+import ErrorBoundary from '../src/ErrorBoundary';
+import { ErrorFallbackProps } from '../src/ErrorBoundary/ErrorBoundary';
 
 describe('<ErrorBoundary />', () => {
   class BuggyComponent extends React.PureComponent<{}, {}> {

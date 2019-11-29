@@ -1,4 +1,3 @@
-import ErrorBoundary, { ErrorFallbackProps } from './ErrorBoundary';
+import ErrorBoundary from './ErrorBoundary';
 
 export default ErrorBoundary;
-export type ErrorFallbackProps = ErrorFallbackProps;
