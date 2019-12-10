@@ -91,11 +91,21 @@
         "test",
         "doc"
       ]
+    },
+    {
+      "login": "kingdomax",
+      "name": "Pramoch Viriyathomrongul",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6430428?v=4",
+      "profile": "http://facebook.com/kingdomax",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "projectName": "react-handyman",
   "projectOwner": "matmalkowski",
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
