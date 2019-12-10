@@ -16,8 +16,8 @@
     "formatting",
     "format"
   ],
-  "main": "lib/fast-number-formatter.cjs.js",
-  "module": "lib/fast-number-formatter.esm.js",
+  "main": "lib/cjs/index.js",
+  "module": "lib/index.js",
   "browser": "lib/fast-number-formatter.umd.js",
   "types": "lib/index.d.ts",
   "peerDependencies": {
