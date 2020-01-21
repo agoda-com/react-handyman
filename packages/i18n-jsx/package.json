@@ -25,7 +25,7 @@
     "format-to-jsx": "^1.0.3"
   },
   "devDependencies": {
-    "@types/react": "16.9.13",
+    "@types/react": "16.9.18",
     "react": "16.12.0",
     "semantic-release": "=15.9.17",
     "semantic-release-monorepo": "6.1.1"
