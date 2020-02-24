@@ -24,7 +24,7 @@
     "@typescript-eslint/parser": "^2.4.0",
     "bundlesize": "^0.18.0",
     "commitizen": "4.0.3",
-    "cross-env": "^6.0.3",
+    "cross-env": "^7.0.0",
     "cz-conventional-changelog": "3.0.2",
     "eslint": "^6.5.1",
     "eslint-config-agoda": "^1.0.1",
