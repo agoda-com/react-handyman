@@ -10,7 +10,7 @@
 
 > 👉 Take note that this package is in still early stage of development, and there might be breaking changes introduced while we are finalizing on the API
 
-Simple React (JS) text internationalization with formatting support.
+Simple React (JS) text internationalization with formatting support. Uses `redux` as the source of translations data.
 
 ```bash
 yarn add i18n-jsx
@@ -44,16 +44,28 @@ The text passed as a `child` to `I18n` component is a default fallback value, wh
 
 Translations object is a simple dictionary style object that should contain all your internationalized strings. You can use aether `string` or a `number` as a key to identify the translation, and values can be templates string using `{0..}` as placeholders.
 
-All translations are stored in the ContextAPI to be accessible in all components used by your application. Root of your internationalized app has to be wrapped with a provider that initializes the ContextAPI as well as settings. It can be done in two ways:
+All translations are stored in the Redux Store. Your application has to be wrapped with `react-redux` `<Provider />` component, and the `I18nProvider` has to nested underneath it.
 
 ### `<I18nProvider />` component
 
-Your app should we wrapped at the root level, pass the translation object using the `translations` prop:
+Your app should we wrapped at the root level, under the redux store provider, and you have to pass selector function for the store.
 
 ```js
-<I18nProvider translations={translations}>
-  <AppRoot {...props} />
-</I18nProvider>
+
+// store: {
+//   user: {
+//     name: 'John'
+//   },
+//   translations: {
+//     1: 'Some translation'
+//   }
+// }
+
+<Provider store={store}> 
+  <I18nProvider selector={s => s.translations}>
+    <AppRoot {...props} />
+  </I18nProvider>
+</Provider>
 ```
 
 ### `withI18nProvider()` higher order component
@@ -61,7 +73,7 @@ Your app should we wrapped at the root level, pass the translation object using 
 Instead of adding node to the JSX you can wrap your root component export with a HOC:
 
 ```jsx
-export default withI18nProvider(I18nExamples, translations)
+export default withI18nProvider(s => s.translations)(YourComponent);
 ```
 
 ## Accessing the translations
@@ -119,7 +131,7 @@ const mapI18nToProps = i18n => ({
   strongText: i18n('example.hoc.strong', 'Default value for HOC'),
 })
 
-const TranslatedComponent = withI18n(Component, mapI18nToProps)
+const TranslatedComponent = withI18n(mapI18nToProps)(Component)
 ```
 
 `mapI18nToProps` is a selector function, similar to `react-redux` `mapStateToProps` that allows you to access `i18n` selector function and map your translations to component props.
