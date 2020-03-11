@@ -1,14 +1,15 @@
 import * as React from 'react';
-import TranslationsContext, { Translations } from '../TranslationsContext';
+import I18nContext, { Translations } from '../I18nContext';
 
 interface Props {
-  translations: Translations
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  selector: (store: any) => Translations;
 }
 
-const I18nProvider: React.FC<Props> = React.memo((props) => {
-  const { translations, children } = props;
-  return <TranslationsContext.Provider value={translations}>{children}</TranslationsContext.Provider>;
-});
+const I18nProvider: React.FC<Props> = (props) => {
+  const { selector, children } = props;
+  return <I18nContext.Provider value={{ selector }}>{children}</I18nContext.Provider>;
+};
 
 I18nProvider.displayName = 'I18nProvider';
 

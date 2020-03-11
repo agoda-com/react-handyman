@@ -1,19 +1,12 @@
 import * as React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { cleanup } from '@testing-library/react';
+import renderWithStore from './renderWithStore';
 
 import I18n from '../src/I18n';
 import I18nProvider from '../src/I18nProvider';
 
-jest.spyOn(global.console, 'warn').mockImplementation(() => {});
-const consoleError = jest.spyOn(global.console, 'error').mockImplementation(() => {});
-
-const translationsMock = {
-  1: 'number based key',
-  'example.key': 'string based key',
-  'example.template': 'string with {0} placeholder',
-  'example.template.many': 'string with {0} placeholder and ending with another {1}',
-  'example.template.obj': 'string with {one} or {two} object based values'
-};
+jest.spyOn(global.console, 'warn').mockImplementation(() => { });
+const consoleError = jest.spyOn(global.console, 'error').mockImplementation(() => { });
 
 describe('<I18n />', () => {
   afterEach(() => {
@@ -22,8 +15,8 @@ describe('<I18n />', () => {
   });
 
   it('should render not formatted text when no args were passed', () => {
-    const { container } = render(
-      <I18nProvider translations={translationsMock}>
+    const { container } = renderWithStore(
+      <I18nProvider selector={s => s.translations}>
         <span>
           <I18n k="example.template">{'string with {0} placeholder'}</I18n>
         </span>
@@ -34,8 +27,8 @@ describe('<I18n />', () => {
   });
 
   it('should render text based on a numeric k prop', () => {
-    const { container } = render(
-      <I18nProvider translations={translationsMock}>
+    const { container } = renderWithStore(
+      <I18nProvider selector={s => s.translations}>
         <span>
           <I18n k={1}>Default value</I18n>
         </span>
@@ -46,8 +39,8 @@ describe('<I18n />', () => {
   });
 
   it('should render text based on a string k prop', () => {
-    const { container } = render(
-      <I18nProvider translations={translationsMock}>
+    const { container } = renderWithStore(
+      <I18nProvider selector={s => s.translations}>
         <span>
           <I18n k="example.key">Default value</I18n>
         </span>
@@ -58,8 +51,8 @@ describe('<I18n />', () => {
   });
 
   it('should render default fallback value when k key is not present in context', () => {
-    const { container } = render(
-      <I18nProvider translations={translationsMock}>
+    const { container } = renderWithStore(
+      <I18nProvider selector={s => s.translations}>
         <span>
           <I18n k="invalid.key.string">Default value</I18n>
         </span>
@@ -71,8 +64,8 @@ describe('<I18n />', () => {
 
   describe('template text', () => {
     it('with with a numeric value', () => {
-      const { container } = render(
-        <I18nProvider translations={translationsMock}>
+      const { container } = renderWithStore(
+        <I18nProvider selector={s => s.translations}>
           <span>
             <I18n k="example.template" args={[123]}>
               Default value
@@ -85,8 +78,8 @@ describe('<I18n />', () => {
     });
 
     it('should render with with a string value', () => {
-      const { container } = render(
-        <I18nProvider translations={translationsMock}>
+      const { container } = renderWithStore(
+        <I18nProvider selector={s => s.translations}>
           <span>
             <I18n k="example.template" args={['some replaced string']}>
               Default value
@@ -99,8 +92,8 @@ describe('<I18n />', () => {
     });
 
     it('should render with multiple values', () => {
-      const { container } = render(
-        <I18nProvider translations={translationsMock}>
+      const { container } = renderWithStore(
+        <I18nProvider selector={s => s.translations}>
           <span>
             <I18n k="example.template.many" args={['some replaced string', 123]}>
               Default value
@@ -113,8 +106,8 @@ describe('<I18n />', () => {
     });
 
     it('should render with string based template and object args', () => {
-      const { container } = render(
-        <I18nProvider translations={translationsMock}>
+      const { container } = renderWithStore(
+        <I18nProvider selector={s => s.translations}>
           <span>
             <I18n k="example.template.obj" args={{ one: 1, two: 2 }}>
               {'string with {one} or {two} object based values'}
@@ -127,8 +120,8 @@ describe('<I18n />', () => {
     });
 
     it('should render default fallback value when k key is not present in context', () => {
-      const { container } = render(
-        <I18nProvider translations={translationsMock}>
+      const { container } = renderWithStore(
+        <I18nProvider selector={s => s.translations}>
           <span>
             <I18n k="invalid.key.string" args={['some replaced string']}>
               {'string with {0} placeholder'}
@@ -141,8 +134,8 @@ describe('<I18n />', () => {
     });
 
     it('should render default fallback value when k key is not present in context - multiple placeholders', () => {
-      const { container } = render(
-        <I18nProvider translations={translationsMock}>
+      const { container } = renderWithStore(
+        <I18nProvider selector={s => s.translations}>
           <span>
             <I18n k="invalid.key.string" args={['some replaced string', 123]}>
               {'string with {0} placeholder and ending with another {1}'}
@@ -155,8 +148,8 @@ describe('<I18n />', () => {
     });
 
     it('should throw error when child element is missing', () => {
-      const { container } = render(
-        <I18nProvider translations={translationsMock}>
+      const { container } = renderWithStore(
+        <I18nProvider selector={s => s.translations}>
           <span>
             <I18n k="error" />
           </span>
@@ -171,8 +164,8 @@ describe('<I18n />', () => {
     });
 
     it('should throw error when child element is not a string / number', () => {
-      const { container } = render(
-        <I18nProvider translations={translationsMock}>
+      const { container } = renderWithStore(
+        <I18nProvider selector={s => s.translations}>
           <span>
             <I18n k="error">
               <div>lol wat</div>
