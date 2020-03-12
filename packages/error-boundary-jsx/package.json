@@ -18,7 +18,7 @@
   "browser": "lib/errorboundaryjsx.umd.js",
   "types": "lib/index.d.ts",
   "peerDependencies": {
-    "react": "^16.8.6"
+    "react": "16.8.6"
   },
   "devDependencies": {
     "@types/react": "16.9.22",

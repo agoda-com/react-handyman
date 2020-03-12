@@ -19,18 +19,18 @@
   "browser": "lib/i18njsx.umd.js",
   "types": "lib/index.d.ts",
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-redux": "^7.2.0"
+    "react": "16.8.6",
+    "react-redux": "7.2.0"
   },
   "dependencies": {
-    "format-to-jsx": "^1.0.3"
+    "format-to-jsx": "1.0.3"
   },
   "devDependencies": {
     "@types/react": "16.9.22",
-    "@types/react-redux": "^7.1.7",
+    "@types/react-redux": "7.1.7",
     "react": "16.12.0",
-    "react-redux": "^7.2.0",
-    "redux": "^4.0.5",
+    "react-redux": "7.2.0",
+    "redux": "4.0.5",
     "semantic-release": "=15.9.17",
     "semantic-release-monorepo": "6.1.1"
   },
