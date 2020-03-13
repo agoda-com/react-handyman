@@ -11,7 +11,12 @@
     "@typescript-eslint/indent": [
       "error",
       2
-    ]
+    ],
+    "react/jsx-indent": [
+      "error",
+      2
+    ],
+    "arrow-parens": "off"
   },
   "overrides": [
     {

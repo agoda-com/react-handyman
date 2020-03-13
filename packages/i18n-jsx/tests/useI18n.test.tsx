@@ -1,21 +1,15 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
+import renderWithStore from './renderWithStore';
 
 import useI18n from '../src/useI18n';
 import I18nProvider from '../src/I18nProvider';
 
-jest.spyOn(global.console, 'warn').mockImplementation(() => {});
-
-const translationsMock = {
-  1: 'number based key',
-  'example.key': 'string based key',
-  'example.template': 'string with {0} placeholder',
-  'example.template.many': 'string with {0} placeholder and ending with another {1}'
-};
+jest.spyOn(global.console, 'warn').mockImplementation(() => { });
 
 const testWithComponent = (Component: React.ComponentType, expected: string) => {
-  const { container } = render(
-    <I18nProvider translations={translationsMock}>
+  const { container } = renderWithStore(
+    <I18nProvider selector={s => s.translations}>
       <div>
         <Component />
       </div>
@@ -51,6 +45,39 @@ describe('useI18n hook should return i18n function that', () => {
     };
 
     testWithComponent(Component, 'Default text');
+  });
+
+  it('should return fallback text in case store is missing', () => {
+    const Component: React.FC = () => {
+      const i18n = useI18n();
+      return <span>{i18n('invalid.key.string', 'Default text')}</span>;
+    };
+    const { container } = render(
+      <I18nProvider selector={s => s.translations}>
+        <div>
+          <Component />
+        </div>
+      </I18nProvider>,
+    );
+
+    expect(container.textContent).toEqual('Default text');
+  });
+
+  it('should return fallback text in case selector returns empty / null store fragment', () => {
+    const Component: React.FC = () => {
+      const i18n = useI18n();
+      return <span>{i18n('invalid.key.string', 'Default text')}</span>;
+    };
+
+    const { container } = renderWithStore(
+      <I18nProvider selector={s => s.translationsInvalid}>
+        <div>
+          <Component />
+        </div>
+      </I18nProvider>,
+    );
+
+    expect(container.textContent).toEqual('Default text');
   });
 
   it('should allow using template string with single param', () => {

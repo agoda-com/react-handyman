@@ -1,9 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`withI18n should render component with i18n translations 1`] = `
-<DocumentFragment>
-  <div>
-    translatedName
-  </div>
-</DocumentFragment>
-`;

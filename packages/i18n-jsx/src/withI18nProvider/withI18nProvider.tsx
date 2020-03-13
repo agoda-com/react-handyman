@@ -1,25 +1,21 @@
+/* eslint-disable react/jsx-indent */
 /* eslint-disable react/jsx-props-no-spreading */
 import * as React from 'react';
-import { Translations } from '../TranslationsContext';
 import I18nProvider from '../I18nProvider';
+import { Translations } from '../I18nContext';
 
-type TranslationsSetter<TProps extends {}> = (componentProps: TProps) => Translations
 
-const withI18nProvider = <TProps extends {}>(
-  Component: React.ComponentType<TProps>,
-  translations: TranslationsSetter<TProps> | Translations,
-) => {
-  const Wrapped: React.FC<TProps> = React.memo((props) => {
-    const values = typeof translations === 'function' ? translations(props) : translations;
-    return (
-      <I18nProvider translations={values}>
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const withI18nProvider = (selector: (state: any) => Translations) =>
+  (Component: React.ComponentType) => {
+    const Wrapped: React.FC = React.memo(props => (
+      <I18nProvider selector={selector}>
         <Component {...props} />
       </I18nProvider>
-    );
-  });
+    ));
 
-  Wrapped.displayName = `withI18nProvider(${Component.displayName})`;
-  return Wrapped;
-};
+    Wrapped.displayName = `withI18nProvider(${Component.displayName})`;
+    return Wrapped;
+  };
 
 export default withI18nProvider;
