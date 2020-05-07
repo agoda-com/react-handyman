@@ -100,6 +100,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "thammarith",
+      "name": "Thammarith",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8011543?v=4",
+      "profile": "https://tmr.in.th",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
