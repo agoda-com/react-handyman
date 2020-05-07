@@ -175,6 +175,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://m2film.dk/"><img src="https://avatars1.githubusercontent.com/u/23518653?v=4" width="100px;" alt=""/><br /><sub><b>Soren Ullidtz</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=Ullidtz" title="Code">💻</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=Ullidtz" title="Tests">⚠️</a> <a href="https://github.com/matmalkowski/react-handyman/commits?author=Ullidtz" title="Documentation">📖</a></td>
     <td align="center"><a href="http://facebook.com/kingdomax"><img src="https://avatars2.githubusercontent.com/u/6430428?v=4" width="100px;" alt=""/><br /><sub><b>Pramoch Viriyathomrongul</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=kingdomax" title="Code">💻</a></td>
+    <td align="center"><a href="https://tmr.in.th"><img src="https://avatars2.githubusercontent.com/u/8011543?v=4" width="100px;" alt=""/><br /><sub><b>Thammarith</b></sub></a><br /><a href="https://github.com/matmalkowski/react-handyman/commits?author=thammarith" title="Documentation">📖</a></td>
   </tr>
 </table>
 
