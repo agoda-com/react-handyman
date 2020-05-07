@@ -34,7 +34,7 @@ export default withFeature(ChatComponent, "chat")
 import { withFeature } from "feature-toggle-jsx"
 const ImagePreviewComponent = ({ props, perPage }) => {...}
 
-export default withFeature(ImagePreviewComponent, "preview", _ =_.perPage == 2) // will only render if feature perPage value meets the selector criteria.
+export default withFeature(ImagePreviewComponent, "preview", _ => _.perPage == 2) // will only render if feature perPage value meets the selector criteria.
 ```
 
 ```jsx
