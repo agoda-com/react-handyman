@@ -23,9 +23,9 @@ const withFeature = <
   isEnabled: (feature: TFeatureConfig[TFeatureName]) => boolean = (_) => !!_
 ) => {
   const Wrapped: React.FC<TOrigProps> = React.memo((props) => {
-    const [enabled] = useFeature(featureName, isEnabled);
+    const [enabled, features] = useFeature(featureName, isEnabled);
 
-    if (enabled) return <Component {...props} />;
+    if (enabled) return <Component {...props} {...{ [featureName]: features }} />;
 
     return null;
   });
