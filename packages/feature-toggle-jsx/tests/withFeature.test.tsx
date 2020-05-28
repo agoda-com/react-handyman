@@ -108,6 +108,6 @@ describe('withFeature', () => {
       </WrappedApp>,
     );
 
-   expect(container.textContent).toEqual('This is feature 10');
+    expect(container.textContent).toEqual('This is feature 10');
   });
 });
