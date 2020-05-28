@@ -10,7 +10,7 @@
     },
     {
       "path": "./packages/feature-toggle-jsx/lib/featuretogglejsx.umd.js",
-      "maxSize": "840 B"
+      "maxSize": "985 B"
     },
     {
       "path": "./packages/format-to-jsx/lib/formattojsx.umd.js",

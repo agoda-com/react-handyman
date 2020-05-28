@@ -4,6 +4,7 @@ import { FeatureConfig } from '../FeaturesContext';
 import useFeature from '../useFeature';
 import { nameOf } from '../react-utils';
 
+
 export type withFeatureHoC<TFeatureConfig extends FeatureConfig> = <
   TOrigProps extends {},
   TFeatureName extends Extract<keyof TFeatureConfig, string | number>
@@ -11,7 +12,7 @@ export type withFeatureHoC<TFeatureConfig extends FeatureConfig> = <
   Component: React.ComponentType<TOrigProps>,
   featureName: TFeatureName,
   isEnabled?: (feature: TFeatureConfig[TFeatureName]) => boolean
-) => React.FC<TOrigProps>;
+) => React.FC<TOrigProps & Partial<TFeatureConfig>>;
 
 const withFeature = <
   TOrigProps extends {},
@@ -23,9 +24,9 @@ const withFeature = <
   isEnabled: (feature: TFeatureConfig[TFeatureName]) => boolean = (_) => !!_
 ) => {
   const Wrapped: React.FC<TOrigProps> = React.memo((props) => {
-    const [enabled] = useFeature(featureName, isEnabled);
+    const [enabled, features] = useFeature(featureName, isEnabled);
 
-    if (enabled) return <Component {...props} />;
+    if (enabled) return <Component {...props} {...{ [featureName]: features }} />;
 
     return null;
   });
