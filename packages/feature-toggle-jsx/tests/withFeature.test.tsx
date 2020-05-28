@@ -79,4 +79,35 @@ describe('withFeature', () => {
 
     expect(container.textContent).toEqual('This is feature 1');
   });
+
+  it('should pass config to props', () => {
+    const featuresConfig = {
+      someFeat: {
+        someCustomField: 10
+      }
+    } as CustomFeatureConfig;
+
+    const App: React.FC = ({ children }) => <div>{children}</div>;
+    type Props = { someFeat?: { someCustomField: number } }
+    const Feat1: React.FC<Props> = (props) => {
+      const { someFeat } = props;
+      return (<span>This is feature {someFeat ? someFeat.someCustomField : '1'}</span>);
+    };
+
+    const WrappedFeat1 = withFeature(Feat1, 'someFeat');
+
+    const UnderTest: React.FC = () => (
+      <><WrappedFeat1 /></>
+    );
+
+    const WrappedApp = withFeaturesProvider(App, featuresConfig);
+
+    const { container } = render(
+      <WrappedApp>
+        <UnderTest />
+      </WrappedApp>,
+    );
+
+   expect(container.textContent).toEqual('This is feature 10');
+  });
 });
