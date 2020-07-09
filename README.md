@@ -13,7 +13,7 @@ This is a monorepo containing all packages that can help you extend functionalit
 
 [![npm](https://img.shields.io/npm/v/ab-test-jsx.svg)](https://www.npmjs.com/package/ab-test-jsx)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/ab-test-jsx.svg)](https://bundlephobia.com/result?p=ab-test-jsx)
-[![Build Status](https://travis-ci.org/agoda-com/react-handyman.svg?branch=master)](https://travis-ci.org/agoda-com/react-handyman)
+![Build Status](https://github.com/agoda-com/react-handyman/workflows/Validate%20Pull%20Request/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/agoda-com/react-handyman/branch/master/graph/badge.svg)](https://codecov.io/gh/agoda-com/react-handyman)
 
 React (JS) based client for consuming AB test logic in your app.
@@ -53,7 +53,7 @@ Please see more examples, detailed documentation and other available components 
 
 [![npm](https://img.shields.io/npm/v/feature-toggle-jsx.svg)](https://www.npmjs.com/package/feature-toggle-jsx)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/feature-toggle-jsx.svg)](https://bundlephobia.com/result?p=feature-toggle-jsx)
-[![Build Status](https://travis-ci.org/agoda-com/react-handyman.svg?branch=master)](https://travis-ci.org/agoda-com/react-handyman)
+![Build Status](https://github.com/agoda-com/react-handyman/workflows/Validate%20Pull%20Request/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/agoda-com/react-handyman/branch/master/graph/badge.svg)](https://codecov.io/gh/agoda-com/react-handyman)
 
 Toggle visibility of your react components based on features configuration of your app.
@@ -79,7 +79,7 @@ Check out details and more examples in [package README file](/packages/feature-t
 
 [![npm](https://img.shields.io/npm/v/i18n-jsx.svg)](https://www.npmjs.com/package/i18n-jsx)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/i18n-jsx.svg)](https://bundlephobia.com/result?p=i18n-jsx)
-[![Build Status](https://travis-ci.org/agoda-com/react-handyman.svg?branch=master)](https://travis-ci.org/agoda-com/react-handyman)
+![Build Status](https://github.com/agoda-com/react-handyman/workflows/Validate%20Pull%20Request/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/agoda-com/react-handyman/branch/master/graph/badge.svg)](https://codecov.io/gh/agoda-com/react-handyman)
 
 React (JS) text internationalization and externalizing. Supports string formatting and fallback to default values.
@@ -116,7 +116,7 @@ Check out details and more examples in [package README file](/packages/i18n-jsx)
 
 [![npm](https://img.shields.io/npm/v/format-to-jsx.svg)](https://www.npmjs.com/package/format-to-jsx)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/format-to-jsx.svg)](https://bundlephobia.com/result?p=format-to-jsx)
-[![Build Status](https://travis-ci.org/agoda-com/react-handyman.svg?branch=master)](https://travis-ci.org/agoda-com/react-handyman)
+![Build Status](https://github.com/agoda-com/react-handyman/workflows/Validate%20Pull%20Request/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/agoda-com/react-handyman/branch/master/graph/badge.svg)](https://codecov.io/gh/agoda-com/react-handyman)
 
 Easy string formatting with support of injecting JSX elements and object based params
@@ -138,7 +138,7 @@ Check out details and more examples in [package README file](/packages/format-to
 
 [![npm](https://img.shields.io/npm/v/error-boundary.svg)](https://www.npmjs.com/package/error-boundary-jsx)
 [![npm bundle size](https://img.shields.io/bundlephobia/minzip/error-boundary.svg)](https://bundlephobia.com/result?p=error-boundary-jsx)
-[![Build Status](https://travis-ci.org/agoda-com/react-handyman.svg?branch=master)](https://travis-ci.org/agoda-com/react-handyman)
+![Build Status](https://github.com/agoda-com/react-handyman/workflows/Validate%20Pull%20Request/badge.svg?branch=master)
 [![codecov](https://codecov.io/gh/agoda-com/react-handyman/branch/master/graph/badge.svg)](https://codecov.io/gh/agoda-com/react-handyman)
 
 Handle errors on wrapped component and provide a fall back.
