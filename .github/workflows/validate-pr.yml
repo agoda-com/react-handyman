@@ -3,13 +3,14 @@ name: Validate Pull Request
 on: [pull_request]
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
-
+        node-version: [10.x, 12.x]
+    env:
+        CI: true
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
@@ -23,5 +24,6 @@ jobs:
     - run: yarn build
     - run: yarn test:coverage
     - run: yarn bundlesize
-      env:
-        CI: true
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      
