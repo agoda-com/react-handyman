@@ -14,7 +14,7 @@
     },
     {
       "path": "./packages/format-to-jsx/lib/formattojsx.umd.js",
-      "maxSize": "1 kB"
+      "maxSize": "1.2 kB"
     },
     {
       "path": "./packages/i18n-jsx/lib/i18njsx.umd.js",
