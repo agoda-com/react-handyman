@@ -29,7 +29,7 @@ describe('useABTests', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('test1=A');
@@ -49,7 +49,7 @@ describe('useABTests', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('test2=B');
@@ -69,7 +69,7 @@ describe('useABTests', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('isB:false');
@@ -89,7 +89,7 @@ describe('useABTests', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('isB:false');
@@ -109,7 +109,7 @@ describe('useABTests', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('isB:true');
@@ -129,7 +129,7 @@ describe('useABTests', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('isA:true');
@@ -149,7 +149,7 @@ describe('useABTests', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('isA:false');
@@ -169,7 +169,7 @@ describe('useABTests', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('isA:true');
@@ -189,7 +189,7 @@ describe('useABTests', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('getVariant:A');
@@ -209,7 +209,7 @@ describe('useABTests', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests} defaultVariant="Z">
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('getVariant:Z');

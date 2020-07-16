@@ -6,7 +6,7 @@ import ErrorBoundary from '../ErrorBoundary';
 const withErrorBoundary = <TOrigProps extends {}>(
   Component: React.ComponentType<TOrigProps>,
   onError: (componentName: string, error: Error, componentStack: string) => void,
-  FallbackComponent?: React.ComponentType<any>,
+  FallbackComponent?: React.ComponentType<any>
 ) => {
   const name = Component.displayName ? Component.displayName : 'Unnamed Component';
 

@@ -35,7 +35,7 @@ describe('ABTest', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('test1=A');
@@ -61,7 +61,7 @@ describe('ABTest', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('test2=B');
@@ -93,7 +93,7 @@ describe('ABTest', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('test1=A,test2=B');
@@ -122,7 +122,7 @@ describe('ABTest', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests}>
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('test1=Atest3(not-allocated)=A');
@@ -150,7 +150,7 @@ describe('ABTest', () => {
     const { container } = render(
       <ABTestsProvider abTests={abTests} defaultVariant="Z">
         <UnderTest />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('test1=A');

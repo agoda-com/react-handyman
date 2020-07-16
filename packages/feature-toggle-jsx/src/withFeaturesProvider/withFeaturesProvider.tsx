@@ -13,7 +13,7 @@ type FeaturesSetter<TProps extends {}, T> = (componentProps: TProps) => T
 
 const withFeaturesProvider = <T extends FeatureConfig, TProps extends {}>(
   Component: React.ComponentType<TProps>,
-  features: FeaturesSetter<TProps, T> | T,
+  features: FeaturesSetter<TProps, T> | T
 ) => {
   const Wrapped: React.FC<TProps> = React.memo((props) => {
     const values = typeof features === 'function' ? features(props) : features;

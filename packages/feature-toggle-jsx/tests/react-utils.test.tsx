@@ -57,8 +57,8 @@ describe('nameOf()', () => {
             public render() {
               return <div />;
             }
-          },
-        ),
+          }
+        )
       ).toBe('ClassComponent');
     });
   });

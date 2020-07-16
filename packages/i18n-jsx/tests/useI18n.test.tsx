@@ -13,7 +13,7 @@ const testWithComponent = (Component: React.ComponentType, expected: string) => 
       <div>
         <Component />
       </div>
-    </I18nProvider>,
+    </I18nProvider>
   );
 
   expect(container.textContent).toEqual(expected);
@@ -57,7 +57,7 @@ describe('useI18n hook should return i18n function that', () => {
         <div>
           <Component />
         </div>
-      </I18nProvider>,
+      </I18nProvider>
     );
 
     expect(container.textContent).toEqual('Default text');
@@ -74,7 +74,7 @@ describe('useI18n hook should return i18n function that', () => {
         <div>
           <Component />
         </div>
-      </I18nProvider>,
+      </I18nProvider>
     );
 
     expect(container.textContent).toEqual('Default text');

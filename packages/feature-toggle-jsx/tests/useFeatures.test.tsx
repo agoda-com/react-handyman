@@ -37,7 +37,7 @@ describe('useFeatures', () => {
     const { container } = render(
       <FeaturesProvider features={featuresConfig}>
         <UnderTest />
-      </FeaturesProvider>,
+      </FeaturesProvider>
     );
 
     expect(container.textContent).toEqual('someFeat.someCustomField=10');

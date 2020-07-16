@@ -23,7 +23,7 @@ describe('handleNotFound()', () => {
 
     expect(consoleWarn).toHaveBeenCalledTimes(1);
     expect(consoleWarn).toHaveBeenCalledWith(
-      "[i18n-jsx]: '1' key was not found in the translations object, falling back to notFound value.",
+      "[i18n-jsx]: '1' key was not found in the translations object, falling back to notFound value."
     );
   });
 
