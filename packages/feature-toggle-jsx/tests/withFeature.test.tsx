@@ -45,7 +45,7 @@ describe('withFeature', () => {
     const { container } = render(
       <WrappedApp>
         <UnderTest />
-      </WrappedApp>,
+      </WrappedApp>
     );
 
     expect(container.textContent).toEqual('This is feature 1');
@@ -74,7 +74,7 @@ describe('withFeature', () => {
     const { container } = render(
       <WrappedApp>
         <UnderTest />
-      </WrappedApp>,
+      </WrappedApp>
     );
 
     expect(container.textContent).toEqual('This is feature 1');
@@ -105,7 +105,7 @@ describe('withFeature', () => {
     const { container } = render(
       <WrappedApp>
         <UnderTest />
-      </WrappedApp>,
+      </WrappedApp>
     );
 
     expect(container.textContent).toEqual('This is feature 10');

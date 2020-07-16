@@ -39,7 +39,7 @@ describe('ABTest', () => {
     const { container } = render(
       <WrappedApp>
         <UnderTest />
-      </WrappedApp>,
+      </WrappedApp>
     );
 
     expect(container.textContent).toEqual('test1=A');
@@ -72,7 +72,7 @@ describe('ABTest', () => {
     const { container } = render(
       <WrappedApp tests={abTests}>
         <UnderTest />
-      </WrappedApp>,
+      </WrappedApp>
     );
 
     expect(container.textContent).toEqual('test1=A');

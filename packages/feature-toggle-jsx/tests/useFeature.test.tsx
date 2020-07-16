@@ -37,7 +37,7 @@ describe('useFeature', () => {
     const { container } = render(
       <FeaturesProvider features={featuresConfig}>
         <UnderTest />
-      </FeaturesProvider>,
+      </FeaturesProvider>
     );
 
     expect(container.textContent).toEqual('someFeat=true');
@@ -58,7 +58,7 @@ describe('useFeature', () => {
     const { container } = render(
       <FeaturesProvider features={featuresConfig}>
         <UnderTest />
-      </FeaturesProvider>,
+      </FeaturesProvider>
     );
 
     expect(container.textContent).toEqual('someFeat=false');
@@ -79,7 +79,7 @@ describe('useFeature', () => {
     const { container } = render(
       <FeaturesProvider features={featuresConfig}>
         <UnderTest />
-      </FeaturesProvider>,
+      </FeaturesProvider>
     );
 
     expect(container.textContent).toEqual('someFeat=true');
@@ -100,7 +100,7 @@ describe('useFeature', () => {
     const { container } = render(
       <FeaturesProvider features={featuresConfig}>
         <UnderTest />
-      </FeaturesProvider>,
+      </FeaturesProvider>
     );
 
     expect(container.textContent).toEqual('someFeat=false');
@@ -121,7 +121,7 @@ describe('useFeature', () => {
     const { container } = render(
       <FeaturesProvider features={featuresConfig}>
         <UnderTest />
-      </FeaturesProvider>,
+      </FeaturesProvider>
     );
 
     expect(container.textContent).toEqual('enabled:true,config.someCustomField:10');
@@ -142,7 +142,7 @@ describe('useFeature', () => {
     const { container } = render(
       <FeaturesProvider features={featuresConfig}>
         <UnderTest />
-      </FeaturesProvider>,
+      </FeaturesProvider>
     );
 
     expect(container.textContent).toEqual('enabled:false,config.itsOver:undefined');

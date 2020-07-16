@@ -40,7 +40,7 @@ describe('withABTests', () => {
     const { container } = render(
       <ABTestsProvider abTests={contextAbTests}>
         <UnderTestWithABTests text="under test - " />
-      </ABTestsProvider>,
+      </ABTestsProvider>
     );
 
     expect(container.textContent).toEqual('under test - test1=A');

@@ -43,7 +43,7 @@ describe('withFeaturesProvider', () => {
     const { container } = render(
       <WrappedApp>
         <UnderTest />
-      </WrappedApp>,
+      </WrappedApp>
     );
 
     expect(container.textContent).toEqual('10');
@@ -74,7 +74,7 @@ describe('withFeaturesProvider', () => {
     const { container } = render(
       <WrappedApp feats={featuresConfig}>
         <UnderTest />
-      </WrappedApp>,
+      </WrappedApp>
     );
 
     expect(container.textContent).toEqual('10');

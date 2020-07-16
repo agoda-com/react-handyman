@@ -20,7 +20,7 @@ describe('withI18nProvider()', () => {
         <span>
           <I18n k={1}>Default value</I18n>
         </span>
-      </Wrapped>,
+      </Wrapped>
     );
 
     expect(container.textContent).toEqual('number based key');
@@ -34,7 +34,7 @@ describe('withI18nProvider()', () => {
         <span>
           <I18n k={1}>Default value</I18n>
         </span>
-      </Wrapped>,
+      </Wrapped>
     );
 
     expect(container.textContent).toEqual('Default value');

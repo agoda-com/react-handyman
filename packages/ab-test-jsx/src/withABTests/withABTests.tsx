@@ -10,7 +10,7 @@ export type withABTestsHoC<T extends ABTests> = <TProps extends { abTests: T }>(
 ) => React.FC<Omit<TProps, 'abTests'>>
 
 const withABTests = <TProps extends { abTests: TABTests }, TABTests extends ABTests>(
-  Component: React.ComponentType<TProps>,
+  Component: React.ComponentType<TProps>
 ) => {
   type OwnProps = Omit<TProps, 'abTests'>
   const Wrapped: React.FC<OwnProps> = React.memo((props) => {
