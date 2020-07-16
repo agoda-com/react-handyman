@@ -7,6 +7,13 @@
   "extends": [
     "agoda"
   ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
   "rules": {
     "@typescript-eslint/indent": [
       "error",
@@ -16,7 +23,17 @@
       "error",
       2
     ],
-    "arrow-parens": "off"
+    "arrow-parens": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
   },
   "overrides": [
     {
