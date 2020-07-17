@@ -65,6 +65,7 @@ const useCountdown = (options: CountdownOptions) => {
   React.useEffect(() => {
     start();
     return pause;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [countdownEnd]);
 
   return {

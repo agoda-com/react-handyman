@@ -15,6 +15,7 @@ const useI18n = () => {
   if (!store) {
     return makeI18n({});
   }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const translations = useSelector(selector) || {};
   return makeI18n(translations);
 };

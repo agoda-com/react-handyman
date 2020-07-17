@@ -4,14 +4,14 @@ import { FeatureConfig } from '../FeaturesContext';
 import FeaturesProvider from '../FeaturesProvider';
 import { nameOf } from '../react-utils';
 
-export type withFeaturesProviderHoC<T extends FeatureConfig> = <TProps extends {}>(
+export type withFeaturesProviderHoC<T extends FeatureConfig> = <TProps extends Record<string, unknown>>(
   Component: React.ComponentType<TProps>,
   features: T | FeaturesSetter<TProps, T>
 ) => React.FunctionComponent<TProps>
 
-type FeaturesSetter<TProps extends {}, T> = (componentProps: TProps) => T
+type FeaturesSetter<TProps extends Record<string, unknown>, T> = (componentProps: TProps) => T
 
-const withFeaturesProvider = <T extends FeatureConfig, TProps extends {}>(
+const withFeaturesProvider = <T extends FeatureConfig, TProps extends Record<string, unknown>>(
   Component: React.ComponentType<TProps>,
   features: FeaturesSetter<TProps, T> | T
 ) => {

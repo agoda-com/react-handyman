@@ -5,8 +5,8 @@ import useABTests from '../useABTests';
 import { nameOf } from '../react-utils';
 
 export type withABTestHoC<T extends ABTests> = <
-  TAProps extends {},
-  TBProps extends {},
+  TAProps extends Record<string, unknown>,
+  TBProps extends Record<string, unknown>,
   TABTestName extends Extract<keyof T, string | number>
 >(
   AVariantComponent: React.ComponentType<TAProps>,
@@ -15,8 +15,8 @@ export type withABTestHoC<T extends ABTests> = <
 ) => React.FC<TAProps & TBProps>;
 
 const withABTest = <
-  TAProps extends {},
-  TBProps extends {},
+  TAProps extends Record<string, unknown>,
+  TBProps extends Record<string, unknown>,
   TABTests extends ABTests,
   TABTestName extends Extract<keyof TABTests, string | number>
 >(

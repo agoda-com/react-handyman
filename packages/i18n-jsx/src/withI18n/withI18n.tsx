@@ -7,7 +7,7 @@ import { I18nSelector } from '../useI18n/selector';
 type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>
 export type Optionalize<T extends K, K> = Omit<T, keyof K>
 
-const withI18n = <TProps extends TI18nProps, TI18nProps extends {}>
+const withI18n = <TProps extends TI18nProps, TI18nProps extends Record<string, unknown>>
   (mapI18nToProps: (i18n: I18nSelector) => TI18nProps) =>
   (Component: React.ComponentType<TProps>) => {
     type OwnProps = Optionalize<TProps, TI18nProps>

@@ -4,8 +4,8 @@ import ErrorBoundary from '../src/ErrorBoundary';
 import { ErrorFallbackProps } from '../src/ErrorBoundary/ErrorBoundary';
 
 describe('<ErrorBoundary />', () => {
-  class BuggyComponent extends React.PureComponent<{}, {}> {
-    constructor(props: {}) {
+  class BuggyComponent extends React.PureComponent<Record<string, unknown>, Record<string, unknown>> {
+    constructor(props: Record<string, unknown>) {
       super(props);
       throw Error('error');
     }

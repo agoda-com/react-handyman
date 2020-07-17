@@ -33,6 +33,12 @@
         "ts": "never",
         "tsx": "never"
       }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface", "format": ["PascalCase"], "custom": {"regex": "^I[A-Z]", "match": false}
+      }
     ]
   },
   "overrides": [
@@ -49,6 +55,15 @@
             ]
           }
         ]
+      }
+    },
+    {
+      "files": [
+        "**/*.test.ts",
+        "**/*.test.tsx"
+      ],
+      "rules": {
+        "@typescript-eslint/no-empty-function": ["off"]
       }
     }
   ]

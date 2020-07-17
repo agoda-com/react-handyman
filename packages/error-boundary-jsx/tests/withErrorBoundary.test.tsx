@@ -7,7 +7,7 @@ interface DummyErrorComponentProps {
   name?: string;
 }
 
-class BuggyComponent extends React.PureComponent<DummyErrorComponentProps, {}> {
+class BuggyComponent extends React.PureComponent<DummyErrorComponentProps, Record<string, unknown>> {
   static displayName = 'BuggyComponent';
 
   constructor(props: DummyErrorComponentProps) {
