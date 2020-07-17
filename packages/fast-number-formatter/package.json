@@ -20,12 +20,7 @@
   "module": "lib/index.js",
   "browser": "lib/fast-number-formatter.umd.js",
   "types": "lib/index.d.ts",
-  "peerDependencies": {
-    "react": "16.8.6"
-  },
   "devDependencies": {
-    "@types/react": "16.9.22",
-    "react": "16.13.1",
     "semantic-release": "^17.1.1",
     "semantic-release-monorepo": "^7.0.2"
   },
