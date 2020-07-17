@@ -6,7 +6,7 @@ import { nameOf } from '../react-utils';
 
 
 export type withFeatureHoC<TFeatureConfig extends FeatureConfig> = <
-  TOrigProps extends {},
+  TOrigProps extends Record<string, unknown>,
   TFeatureName extends Extract<keyof TFeatureConfig, string | number>
 >(
   Component: React.ComponentType<TOrigProps>,
@@ -15,7 +15,7 @@ export type withFeatureHoC<TFeatureConfig extends FeatureConfig> = <
 ) => React.FC<TOrigProps & Partial<TFeatureConfig>>;
 
 const withFeature = <
-  TOrigProps extends {},
+  TOrigProps extends Record<string, unknown>,
   TFeatureConfig extends FeatureConfig,
   TFeatureName extends Extract<keyof TFeatureConfig, string | number>
 >(

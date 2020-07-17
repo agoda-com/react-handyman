@@ -3,7 +3,7 @@
 import * as React from 'react';
 import ErrorBoundary from '../ErrorBoundary';
 
-const withErrorBoundary = <TOrigProps extends {}>(
+const withErrorBoundary = <TOrigProps extends Record<string, unknown>>(
   Component: React.ComponentType<TOrigProps>,
   onError: (componentName: string, error: Error, componentStack: string) => void,
   FallbackComponent?: React.ComponentType<any>
