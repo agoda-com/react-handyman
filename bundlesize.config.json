@@ -6,7 +6,7 @@
     },
     {
       "path": "./packages/error-boundary-jsx/lib/errorboundaryjsx.umd.js",
-      "maxSize": "1.1 kB"
+      "maxSize": "1.2 kB"
     },
     {
       "path": "./packages/feature-toggle-jsx/lib/featuretogglejsx.umd.js",
