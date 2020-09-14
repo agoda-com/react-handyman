@@ -26,8 +26,8 @@
   "devDependencies": {
     "@types/react": "^16.9.43",
     "react": "^16.13.1",
-    "semantic-release": "^17.1.1",
-    "semantic-release-monorepo": "^7.0.2"
+    "semantic-release": "17.1.1",
+    "semantic-release-monorepo": "7.0.2"
   },
   "files": [
     "lib"

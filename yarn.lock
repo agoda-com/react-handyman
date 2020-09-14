@@ -9937,7 +9937,7 @@ scheduler@^0.19.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-semantic-release-monorepo@^7.0.2:
+semantic-release-monorepo@7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/semantic-release-monorepo/-/semantic-release-monorepo-7.0.2.tgz#d623ee2bb9314ea8d8209b01c11a92865fc7bbd5"
   integrity sha512-cpmi2d/5YXL9C1KThHhSnR6J1kEurfybc02sh1O8kHFqSspbOPkdkPh+4JtrOSzGaS3zhXmj95LW8F3Y6JHN1w==
@@ -9955,7 +9955,7 @@ semantic-release-plugin-decorators@^3.0.0:
   resolved "https://registry.yarnpkg.com/semantic-release-plugin-decorators/-/semantic-release-plugin-decorators-3.0.0.tgz#b4cbe9cda7e9e2198caf8103cf56de9742d6f5e4"
   integrity sha512-BIUUe9gUwH+N5k/fr9KEin/2cU80r62kLBPLS/o9Dl/TK3gNsu4CJgb7SAJyWvoothDRbWLZSgTS3Qz8UJuT/Q==
 
-semantic-release@^17.1.1:
+semantic-release@17.1.1:
   version "17.1.1"
   resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.1.1.tgz#d9775968e841b2b7c5020559e4481aea8520ca75"
   integrity sha512-9H+207eynBJElrQBHySZm+sIEoJeUhPA2zU4cdlY1QSInd2lnE8GRD2ALry9EassE22c9WW+aCREwBhro5AIIg==
