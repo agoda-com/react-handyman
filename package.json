@@ -27,7 +27,7 @@
     "commitizen": "4.2.1",
     "cross-env": "7.0.2",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "7.9.0",
+    "eslint": "7.12.1",
     "eslint-config-agoda": "^3.1.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest": "23.20.0",
