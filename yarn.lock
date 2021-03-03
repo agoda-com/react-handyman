@@ -10166,10 +10166,10 @@ scheduler@^0.19.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-semantic-release-monorepo@7.0.3:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/semantic-release-monorepo/-/semantic-release-monorepo-7.0.3.tgz#128860022938a2626f7186d4e900c9b3773b33e0"
-  integrity sha512-6RyvDxyBKQSXe7H1hEElkDVZJGdjoT+/aLlt481QdBG8ao46kOBE2sS41WhEIrvLBrdUFt4WL6TiSTvhjRx5SA==
+semantic-release-monorepo@7.0.4:
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/semantic-release-monorepo/-/semantic-release-monorepo-7.0.4.tgz#fbfb8a857f5daec8633c72bff9b030499b078d11"
+  integrity sha512-aN8dm7M67CFMbGnvlXu0vldHM6t8sTEfPA6zizOKhaXtCQcjtpuyp0LS4A/nY8TCZJRXUsnCmMOsMqtsMDuapA==
   dependencies:
     debug "^3.1.0"
     execa "^0.8.0"
