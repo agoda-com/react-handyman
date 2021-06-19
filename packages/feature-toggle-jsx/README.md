@@ -39,7 +39,7 @@ export default withFeature(ImagePreviewComponent, "preview", _ => _.perPage == 2
 
 ```jsx
 // App
-import { FeatureProvider } from "feature-toggle-jsx"
+import { FeaturesProvider } from "feature-toggle-jsx"
 
 import ChatComponent from "./ChatComponent"
 import ImagePreviewComponent from "./ImagePreviewComponent"
@@ -59,11 +59,11 @@ const features = {
 ...
 
 <App>
-  <FeatureProvider features={features}>
+  <FeaturesProvider features={features}>
     <ChatComponent />
     ...
     <ImagePreviewComponent otherProps={...}>
-  </FeatureProvider>
+  </FeaturesProvider>
 </App>
 ```
 
