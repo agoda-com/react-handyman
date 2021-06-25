@@ -10273,17 +10273,17 @@ scheduler@^0.19.1:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
-semantic-release-monorepo@7.0.3:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/semantic-release-monorepo/-/semantic-release-monorepo-7.0.3.tgz#128860022938a2626f7186d4e900c9b3773b33e0"
-  integrity sha512-6RyvDxyBKQSXe7H1hEElkDVZJGdjoT+/aLlt481QdBG8ao46kOBE2sS41WhEIrvLBrdUFt4WL6TiSTvhjRx5SA==
+semantic-release-monorepo@7.0.5:
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/semantic-release-monorepo/-/semantic-release-monorepo-7.0.5.tgz#96b7ff0aff183db2f81e71e5f821ed4adc7d5647"
+  integrity sha512-riOYD8eZ5PIST7o97Ltc01l8VQW7q01NmPDRPOBycaeZczJowyKkzkBfo92kTIWDFWbdO3G8A695JrrYjoTaiw==
   dependencies:
     debug "^3.1.0"
     execa "^0.8.0"
     p-limit "^1.2.0"
     pkg-up "^2.0.0"
     ramda "^0.25.0"
-    read-pkg "^3.0.0"
+    read-pkg "^5.0.0"
     semantic-release-plugin-decorators "^3.0.0"
 
 semantic-release-plugin-decorators@^3.0.0:
