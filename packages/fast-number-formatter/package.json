@@ -22,7 +22,7 @@
   "types": "lib/index.d.ts",
   "devDependencies": {
     "semantic-release": "17.2.3",
-    "semantic-release-monorepo": "7.0.3"
+    "semantic-release-monorepo": "7.0.5"
   },
   "files": [
     "lib"
